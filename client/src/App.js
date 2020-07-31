@@ -7,6 +7,8 @@ import Vsac from './components/Vsac.js'
 import Provider from './components/Provider.js'
 import ErrorPage from './components/ErrorPage.js'
 import Footer from './components/Footer.js'
+import authApp from './firebaseConfig.js'
+
 
 class App extends React.Component {
 
@@ -18,6 +20,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(authApp)
     return (
       <div className="App" >
         <Header />
@@ -30,7 +33,9 @@ class App extends React.Component {
         <Footer />
       </div>
     );
+
   }
+
 }
 
 export default App;
