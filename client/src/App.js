@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Switch, Route } from 'react-router'
+import Header from './components/Header.js'
+import Home from './components/Home.js'
+import Vsac from './components/Vsac.js'
+import Provider from './components/Provider.js'
+import ErrorPage from './components/ErrorPage.js'
+import Footer from './components/Footer.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    // this.state = {
+
+    // }
+  }
+
+  render() {
+    return (
+      <div className="App" >
+        <Header />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path ='/temporary-vsac' component={Vsac} />
+          <Route path ='/temporary-provider' component={Provider} />
+          <Route component={ErrorPage} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
