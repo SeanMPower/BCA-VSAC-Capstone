@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDb = require('./DB/Connection.js');
 const app = express();
+const firebase = require('firebase-app');
 
 connectDb();
 app.use(express.json({extended: false}));
