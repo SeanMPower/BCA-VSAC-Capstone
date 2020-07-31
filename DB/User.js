@@ -2,43 +2,43 @@ const mongoose = require('mongoose');
 
 const user = new mongoose.Schema({
     providerName: {
-        type: String
+        type: String, required: true
     },
     program: {
-        type: String
+        type: String, required: true
     },
     region: {
-        type: String
+        type: String, required: true
     },
     modality: {
-        type: String
+        type: String, required: true
     },
     price: {
-        type: Number
+        type: Number, required: true
     },
     pell: {
-        type: Boolean
+        type: Boolean, required: true
     },
     advancementGrant: {
-        type: Boolean
+        type: Boolean, required: true
     },
     wioa: {
-        type: Boolean
+        type: Boolean, required: true
     },
     startEndDates: {
-        type: String
+        type: String, required: true
     },
     providerLink: {
-        type: String
+        type: String, required: true
     },
     expirationDate: {
-        type: String
+        type: String, required: true
     },
     contactEmail: {
-        type: String
+        type: String, required: true
     },
     lastUpdate: {
-        type: String
+        type: Date, default: Date.now
     }
 })
 
