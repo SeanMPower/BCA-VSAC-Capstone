@@ -7,6 +7,9 @@ const user = new mongoose.Schema({
     program: {
         type: String, required: true
     },
+    certification: {
+        type: String
+    },
     region: {
         type: String, required: true
     },
@@ -19,10 +22,7 @@ const user = new mongoose.Schema({
     pell: {
         type: Boolean, required: true
     },
-    advancementGrant: {
-        type: Boolean, required: true
-    },
-    wioa: {
+    VTadvancementGrant: {
         type: Boolean, required: true
     },
     startEndDates: {
@@ -31,10 +31,10 @@ const user = new mongoose.Schema({
     providerLink: {
         type: String, required: true
     },
-    expirationDate: {
+    contactEmail: {
         type: String, required: true
     },
-    contactEmail: {
+    recordCreatedBy: {
         type: String, required: true
     },
     lastUpdate: {
