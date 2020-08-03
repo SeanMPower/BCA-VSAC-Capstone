@@ -17,6 +17,7 @@ class Home extends React.Component {
         <h1>Please Log in</h1>
         <Link to='/temporary-vsac'>VSAC User</Link>
         <Link to='/temporary-provider'>Provider User</Link>
+        <Link to='/temporary-db'>Database Content</Link>
       </div>
     );
   }
