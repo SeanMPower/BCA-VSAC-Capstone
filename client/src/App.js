@@ -7,7 +7,7 @@ import Vsac from './components/Vsac.js'
 import Provider from './components/Provider.js'
 import ErrorPage from './components/ErrorPage.js'
 import Footer from './components/Footer.js'
-import authApp from './firebaseConfig.js'
+import authApp from './assets/firebaseConfig.js'
 
 
 class App extends React.Component {
