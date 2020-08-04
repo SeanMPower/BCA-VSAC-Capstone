@@ -21,7 +21,7 @@ const flatfileConfig = {
             key: "certification"
         },
         {
-            label: "Region of Vermont",
+            label: "County of Vermont",
             key: "region"
         },
         {
@@ -75,8 +75,8 @@ const launchFlatfile = () => {
         importer.displayLoader();
         setTimeout( () => {
             importer.displaySuccess("Successful Upload");
-            // console.log(JSON.stringify(results.validData, null, 2))
-            console.log(results)
+             console.log(JSON.stringify(results.validData, null, 2))
+            //console.log(results)
         },  1500)
     })
 }
@@ -84,8 +84,8 @@ const launchFlatfile = () => {
 function CSVReader(props) {
     return (
         <div className="csv-reader">
-            <button onClick={launchFlatfile}>
-                Select CSV File
+            <button id="csv-button" onClick={launchFlatfile}>
+                Click Here <br />to Upload CSV File <br />or Manually Input Program Data
             </button>
         </div>
     )

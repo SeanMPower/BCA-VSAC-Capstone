@@ -27,10 +27,12 @@ a{
 }
 
 .App {
+  margin: 0;
+  padding: 0;
   text-align: center;
-  height: 90vh;
-  width: 90vw;
-  border: #282c34 2px solid;
+  height: 97vh;
+  width: 98vw;
+  /* border: #282c34 2px solid; */
   background-color: #ffffff;
 }
 
@@ -66,7 +68,7 @@ a{
 }
 
 #temporary-form{
-  border: #282c34 2px solid;
+  /* border: #282c34 2px solid; */
   width: 35%;
   height: 50%;
   margin: auto;
@@ -78,7 +80,7 @@ a{
   display: flex;
   height: 60%;
   width: 100%;
-  border: #282c34 2px solid;
+  /* border: #282c34 2px solid; */
   justify-content: flex-start;
   flex-direction: column;
   
@@ -93,4 +95,18 @@ a{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.button {
+  background-color: #cddb28;
+  border-radius: 5px;
+  height: 30px;
+  width: 150px;
+
+}
+
+#csv-button{
+  background-color: #cddb28;
+  height: 120px;
+  font-size: 24px;
 }
