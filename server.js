@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const connectDb = require('./DB/Connection.js');
 const app = express();
+const firebase = require('firebase-app');
 
 connectDb();
 
