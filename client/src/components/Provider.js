@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { fireApp, fireAuth } from './assets/firebaseConfig';
-import SignUp from './SignUp.js'
-import SignIn from './SignIn.js'
-import Welcome from './Welcome.js'
-import axious from 'axious'
+import { fireApp, fireAuth } from './firebaseConfigfig';
+import SignUp from './components/SignUp'
+import SignIn from './components/SignIn'
+import Welcome from './components/Welcome'
+// import axious from 'axious'
+// import CSVReader from './components/FlatfileCSVReader'
 
 // import { myData } from './assets/firebaseConfig';
 // import { googleProvider } from './assets/firebaseConfig';
 
+
+
 class Provider extends React.Component {
 
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
       user: fireApp.auth().currentUser,
       email: '',
@@ -22,7 +25,7 @@ class Provider extends React.Component {
     }
   }
 
-  componentDidMount() {
+  //componentDidMount() {
     // if (this.state.user) {
     //   myData.ref('/users/' + this.state.user.uid).once('value', (data) => {
     //     this.setState({
@@ -31,23 +34,23 @@ class Provider extends React.Component {
     //   })
     // }
 
-    post('./API/User.js').then((res) => {
-      return res.json()
-    })
-      .then((userList) => {
+  // post('./API/User.js').then((res) => {
+  //     return res.json()
+  //   })
+  //     .then((userList) => {
 
-        this.setState({ userId: user.id })
-      })
-  }
+  //       this.setState({ userId: user.id })
+  //     })
+  // }
 
-  async componentDidUpdate() {
+  //componentDidUpdate() {
     // let data = await myData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
 
 
     // if (this.state.userData !== data) {
     //   this.setState({ userData: data })
     // }
-  }
+  //}
 
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
@@ -68,7 +71,7 @@ class Provider extends React.Component {
   //signing up with email and password
   emailSignup = (evt) => {
     evt.preventDefault()
-    
+
     let newFormEmail = this.state.newEmail
     let newFormPassword = this.state.newFormPassword
 
@@ -94,19 +97,20 @@ class Provider extends React.Component {
         <Link to='/'>Home</Link>
         <div>
           {this.state.user
-            ? <Welcome user={this.state.user} 
+            ? <Welcome user={this.state.user}
             // userData={this.state.userData} 
             />
             : <div>
               <h4>Please Sign in</h4>
-              <SignUp emailSignup={this.emailSignup} handleChange={handleChange}/>
-              <SignIn emailSignin={this.emailSignin} handleChange={handleChange}/>
+              <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
+              <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
+              {/* <CSVReader /> */}
             </div>}
         </div>
-        <div id='temporary-form'>This will be a form</div>
       </div>
-    );
+    )
   }
 }
 
-export default Provider;
+
+  export default Provider;

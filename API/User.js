@@ -41,24 +41,23 @@ route.post('/save', (req, res) => {
 //     })
 // })
 
-//Is this data posting on the home page?
-route.post('/', async (req, res) => {
-    const { providerName, program, region, modality, price, pell, advancementGrant, wioa, startEndDates, providerLink, expirationDate, contactEmail, lastUpdate } = req.body;
-
+route.post('/', async (req,res) => {
+    const{providerName, program, certification, region, modality, price, pell, VTAdvancementGrant, startEndDates, providerLink, contactEmail, recordCreatedBy, lastUpdate} = req.body;
+    
     let provider = {};
 
     provider.providerName = providerName;
     provider.program = program;
+    provider.certification = certification;
     provider.region = region;
     provider.modality = modality;
     provider.price = price;
     provider.pell = pell;
-    provider.advancementGrant = advancementGrant;
-    provider.wioa = wioa;
+    provider.VTAdvancementGrant = VTAdvancementGrant;
     provider.startEndDates = startEndDates;
     provider.providerLink = providerLink;
-    provider.expirationDate = expirationDate;
     provider.contactEmail = contactEmail;
+    provider.recordCreatedBy = recordCreatedBy;
     provider.lastUpdate = lastUpdate;
 
     let providerModel = new User(provider);

@@ -7,16 +7,17 @@ import Vsac from './components/Vsac.js'
 import Provider from './components/Provider.js'
 import ErrorPage from './components/ErrorPage.js'
 import Footer from './components/Footer.js'
-import authApp from './assets/firebaseConfig.js'
+import authApp from './components/firebaseConfig.js'
+import Dbpage from './components/Database.js'
 
 
 class App extends React.Component {
 
   constructor(props) {
     super(props)
-    // this.state = {
+    this.state = {
 
-    // }
+    }
   }
 
   render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
           <Route exact path='/' component={Home} />
           <Route path ='/temporary-vsac' component={Vsac} />
           <Route path ='/temporary-provider' component={Provider} />
+          <Route path='/temporary-db' component={Dbpage} />
           <Route component={ErrorPage} />
         </Switch>
         <Footer />

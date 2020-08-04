@@ -14,9 +14,24 @@ class Home extends React.Component {
   render() {
     return (
       <div className="main-container" >
-        <h1>Please Log in</h1>
-        <Link to='/temporary-vsac'>VSAC User</Link>
-        <Link to='/temporary-provider'>Provider User</Link>
+        <h1>Please Log in as a VSAC User or a Provider</h1>
+        <div id='links'>
+        <Link to='/temporary-vsac'>
+          <button color='green' className='button'>
+            <span>VSAC User</span>
+          </button>
+        </Link>
+        <Link to='/temporary-provider'>
+        <button color='green' className='button'>
+            <span>Provider User</span>
+          </button>
+        </Link>
+        <Link to='/temporary-db'>
+        <button color='green' className='button'>
+            <span>Database Content</span>
+          </button>
+        </Link>
+        </div>
       </div>
     );
   }
