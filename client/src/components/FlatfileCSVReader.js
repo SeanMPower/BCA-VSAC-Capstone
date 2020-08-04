@@ -6,7 +6,7 @@ FlatfileImporter.setVersion(2)
 const license = '1280cf65-f3a7-4b26-ae74-90288f0c5e85'
 
 const flatfileConfig = {
-    type: "flatfile test",
+    type: "vsacDb-import",
     fields: [
         {
             label: "Provider Name",
@@ -64,10 +64,31 @@ const flatfileConfig = {
     ]
 }
 
-const imporder = new FlatfileImporter(license, flatfileConfig)
+const importer = new FlatfileImporter(license, flatfileConfig)
 
-function CSVReader() {
+importer.setCustomer ({
+     userId: "12345"
+})
+
+const launchFlatfile = () => {
+    importer.requestDataFromUser().then(results => {
+        importer.displayLoader();
+        setTimeout( () => {
+            importer.displaySuccess("Successful Upload");
+            // console.log(JSON.stringify(results.validData, null, 2))
+            console.log(results)
+        },  1500)
+    })
+}
+
+function CSVReader(props) {
     return (
-        <div className="csv-reader"
+        <div className="csv-reader">
+            <button onClick={launchFlatfile}>
+                Select CSV File
+            </button>
+        </div>
     )
 }
+
+export default CSVReader;
