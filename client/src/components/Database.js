@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { database } from 'firebase';
 
 let selectedField;
 
@@ -26,8 +25,7 @@ class Dbpage extends React.Component {
     render() {
       return (
         <div className="main-container">
-          <h1>This is the for Database Content</h1>
-          <Link to='/'>Home</Link>
+          <h1>This is the Page for Database Content</h1>
           <div id='temporary-form'>
           {/* <input type='text' id='searchBar' name="search">Search</input>
           <input type='submit'></input> */}
@@ -50,6 +48,11 @@ class Dbpage extends React.Component {
 
           <button id='submit' className='submit_element' onClick={this.formSubmit}>Submit</button>
           </div>
+          <Link to='/'>
+            <button className='button'>
+              <span>Home</span>
+            </button>
+          </Link>
         </div>
       );
     }
