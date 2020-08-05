@@ -82,6 +82,18 @@ class Provider extends React.Component {
     })
   }
 
+  signOut = (evt) => {
+    evt.preventDefault()
+    
+    fireApp.auth().signOut().then(res => {
+      this.setState({ user: '' })
+      
+      console.log(res)
+    }).catch(error => {
+      console.log(error.message)
+    })
+  }
+
   //resets form values
   resetUserInputs = () => {
     this.setState({
@@ -100,6 +112,7 @@ class Provider extends React.Component {
         <div>
           {this.state.user
             ? <ProviderLp user={this.state.user}
+            signOut={this.signOut}
             // userData={this.state.userData} 
             />
             : <div>

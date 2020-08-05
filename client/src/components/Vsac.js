@@ -54,6 +54,18 @@ class Vsac extends React.Component {
     })
   }
 
+  signOut = (evt) => {
+    evt.preventDefault()
+    
+    fireApp.auth().signOut().then(res => {
+      this.setState({ user: '' })
+      
+      console.log(res)
+    }).catch(error => {
+      console.log(error.message)
+    })
+  }
+
   //resets form values
   resetUserInputs = () => {
     this.setState({
@@ -63,8 +75,8 @@ class Vsac extends React.Component {
   }
 
   render() {
-    console.log(fireApp)
-    console.log(fireAuth)
+    // console.log(fireApp)
+    // console.log(fireAuth)
     return (
       <div className="main-container">
         <h1>This is the page for VSAC users</h1>
@@ -72,6 +84,7 @@ class Vsac extends React.Component {
         <div>
           {this.state.user
             ? <VsacLp user={this.state.user}
+            signOut={this.signOut}
             // userData={this.state.userData} 
             />
             : <div>
