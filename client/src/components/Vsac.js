@@ -43,15 +43,17 @@ class Vsac extends React.Component {
 
     let newFormEmail = this.state.newEmail
     let newFormPassword = this.state.newPassword
+    let confirmFormPassword = this.state.confirmPassword
 
     console.log(newFormEmail)
     console.log(newFormPassword)
 
-    fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
+    newFormPassword === confirmFormPassword ? fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
       this.setState({ user: res.user })
     }).catch(error => {
       console.log(error.message)
     })
+    : alert("Passwords must match!" )
   }
 
   signOut = (evt) => {
@@ -66,17 +68,7 @@ class Vsac extends React.Component {
     })
   }
 
-  //resets form values
-  resetUserInputs = () => {
-    this.setState({
-      user: '',
-      password: ''
-    })
-  }
-
   render() {
-    // console.log(fireApp)
-    // console.log(fireAuth)
     return (
       <div className="main-container">
         <h1>This is the page for VSAC users</h1>
