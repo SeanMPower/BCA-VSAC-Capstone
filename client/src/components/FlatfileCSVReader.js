@@ -77,11 +77,17 @@ const launchFlatfile = () => {
             importer.displaySuccess("Successful Upload");
              console.log(JSON.stringify(results.validData, null, 2))
             //console.log(results)
+            let dataSet = results.validData
+            
+            for (let data of dataSet) {
+                
+            }
+
         },  1500)
     })
 }
 
-function CSVReader(props) {
+function CSVReader() {
     return (
         <div className="csv-reader">
             <button id="csv-button" onClick={launchFlatfile}>
