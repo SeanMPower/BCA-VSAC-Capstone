@@ -72,22 +72,28 @@ class Provider extends React.Component {
 
     let newFormEmail = this.state.newEmail
     let newFormPassword = this.state.newPassword
+    let confirmFormPassword = this.state.confirmPassword
 
     console.log(newFormEmail)
     console.log(newFormPassword)
 
-    fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
+    newFormPassword === confirmFormPassword ? fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
       this.setState({ user: res.user })
     }).catch(error => {
       console.log(error.message)
     })
+    : alert("Passwords must match!" )
   }
 
-  //resets form values
-  resetUserInputs = () => {
-    this.setState({
-      user: '',
-      password: ''
+  signOut = (evt) => {
+    evt.preventDefault()
+    
+    fireApp.auth().signOut().then(res => {
+      this.setState({ user: '' })
+      
+      console.log(res)
+    }).catch(error => {
+      console.log(error.message)
     })
   }
 
@@ -101,6 +107,7 @@ class Provider extends React.Component {
         <div>
           {this.state.user
             ? <ProviderLp user={this.state.user}
+            signOut={this.signOut}
             // userData={this.state.userData} 
             />
             : <div>
