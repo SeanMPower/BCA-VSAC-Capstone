@@ -27,7 +27,6 @@ class Provider extends React.Component {
     }
   }
 
-
   //fetching data
   // post('./API/User.js').then((res) => {
   //     return res.json()
@@ -105,9 +104,9 @@ class Provider extends React.Component {
               <h4>Please Sign in</h4>
               <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
               <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
-              <a href={Template}
-                        download="Donwload Template">
-                        <p>Donwload Template</p>
+              <a href="./provider-template.csv"
+                        download>
+                        <p>Download Template</p>
                     </a>
               <CSVReader />
             </div>}
