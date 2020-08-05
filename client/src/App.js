@@ -7,7 +7,7 @@ import Vsac from './components/Vsac.js'
 import Provider from './components/Provider.js'
 import ErrorPage from './components/ErrorPage.js'
 import Footer from './components/Footer.js'
-import authApp from './components/firebaseConfig.js'
+// import authApp from './assets/firebaseConfig.js'
 import Dbpage from './components/Database.js'
 
 
@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(authApp)
+    // console.log(authApp)
     return (
       <div className="App" >
         <Header />

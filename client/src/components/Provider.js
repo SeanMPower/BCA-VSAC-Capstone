@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import fireApp from './firebaseConfig';
-import fireAuth from './firebaseConfig';
+import {fireApp} from '../assets/firebaseConfig';
+import {fireAuth} from '../assets/firebaseConfig';
 import SignUp from './SignUp'
 import SignIn from './SignIn'
-import Welcome from './Welcome'
+import ProviderLp from './ProviderLp'
 // import axios from 'axios'
-import Template from './provider-template.csv'
-import CSVReader from './FlatfileCSVReader'
-
-
 // import { myData } from './assets/firebaseConfig';
 // import { googleProvider } from './assets/firebaseConfig';
 
@@ -54,6 +50,7 @@ class Provider extends React.Component {
 
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
+    console.log(evt.target.value)
   }
 
   //Signing in with email and password
@@ -73,11 +70,16 @@ class Provider extends React.Component {
     evt.preventDefault()
 
     let newFormEmail = this.state.newEmail
-    let newFormPassword = this.state.newFormPassword
+    let newFormPassword = this.state.newPassword
+
+    console.log(newFormEmail)
+    console.log(newFormPassword)
 
     fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
       this.setState({ user: res.user })
-    })
+    }).catch(error => {
+      console.log(error.message)
+    }) 
   }
 
   //resets form values
@@ -97,18 +99,13 @@ class Provider extends React.Component {
         <Link to='/'>Home</Link>
         <div>
           {this.state.user
-            ? <Welcome user={this.state.user}
+            ? <ProviderLp user={this.state.user}
             // userData={this.state.userData} 
             />
             : <div>
               <h4>Please Sign in</h4>
-              <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
               <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
-              <a href="./provider-template.csv"
-                        download>
-                        <p>Download Template</p>
-                    </a>
-              <CSVReader />
+              <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
             </div>}
         </div>
       </div>
