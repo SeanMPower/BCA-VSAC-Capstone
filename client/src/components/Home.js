@@ -16,17 +16,17 @@ class Home extends React.Component {
       <div className="main-container" >
         <h1>Please Log in as a VSAC User or a Provider</h1>
         <div id='links'>
-        <Link to='/temporary-vsac'>
+        <Link to='/vsac-user'>
           <button color='green' className='button'>
             <span>VSAC User</span>
           </button>
         </Link>
-        <Link to='/temporary-provider'>
+        <Link to='/provider-user'>
         <button color='green' className='button'>
             <span>Provider User</span>
           </button>
         </Link>
-        <Link to='/temporary-db'>
+        <Link to='/database'>
         <button color='green' className='button'>
             <span>Database Content</span>
           </button>
