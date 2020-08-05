@@ -1,23 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { fireApp, fireAuth } from './firebaseConfigfig';
-import SignUp from './components/SignUp'
-import SignIn from './components/SignIn'
-import Welcome from './components/Welcome'
-// import axious from 'axious'
-// import CSVReader from './components/FlatfileCSVReader'
+import fireApp from './firebaseConfig';
+import fireAuth from './firebaseConfig';
+import SignUp from './SignUp'
+import SignIn from './SignIn'
+import Welcome from './Welcome'
+// import axios from 'axios'
+import Template from './provider-template.csv'
+import CSVReader from './FlatfileCSVReader'
+
 
 // import { myData } from './assets/firebaseConfig';
 // import { googleProvider } from './assets/firebaseConfig';
-
-
 
 class Provider extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      user: fireApp.auth().currentUser,
+      user: '',
+      // user: fireApp.auth().currentUser,
       email: '',
       password: '',
       newEmail: '',
@@ -25,31 +27,30 @@ class Provider extends React.Component {
     }
   }
 
-  //componentDidMount() {
-    // if (this.state.user) {
-    //   myData.ref('/users/' + this.state.user.uid).once('value', (data) => {
-    //     this.setState({
-    //       userData: data.val()
-    //     })
-    //   })
-    // }
 
+  //fetching data
   // post('./API/User.js').then((res) => {
   //     return res.json()
   //   })
   //     .then((userList) => {
-
   //       this.setState({ userId: user.id })
   //     })
   // }
 
+  //componentDidMount() {
+  // if (this.state.user) {
+  //   myData.ref('/users/' + this.state.user.uid).once('value', (data) => {
+  //     this.setState({
+  //       userData: data.val()
+  //     })
+  //   })
+  // }
+
   //componentDidUpdate() {
-    // let data = await myData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
-
-
-    // if (this.state.userData !== data) {
-    //   this.setState({ userData: data })
-    // }
+  // let data = await myData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
+  // if (this.state.userData !== data) {
+  //   this.setState({ userData: data })
+  // }
   //}
 
   handleChange = (evt) => {
@@ -104,7 +105,11 @@ class Provider extends React.Component {
               <h4>Please Sign in</h4>
               <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
               <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
-              {/* <CSVReader /> */}
+              <a href={Template}
+                        download="Donwload Template">
+                        <p>Donwload Template</p>
+                    </a>
+              <CSVReader />
             </div>}
         </div>
       </div>
@@ -113,4 +118,4 @@ class Provider extends React.Component {
 }
 
 
-  export default Provider;
+export default Provider;

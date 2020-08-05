@@ -27,9 +27,9 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path ='/temporary-vsac' component={Vsac} />
-          <Route path ='/temporary-provider' component={Provider} />
-          <Route path='/temporary-db' component={Dbpage} />
+          <Route path ='/vsac-user' component={Vsac} />
+          <Route path ='/provider-user' component={Provider} />
+          <Route path='/database' component={Dbpage} />
           <Route component={ErrorPage} />
         </Switch>
         <Footer />
