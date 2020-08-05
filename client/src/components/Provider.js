@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import {fireApp} from '../assets/firebaseConfig';
-import {fireAuth} from '../assets/firebaseConfig';
+import { fireApp } from '../assets/firebaseConfig';
+import { fireAuth } from '../assets/firebaseConfig';
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 import ProviderLp from './ProviderLp'
@@ -79,7 +79,7 @@ class Provider extends React.Component {
       this.setState({ user: res.user })
     }).catch(error => {
       console.log(error.message)
-    }) 
+    })
   }
 
   //resets form values
