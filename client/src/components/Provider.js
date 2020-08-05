@@ -62,6 +62,7 @@ class Provider extends React.Component {
 
     fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
       this.setState({ user: res.user })
+      console.log(res.user.uid)
     })
   }
 

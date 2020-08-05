@@ -78,10 +78,13 @@ const launchFlatfile = () => {
              console.log(JSON.stringify(results.validData, null, 2))
             //console.log(results)
             let dataSet = results.validData
-            
-            for (let data of dataSet) {
+            console.log(dataSet[0])
+            // for (let data of dataSet) {
                 
-            }
+            // }
+            // axios.post('/API/users', {
+                uid: 
+            // }
 
         },  1500)
     })
