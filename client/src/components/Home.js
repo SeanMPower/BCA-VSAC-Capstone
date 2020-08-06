@@ -32,6 +32,9 @@ class Home extends React.Component {
           </button>
         </Link>
         </div>
+        <div id='db-info-container'>
+          Placeholder for DB info
+        </div>
       </div>
     );
   }
