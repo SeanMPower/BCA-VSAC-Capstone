@@ -1,5 +1,6 @@
 import React from 'react';
 import FlatfileImporter from "flatfile-csv-importer"
+import axios from 'axios'
 
 FlatfileImporter.setVersion(2)
 
@@ -70,30 +71,33 @@ importer.setCustomer ({
      userId: "12345"
 })
 
-const launchFlatfile = () => {
+const launchFlatfile = (uid) => {
     importer.requestDataFromUser().then(results => {
         importer.displayLoader();
         setTimeout( () => {
             importer.displaySuccess("Successful Upload");
              console.log(JSON.stringify(results.validData, null, 2))
             //console.log(results)
-            let dataSet = results.validData
-            console.log(dataSet[0])
+            let dataSet = JSON.stringify(results.validData)
+
+            let payload = {
+                uid: uid,
+                data: dataSet
+            }
             // for (let data of dataSet) {
                 
             // }
-            // axios.post('/API/users', {
-                uid: 
-            // }
+            axios.post('/API/users', 
+              JSON.stringify(payload))
 
         },  1500)
     })
 }
 
-function CSVReader() {
+function CSVReader(props) {
     return (
         <div className="csv-reader">
-            <button id="csv-button" onClick={launchFlatfile}>
+            <button id="csv-button" uid={props.uid} onClick={() => {launchFlatfile(props.uid)}}>
                 Click Here <br />to Upload CSV File <br />or Manually Input Program Data
             </button>
         </div>

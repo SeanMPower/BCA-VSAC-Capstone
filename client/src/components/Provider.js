@@ -19,7 +19,8 @@ class Provider extends React.Component {
       email: '',
       password: '',
       newEmail: '',
-      newPassword: ''
+      newPassword: '',
+      uid: ''
     }
   }
 
@@ -61,7 +62,7 @@ class Provider extends React.Component {
     let formPassword = this.state.password
 
     fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
-      this.setState({ user: res.user })
+      this.setState({ user: res.user, uid: res.user.uid })
       console.log(res.user.uid)
     })
   }
@@ -108,6 +109,7 @@ class Provider extends React.Component {
           {this.state.user
             ? <ProviderLp user={this.state.user}
             signOut={this.signOut}
+            uid={this.state.uid}
             // userData={this.state.userData} 
             />
             : <div>

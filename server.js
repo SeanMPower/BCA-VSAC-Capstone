@@ -7,12 +7,14 @@ const user = require('./API/User.js')
 
 connectDb();
 
+app.get('/test', (req, res) => {console.log('Success!')})
+
 app.get('/', (req, res) => {})
 
 app.use('/user', user)
 
 
-connectDb();
+
 
 app.use(express.json({extended: false}));
 app.use('/submit', require('./API/User'))

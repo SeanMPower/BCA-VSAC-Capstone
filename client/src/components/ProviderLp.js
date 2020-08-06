@@ -6,7 +6,7 @@ function ProviderLp(props) {
   return (
     <div>
       <h1>Welcome, {props.user.displayName || props.user.email}</h1>
-      <CSVReader />
+      <CSVReader uid={props.uid}/>
       <a id="download-template" href="./provider_template.csv"
         download>
         <p>Download Template</p>
