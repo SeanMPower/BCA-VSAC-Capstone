@@ -40,7 +40,7 @@ a{
 
 #header{
   display: flex;
-  height: 20%;
+  height: 120px;
   width: 100%;
   align-items: flex-start;
 
@@ -61,12 +61,6 @@ a{
   
 }
 
-#footer{
-  height: 20%;
-  width: 100%;
-  
-}
-
 #temporary-form{
   /* border: #282c34 2px solid; */
   width: 35%;
@@ -76,6 +70,41 @@ a{
 
 /* Section: Home */
 
+#navbar{
+  display: flex;
+  justify-content: flex-start;
+  background: rgba(0, 0, 0, 0.5);
+  height: 40px;
+  text-transform: uppercase;
+
+}
+
+.btn, .msg {
+  margin: auto;
+  height: 50%;
+  padding: 10px;
+  width: 165px;
+  color: #ffffff;
+  font-weight: 500;
+  transition: .3s;
+}
+
+.msg{
+  width: 600px;
+  text-transform: none;
+}
+
+.btn:hover{
+  color: #cddb28;
+  background: rgba(0, 0, 0, .4);
+
+}
+
+#space{
+  width: 1500px;
+  height: 40px;
+}
+
 .main-container{
   display: flex;
   height: 60%;
@@ -83,8 +112,7 @@ a{
   /* border: #282c34 2px solid; */
   justify-content: flex-start;
   flex-direction: column;
-  
-  
+  border: 1px solid black;
 }
 
 .main-container h1 {
@@ -118,8 +146,40 @@ a{
 #csv-button{
   background-color: #cddb28;
   height: 120px;
+  width: 500px;
   font-size: 24px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+  color: #676767;
+  transition: .3s
 }
+
+#csv-button:hover{
+  background: #006877;
+  color: #ffffff;
+  cursor: pointer;
+
+}
+
+/* Section: Landing Page */
+#signout-button{
+  border: none;
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  text-transform: uppercase;
+  background: #701d45;
+  color: #ffffff;
+  transition: .3s;
+}
+
+#signout-button:hover{
+  background: #006877;
+}
+
+
+/* Section: Footer */
 
 #footer{
   background: url('./img/4.jpg') no-repeat center center/cover;

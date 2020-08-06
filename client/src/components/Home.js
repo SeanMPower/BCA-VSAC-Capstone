@@ -14,23 +14,19 @@ class Home extends React.Component {
   render() {
     return (
       <div className="main-container" >
+        <div id='navbar'>
+        <Link to='/vsac-user' className='btn'>
+            VSAC User
+        </Link>
+        <Link to='/provider-user' className='btn'>
+          Provider User
+        </Link>
+        <div id='space'>
+        </div>
+        </div>
         <h1>Please Log in as a VSAC User or a Provider</h1>
         <div id='links'>
-        <Link to='/vsac-user'>
-          <button color='green' className='button'>
-            <span>VSAC User</span>
-          </button>
-        </Link>
-        <Link to='/provider-user'>
-        <button color='green' className='button'>
-            <span>Provider User</span>
-          </button>
-        </Link>
-        <Link to='/database'>
-        <button color='green' className='button'>
-            <span>Database Content</span>
-          </button>
-        </Link>
+
         </div>
         <div id='db-info-container'>
           Placeholder for DB info
