@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const User = require('../DB/User');
 const { json } = require('express');
 const route = express.Router();
+const bodyParser = require('body-parser')
 
+
+route.use(bodyParser.json())
 
 //Routes
 route.get('/', (req, res) => {
@@ -42,10 +45,11 @@ route.post('/save', (req, res) => {
 // })
 
 route.post('/', async (req,res) => {
-    const{providerName, program, certification, region, modality, price, pell, VTAdvancementGrant, startEndDates, providerLink, contactEmail, recordCreatedBy, lastUpdate} = req.body;
+    // const{providerName, program, certification, region, modality, price, pell, VTGrant, startDate, endDate providerLink, contactEmail, recordCreatedBy, lastUpdate} = req.body;
     
     let provider = {};
 
+    provider.uid = req.body.uid
     provider.providerName = providerName;
     provider.program = program;
     provider.certification = certification;
@@ -54,7 +58,8 @@ route.post('/', async (req,res) => {
     provider.price = price;
     provider.pell = pell;
     provider.VTAdvancementGrant = VTAdvancementGrant;
-    provider.startEndDates = startEndDates;
+    provider.startDate = startDate;
+    provider.endDate = endDate;
     provider.providerLink = providerLink;
     provider.contactEmail = contactEmail;
     provider.recordCreatedBy = recordCreatedBy;
@@ -63,7 +68,13 @@ route.post('/', async (req,res) => {
     let providerModel = new User(provider);
 
     await providerModel.save();
-    res.json(providerModel);
+    // res.json(providerModel);
+    
+    console.log(req.body.uid)
+    console.log(req.body.data)
+
+    
+
 })
 
 module.exports = route;

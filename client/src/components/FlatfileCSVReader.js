@@ -76,9 +76,8 @@ const launchFlatfile = (uid) => {
         importer.displayLoader();
         setTimeout( () => {
             importer.displaySuccess("Successful Upload");
-             console.log(JSON.stringify(results.validData, null, 2))
             //console.log(results)
-            let dataSet = JSON.stringify(results.validData)
+            let dataSet = results.validData
 
             let payload = {
                 uid: uid,
@@ -87,8 +86,8 @@ const launchFlatfile = (uid) => {
             // for (let data of dataSet) {
                 
             // }
-            axios.post('/API/users', 
-              JSON.stringify(payload))
+            axios.post('/user', 
+              payload)
 
         },  1500)
     })

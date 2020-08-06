@@ -25,8 +25,11 @@ const user = new mongoose.Schema({
     VTadvancementGrant: {
         type: Boolean, required: true
     },
-    startEndDates: {
-        type: String, required: true
+    startDate: {
+        type: Date, required: true
+    },
+    endDate: {
+        type: Date, require: true
     },
     providerLink: {
         type: String, required: true

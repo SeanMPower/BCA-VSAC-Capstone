@@ -9,9 +9,11 @@ connectDb();
 
 app.get('/test', (req, res) => {console.log('Success!')})
 
+app.use('/user', user)
+
 app.get('/', (req, res) => {})
 
-app.use('/user', user)
+
 
 
 
