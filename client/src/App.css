@@ -84,6 +84,7 @@ a{
   justify-content: flex-start;
   flex-direction: column;
   
+  
 }
 
 .main-container h1 {
@@ -95,6 +96,15 @@ a{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+}
+
+#db-info-container{
+  height: 40vh;
+  width: 80vw;
+  border: 1px solid black;
+  margin-left: 10vw;
+
 }
 
 .button {
