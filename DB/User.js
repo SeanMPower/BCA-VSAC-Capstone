@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const user = new mongoose.Schema({
+    uid: {
+        type: String, required: true
+    },
+    viewable: {
+        type: Boolean, required: true
+    },
     providerName: {
         type: String, required: true
     },
