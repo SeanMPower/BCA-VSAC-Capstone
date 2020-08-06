@@ -45,19 +45,20 @@ route.post('/save', (req, res) => {
 // })
 
 route.post('/', async (req,res) => {
-    // const{providerName, program, certification, region, modality, price, pell, VTGrant, startDate, endDate providerLink, contactEmail, recordCreatedBy, lastUpdate} = req.body;
+    let {providerName, program, certification, state, region, modality, price, pell, VTGrant, startDate, endDate, providerLink, contactEmail, recordCreatedBy, lastUpdate} = req.body;
     
     let provider = {};
 
     provider.uid = req.body.uid
-    provider.providerName = providerName;
+    provider.providerName = req.body.data[0].provider;
     provider.program = program;
     provider.certification = certification;
+    provider.state = state;
     provider.region = region;
     provider.modality = modality;
     provider.price = price;
     provider.pell = pell;
-    provider.VTAdvancementGrant = VTAdvancementGrant;
+    provider.VTGrant = VTGrant;
     provider.startDate = startDate;
     provider.endDate = endDate;
     provider.providerLink = providerLink;
@@ -67,13 +68,15 @@ route.post('/', async (req,res) => {
 
     let providerModel = new User(provider);
 
-    await providerModel.save();
-    // res.json(providerModel);
-    
-    console.log(req.body.uid)
-    console.log(req.body.data)
+    let programs = req.body.data;
+    let programsArr = [];
 
-    
+    for (program of programs) {
+        programsArr.push({
+            uid: req.body.uid,
+            ...program
+        })
+    }
 
 })
 

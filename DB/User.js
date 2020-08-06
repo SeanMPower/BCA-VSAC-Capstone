@@ -10,19 +10,22 @@ const user = new mongoose.Schema({
     certification: {
         type: String
     },
+    state: {
+        type: String, require: true
+    },
     region: {
         type: String, required: true
     },
     modality: {
-        type: String, required: true
+        type: String
     },
     price: {
-        type: Number, required: true
+        type: String, required: true
     },
     pell: {
         type: Boolean, required: true
     },
-    VTadvancementGrant: {
+    VTGrant: {
         type: Boolean, required: true
     },
     startDate: {

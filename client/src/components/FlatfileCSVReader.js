@@ -22,7 +22,11 @@ const flatfileConfig = {
             key: "certification"
         },
         {
-            label: "County of Vermont",
+            label: "State",
+            key: "state"
+        },
+        {
+            label: "County",
             key: "region"
         },
         {
@@ -34,23 +38,27 @@ const flatfileConfig = {
             key: "price"
         },
         {
-            label: "Pell Grant Eligibility",
+            label: "Pell Grant Eligible?",
             key: "pell"
         },
         {
-            label: "VT Advancement Grant Eligibility",
-            key: "VTAdvancementGrant"
+            label: "VT Grant Eligible?",
+            key: "VTGrant"
         },
         {
-            label: "Start Date - End Date",
-            key: "startEndDate"
+            label: "Program Start Date",
+            key: "startDate"
+        },
+        {
+            label: "Program End Date",
+            key: "endDate"
         },
         {
             label: "Provider Website",
             key: "providerLink"
         },
         {
-            label: "Contact Email",
+            label: "Program Contact Email",
             key: "contactEmail"
         },
         {
