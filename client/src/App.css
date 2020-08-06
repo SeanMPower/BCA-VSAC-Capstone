@@ -94,6 +94,10 @@ a{
   text-transform: none;
 }
 
+.btn{
+  border-radius: 5px;
+}
+
 .btn:hover{
   color: #cddb28;
   background: rgba(0, 0, 0, .4);
@@ -107,24 +111,22 @@ a{
 
 .main-container{
   display: flex;
-  height: 60%;
+  height: 90%;
   width: 100%;
   /* border: #282c34 2px solid; */
   justify-content: flex-start;
   flex-direction: column;
-  border: 1px solid black;
+
 }
 
 .main-container h1 {
   color: #006877;
-
 }
 
 .main-container #links{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-
 }
 
 #db-info-container{
@@ -143,6 +145,60 @@ a{
 
 }
 
+/* Section: Sign-in Page */
+
+.content{
+  
+}
+
+.main{
+  margin-bottom: -20px;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: -20px
+}
+
+#signin-form, #signup-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.email{
+  margin-top: -30px;
+}
+
+.form-container{
+  height: 200px;
+  width: 450px;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  border-radius: 10px;
+}
+
+.password{
+  margin-top: 15px;
+  margin-left: -31px;
+}
+
+.c-password{
+  margin-top: 15px;
+  margin-left: -94px;
+}
+
+.submit{
+  margin-top: 15px;
+}
+
+/* Section: Landing Page */
+
 #csv-button{
   background-color: #cddb28;
   height: 120px;
@@ -159,10 +215,8 @@ a{
   background: #006877;
   color: #ffffff;
   cursor: pointer;
-
 }
 
-/* Section: Landing Page */
 #signout-button{
   border: none;
   border-radius: 20px;

@@ -2,8 +2,8 @@ import React from 'react';
 //sign in/sign up forms
 function SignIn(props) {
     return (
-        <div>
-            <h4>Sign In:</h4>
+        <div className='container'>
+            <div className='form-container'>
             <form id="signin-form" onSubmit={props.emailSignin}>
                 <label> Email:
                     <input 
@@ -13,7 +13,7 @@ function SignIn(props) {
                     value={props.email}
                     onChange={props.handleChange} />
                 </label>
-                <label> Password:
+                <label className='password'> Password:
                     <input 
                     type='password'
                     name='password' 
@@ -22,8 +22,9 @@ function SignIn(props) {
                     onChange={props.handleChange}  
                     />
                 </label>
-                <input type='submit' value='Submit' />
+                <input type='submit' value='Submit' className='submit' />
             </form>
+            </div>
         </div>
     )
 }
