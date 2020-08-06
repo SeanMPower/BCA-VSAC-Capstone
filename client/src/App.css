@@ -83,7 +83,7 @@ a{
   margin: auto;
   height: 50%;
   padding: 10px;
-  width: 165px;
+  width: 250px;
   color: #ffffff;
   font-weight: 500;
   transition: .3s;
@@ -146,10 +146,6 @@ a{
 }
 
 /* Section: Sign-in Page */
-
-.content{
-  
-}
 
 .main{
   margin-bottom: -20px;
