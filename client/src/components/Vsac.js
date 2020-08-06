@@ -93,7 +93,6 @@ class Vsac extends React.Component {
             : <div>
               <h4>Please Sign in</h4>
               <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
-              <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
             </div>}
         </div>
       </div>
