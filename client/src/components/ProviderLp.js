@@ -5,11 +5,11 @@ import CSVReader from './FlatfileCSVReader'
 function ProviderLp(props) {
   return (
     <div>
-      <h1>Welcome, {props.user.displayName || props.user.email}</h1>
-      <CSVReader uid={props.uid}/>
+      <h1>Hello, {props.user.displayName || props.user.email}</h1>
+      <CSVReader uid={props.uid} id='csv-button'/>
       <a id="download-template" href="./provider_template.csv"
         download>
-        <p>Download Template</p>
+        <p>Click Here to Download Template</p>
       </a>
       <button id='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
     </div>
