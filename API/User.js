@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const User = require("../DB/User");
+const Provider = require("../DB/User");
 const { json } = require("express");
 const route = express.Router();
 const bodyParser = require("body-parser");
@@ -11,7 +11,7 @@ route.use(bodyParser.json());
 
 //Routes
 route.get("/", (req, res) => {
-  User.find({})
+  Provider.find({})
     .then((data) => {
       console.log("Data: ", data);
       res.json(data);
@@ -85,8 +85,13 @@ route.post("/", async (req, res) => {
     });
   }
 
-
-  User.create(programsArr);
+ Provider.collection.insertMany(programsArr, function (err, docs) {
+     if (err) {
+         return console.error(err);
+    }  else {
+        console.log("Multiple documents inserted to Collection!")
+    }
+ })
 
 });
 

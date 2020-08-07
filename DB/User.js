@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const user = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     uid: {
         type: String, required: true
     },
@@ -54,4 +54,4 @@ const user = new mongoose.Schema({
     }
 })
 
-module.exports = User = mongoose.model('user', user);
+module.exports = Provider = mongoose.model('Provider', userSchema);
