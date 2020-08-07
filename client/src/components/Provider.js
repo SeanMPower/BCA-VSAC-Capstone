@@ -2,52 +2,49 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { fireApp } from '../assets/firebaseConfig';
 import { fireAuth } from '../assets/firebaseConfig';
+import { fireData } from '../assets/firebaseConfig';
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 import ProviderLp from './ProviderLp'
 // import axios from 'axios'
-// import { myData } from './assets/firebaseConfig';
-// import { googleProvider } from './assets/firebaseConfig';
 
 class Provider extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      user: '',
-      // user: fireApp.auth().currentUser,
+      // user: '',
+      user: fireApp.auth().currentUser,
       email: '',
       password: '',
       newEmail: '',
       newPassword: '',
-      uid: ''
+      uid: '',
+      userData: ''
     }
   }
 
-  //fetching data
-  // post('./API/User.js').then((res) => {
-  //     return res.json()
-  //   })
-  //     .then((userList) => {
-  //       this.setState({ userId: user.id })
-  //     })
-  // }
+  //gets user data from database and sets it in state
+  componentDidMount() {
+    if (this.state.user) {
+      fireData.ref('/users/' + this.state.user.uid).once('value', (data) => {
+        this.setState({
+          userData: data.val()
+        })
+      })
+    }
+  }
 
-  //componentDidMount() {
-  // if (this.state.user) {
-  //   myData.ref('/users/' + this.state.user.uid).once('value', (data) => {
-  //     this.setState({
-  //       userData: data.val()
-  //     })
-  //   })
-  // }
-
-  //componentDidUpdate() {
-  // let data = await myData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
-  // if (this.state.userData !== data) {
-  //   this.setState({ userData: data })
-  // }
-  //}
+  //gets data for users when they sign in
+  async componentDidUpdate() {
+    if (this.state.user) {
+      let data = await fireData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
+      if (this.state.userData !== data) {
+        this.setState({ userData: data })
+        // console.log(data)
+      }
+    }
+  }
 
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
@@ -83,15 +80,15 @@ class Provider extends React.Component {
     }).catch(error => {
       console.log(error.message)
     })
-    : alert("Passwords must match!" )
+      : alert("Passwords must match!")
   }
 
   signOut = (evt) => {
     evt.preventDefault()
-    
+
     fireApp.auth().signOut().then(res => {
       this.setState({ user: '' })
-      
+
       console.log(res)
     }).catch(error => {
       console.log(error.message)
@@ -101,27 +98,28 @@ class Provider extends React.Component {
   render() {
     console.log(fireApp)
     console.log(fireAuth)
+    console.log(this.state.userData)
     return (
       <div className="main-container">
         <div id='navbar'>
-        <Link to='/' className='btn'>
+          <Link to='/' className='btn'>
             Home
         </Link>
-        <div id='space'>
-        </div>
-        { this.state.user ?
-        <div className='msg'>
-          Signed in as: {this.state.user.displayName || this.state.user.email}
-        </div> : <div />
-  }
+          <div id='space'>
+          </div>
+          {this.state.user ?
+            <div className='msg'>
+              Signed in as: {this.state.user.displayName || this.state.user.email}
+            </div> : <div />
+          }
         </div>
         <h1>This is the page for Provider users</h1>
         <div>
           {this.state.user
             ? <ProviderLp user={this.state.user}
-            signOut={this.signOut}
-            uid={this.state.uid}
-            // userData={this.state.userData} 
+              signOut={this.signOut}
+              uid={this.state.uid}
+              userData={this.state.userData}
             />
             : <div>
               <h4>Please Sign in</h4>
