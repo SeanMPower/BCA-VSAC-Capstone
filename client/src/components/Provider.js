@@ -14,6 +14,7 @@ class Provider extends React.Component {
   constructor() {
     super()
     this.state = {
+      name: '',
       user: '',
       // user: fireApp.auth().currentUser,
       email: '',
@@ -51,7 +52,6 @@ class Provider extends React.Component {
 
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
-    console.log(evt.target.value)
   }
 
   //Signing in with email and password
@@ -71,6 +71,7 @@ class Provider extends React.Component {
   emailSignup = (evt) => {
     evt.preventDefault()
 
+    let newFormName = this.state.name
     let newFormEmail = this.state.newEmail
     let newFormPassword = this.state.newPassword
     let confirmFormPassword = this.state.confirmPassword
@@ -116,7 +117,7 @@ class Provider extends React.Component {
   }
         </div>
         <h1>This is the page for Provider users</h1>
-        <div>
+        <div className='main-container'>
           {this.state.user
             ? <ProviderLp user={this.state.user}
             signOut={this.signOut}
