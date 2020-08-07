@@ -30,7 +30,7 @@ class App extends React.Component {
           <Route path ='/vsac-user' component={Vsac} />
           <Route path ='/provider-user' component={Provider} />
           <Route path='/database' component={Dbpage} />
-          {/* <Route component={ErrorPage} /> */}
+          <Route component={ErrorPage} />
         </Switch>
         <Footer />
       </div>
