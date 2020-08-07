@@ -15,12 +15,13 @@ class Home extends React.Component {
   render() {
     return (
       <div className="main-container" >
-        <h1>Please Log in as a VSAC User or a Provider</h1>
+        <h1 id='top-h1'>Welcome to the VSAC Non-Degree Program Database Page</h1>
+        <h2>Please Log in as a VSAC User or a Provider</h2>
         <div id='links'>
 
         </div>
         <div id='db-info-container'>
-          Placeholder for DB info
+          <div className='rotate'>Database content goes here ʕ•ᴥ•ʔ</div>
         </div>
       </div>
     );

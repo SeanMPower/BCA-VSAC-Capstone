@@ -104,18 +104,6 @@ class Provider extends React.Component {
     console.log(fireAuth)
     return (
       <div className="main-container">
-        <div id='navbar'>
-        <Link to='/' className='btn'>
-            Home
-        </Link>
-        <div id='space'>
-        </div>
-        { this.state.user ?
-        <div className='msg'>
-          Signed in as: {this.state.user.displayName || this.state.user.email}
-        </div> : <div />
-  }
-        </div>
         <h1>This is the page for Provider users</h1>
         <div className='main-container'>
           {this.state.user

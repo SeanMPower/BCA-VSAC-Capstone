@@ -5,6 +5,7 @@ import { fireAuth } from '../assets/firebaseConfig';
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 import VsacLp from './VsacLp'
+import Modal from './SignUp.js'
 
 
 class Vsac extends React.Component {
@@ -16,13 +17,19 @@ class Vsac extends React.Component {
       email: '',
       password: '',
       newEmail: '',
-      newPassword: ''
+      newPassword: '',
+      show: false
     }
   }
 
+  showModal = () => {
+    this.setState(prev=>({
+      show: !prev.show
+    }));
+  };
+
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
-    console.log(evt.target.value)
   }
 
   //Signing in with email and password
@@ -82,7 +89,12 @@ class Vsac extends React.Component {
             : <div>
               <h2>Please Sign in with Email and Password</h2>
               <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
+              
               <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
+              <button onClick={e => {
+                this.showModal();
+              }}>show Modal</button>
+              <Modal onClose={this.showModal} show={this.state.show}>Message in Modal</Modal>
             </div>}
         </div>
       </div>

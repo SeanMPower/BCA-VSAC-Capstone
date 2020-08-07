@@ -5,13 +5,15 @@ import { Link } from "react-router-dom";
 let providerName = 'Provider User'
 
 function Header(props) {
+console.log(props.user)
+
   return (
 
     <div id="header">
+      <div id='navbar'>
       <a href='https://www.vsac.org/'>
         <img className="logo" src={Logo} title="VSAC logo" alt="VSAC logo" />
       </a>
-      <div id='navbar'>
         <Link to='/' className='btn'>
             Home
         </Link>
@@ -28,9 +30,6 @@ function Header(props) {
           Signed in as: {props.user.displayName || props.user.email}
         </div> : <div />
   }
-        </div>
-        {/* Division Bell Baby */}
-        <div id='navbar'>
         </div>
     </div>
   );
