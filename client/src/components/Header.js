@@ -8,7 +8,7 @@ function Header(props) {
 console.log(props.user)
 
   return (
-
+<>
     <div id="header">
       <div id='navbar'>
       <a href='https://www.vsac.org/'>
@@ -31,7 +31,12 @@ console.log(props.user)
         </div> : <div />
   }
         </div>
+
     </div>
+            <div className='homepage'>
+            
+            </div>
+            </>
   );
 }
 

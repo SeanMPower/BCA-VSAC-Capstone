@@ -7,17 +7,11 @@ export default class Modal extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-      console.log(this.props.displayModal)
-  }
-
   render() {
     return (
-      <div id="modal_background" style={{ display: (this.props.displayModal ? '' : '') }}>
-        <div id="modal-container">
-          <button onClick={this.props.handleClose}>Close</button>
-        </div>
-      </div>
+     <div>
+
+     </div>
     );
   }
 }
