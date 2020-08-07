@@ -95,18 +95,6 @@ class Vsac extends React.Component {
   render() {
     return (
       <div className="main-container">
-        <div id='navbar'>
-          <Link to='/' className='btn'>
-            Home
-        </Link>
-          <div id='space'>
-          </div>
-          {this.state.user ?
-            <div className='msg'>
-              Signed in as: {this.state.user.displayName || this.state.user.email}
-            </div> : <div />
-          }
-        </div>
         <div className='content'>
         <h1>This is the page for VSAC users</h1>
         <div className='main'>
