@@ -37,7 +37,7 @@ class Vsac extends React.Component {
   async componentDidUpdate() {
     if (this.state.user) {
       let data = await fireData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
-      if (this.state.userData !== data) {
+      if (this.state.userData.role !== data.role) {
         this.setState({ userData: data })
         // console.log(data)
       }
