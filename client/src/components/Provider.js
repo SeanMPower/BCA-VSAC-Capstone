@@ -52,7 +52,6 @@ class Provider extends React.Component {
 
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
-    console.log(evt.target.value)
   }
 
   //Signing in with email and password

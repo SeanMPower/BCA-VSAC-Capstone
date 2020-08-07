@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
+let providerName = 'Provider User'
+
 
 class Home extends React.Component {
 
@@ -19,7 +21,7 @@ class Home extends React.Component {
             VSAC User
         </Link>
         <Link to='/provider-user' className='btn'>
-          Provider User
+          {providerName}
         </Link>
         <div id='space'>
         </div>
