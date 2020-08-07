@@ -54,4 +54,4 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-module.exports = Provider = mongoose.model('Provider', userSchema);
+module.exports = Provider = mongoose.model('Provider', userSchema, 'providers');

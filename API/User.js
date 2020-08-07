@@ -46,33 +46,6 @@ route.post("/save", (req, res) => {
 // })
 
 route.post("/", async (req, res) => {
-  // let {providerName, program, certification, state, region, modality, price, pell, VTGrant, startDate, endDate, providerLink, contactEmail, recordCreatedBy, lastUpdate} = req.body;
-
-  // let provider = {};
-
-  // provider.uid = req.body.uid
-  // provider.providerName = req.body.data[0].provider;
-  // provider.program = program;
-  // provider.certification = certification;
-  // provider.state = state;
-  // provider.region = region;
-  // provider.modality = modality;
-  // provider.price = price;
-  // provider.pell = pell;
-  // provider.VTGrant = VTGrant;
-  // provider.startDate = startDate;
-  // provider.endDate = endDate;
-  // provider.providerLink = providerLink;
-  // provider.contactEmail = contactEmail;
-  // provider.recordCreatedBy = recordCreatedBy;
-  // provider.lastUpdate = lastUpdate;
-
-  // let providerModel = new User(provider);
-  db.on("error", console.error.bind(console, "connection error:"));
-
-  db.once("open", function () {
-    console.log("Connection Successful!");
-  });
 
   let programs = req.body.data;
   let programsArr = [];
@@ -85,9 +58,9 @@ route.post("/", async (req, res) => {
     });
   }
 
- Provider.collection.insertMany(programsArr, function (err, docs) {
+ Provider.insertMany(programsArr, function (err, docs) {
      if (err) {
-         return console.error(err);
+         res.send(`Failed to upload, error: ${err.message}`)
     }  else {
         console.log("Multiple documents inserted to Collection!")
     }
