@@ -18,15 +18,27 @@ class Vsac extends React.Component {
       password: '',
       newEmail: '',
       newPassword: '',
-      show: false
+      modalDisplay: 'none'
     }
   }
 
-  showModal = () => {
-    this.setState(prev=>({
-      show: !prev.show
-    }));
+  showModal = (evt) => {
+    console.log('show')
+    evt.preventDefault();
+    this.setState(() => {
+      return { modalDisplay: '' }
+    })
   };
+
+  handleClose = (evt) => {
+    console.log('close')
+    evt.preventDefault();
+    this.setState(() => {
+      return {
+        modalDisplay: ''
+      }
+    })
+  }
 
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
@@ -91,10 +103,9 @@ class Vsac extends React.Component {
               <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
               
               <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
-              <button onClick={e => {
-                this.showModal();
-              }}>show Modal</button>
-              <Modal onClose={this.showModal} show={this.state.show}>Message in Modal</Modal>
+              <h1>Don't have an account?</h1>
+              <button onClick={this.showModal}>Sign Up</button>
+              <Modal displayModal={this.state.modalDisplay} handleClose={this.handleClose}>Message in Modal</Modal>
             </div>}
         </div>
       </div>

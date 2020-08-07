@@ -2,28 +2,20 @@ import React from "react";
 //sign in/sign up forms
 
 export default class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    onClose = e => {
-        console.log(this.props.onClose)
-        console.log(this.props.show)
-        this.props.onClose && this.props.onClose(e);
-    }
+  componentDidMount() {
+      console.log(this.props.displayModal)
+  }
 
   render() {
-    if (!this.props.show) {
-      return null;
-    }
     return (
-      <div>
-        <div>{this.props.children}</div>
-        <div>
-          <button
-            onClose={e => {
-              this.onClose(e);
-            }}
-          >
-            Close
-          </button>
+      <div id="modal_background" style={{ display: (this.props.displayModal ? '' : '') }}>
+        <div id="modal-container">
+          <button onClick={this.props.handleClose}>Close</button>
         </div>
       </div>
     );
