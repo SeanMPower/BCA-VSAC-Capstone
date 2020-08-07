@@ -2,11 +2,12 @@ import React from 'react';
 //sign in/sign up forms
 function SignUp(props) {
     return (
-        <div>
+        <div className='container'>
             <h4>Don't have an account yet?</h4>
+            <div className='form-container'>
             <h4>Sign Up:</h4>
             <form id="signup-form" onSubmit={props.emailSignup}>
-                <label> Email:
+                <label className='email'> Email:
                     <input
                         type='text'
                         name='newEmail'
@@ -14,7 +15,7 @@ function SignUp(props) {
                         value={props.newEmail}
                         onChange={props.handleChange} />
                 </label>
-                <label> Password:
+                <label className='password'> Password:
                     <input
                         type='password'
                         name='newPassword'
@@ -23,7 +24,7 @@ function SignUp(props) {
                         onChange={props.handleChange}
                     />
                 </label>
-                <label> Confirm Password:
+                <label className='c-password'> Confirm Password:
                     <input
                         type='password'
                         name='confirmPassword'
@@ -32,8 +33,9 @@ function SignUp(props) {
                         onChange={props.handleChange}
                     />
                 </label>
-                <input type='submit' value='Submit' />
+                <input type='submit' value='Submit' className='submit' />
             </form>
+            </div>
         </div>
     )
 }

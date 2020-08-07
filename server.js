@@ -2,16 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const connectDb = require('./DB/Connection.js');
 const app = express();
-
 const user = require('./API/User.js')
 
 connectDb();
 
 app.get('/test', (req, res) => {console.log('Success!')})
 
+app.use('/user', user)
+
 app.get('/', (req, res) => {})
 
-app.use('/user', user)
+
 
 
 

@@ -22,7 +22,11 @@ const flatfileConfig = {
             key: "certification"
         },
         {
-            label: "County of Vermont",
+            label: "State",
+            key: "state"
+        },
+        {
+            label: "County",
             key: "region"
         },
         {
@@ -34,23 +38,27 @@ const flatfileConfig = {
             key: "price"
         },
         {
-            label: "Pell Grant Eligibility",
+            label: "Pell Grant Eligible?",
             key: "pell"
         },
         {
-            label: "VT Advancement Grant Eligibility",
-            key: "VTAdvancementGrant"
+            label: "VT Grant Eligible?",
+            key: "VTGrant"
         },
         {
-            label: "Start Date - End Date",
-            key: "startEndDate"
+            label: "Program Start Date",
+            key: "startDate"
+        },
+        {
+            label: "Program End Date",
+            key: "endDate"
         },
         {
             label: "Provider Website",
             key: "providerLink"
         },
         {
-            label: "Contact Email",
+            label: "Program Contact Email",
             key: "contactEmail"
         },
         {
@@ -76,9 +84,8 @@ const launchFlatfile = (uid) => {
         importer.displayLoader();
         setTimeout( () => {
             importer.displaySuccess("Successful Upload");
-             console.log(JSON.stringify(results.validData, null, 2))
             //console.log(results)
-            let dataSet = JSON.stringify(results.validData)
+            let dataSet = results.validData
 
             let payload = {
                 uid: uid,
@@ -87,8 +94,8 @@ const launchFlatfile = (uid) => {
             // for (let data of dataSet) {
                 
             // }
-            axios.post('/API/users', 
-              JSON.stringify(payload))
+            axios.post('/user', 
+              payload)
 
         },  1500)
     })

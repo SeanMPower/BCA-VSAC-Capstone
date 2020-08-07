@@ -83,18 +83,20 @@ class Vsac extends React.Component {
         </div> : <div />
   }
         </div>
+        <div className='content'>
         <h1>This is the page for VSAC users</h1>
-        <div>
+        <div className='main'>
           {this.state.user
             ? <VsacLp user={this.state.user}
             signOut={this.signOut}
             // userData={this.state.userData} 
             />
             : <div>
-              <h4>Please Sign in</h4>
+              <h2>Please Sign in with Email and Password</h2>
               <SignIn emailSignin={this.emailSignin} handleChange={this.handleChange} />
             </div>}
         </div>
+      </div>
       </div>
     );
   }

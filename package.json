@@ -5,9 +5,12 @@
   "main": "App.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "create-react-app": "^3.4.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -18,7 +21,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "server": "node server.js"
+    "start": "nodemon server.js",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
