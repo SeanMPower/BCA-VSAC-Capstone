@@ -13,13 +13,15 @@ const flatfileConfig = {
             label: "Provider Name",
             key: "providerName",
             description: "Name of the School or Institution",
-            alternates: ["School", "University", "Institution", "College"]
+            alternates: ["School", "University", "Institution", "College"],
+            validators: [{validate: "required"}]
         },
         {
             label: "Program Name",
             key: "program",
             description: "Name of the Program/Course Offered",
-            alternates: ["Course"]
+            alternates: ["Course"],
+            validators: [{validate: "required"}]
         },
         {
             label: "Certification or Credential",
@@ -31,46 +33,53 @@ const flatfileConfig = {
             label: "State",
             key: "state",
             description: "Home State of School or Institution",
-            alternates: ["Province"]
+            alternates: ["Province"],
+            validators: [{validate: "required"}]
         },
         {
             label: "County",
             key: "region",
-            description: "Home County of School or Institution"
+            description: "Home County of School or Institution",
+            validators: [{validate: "required"}]
         },
         {
             label: "Mode of Instruction",
             key: "modality",
-            description: "Is Your Program/Course Being Offered Online, In-Person, or Both?"
+            description: "Is Your Program/Course Being Offered Online, In-Person, or Both?",
+            validators: [{validate: "required"}]
         },
         {
             label: "Cost of Program",
             key: "price",
             description: "Total Cost of Program/Course Before Aid",
             alternates: ["Price", "Tuition"],
-            validators: [{validate: "required"}, {validate: "regex_matches", regex: "^\d{2,8}$", error: "Only number characters allowed (no $)"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "\\d{2,8}", error: "Only number characters allowed (no $)"}]
         },
         {
             label: "Pell Grant Eligible?",
             key: "pell",
-            description: "Is this Program/Course Eligible for a Pell Grant?"
+            description: "Is this Program/Course Eligible for a Pell Grant?",
+            validators: [{validate: "required"}]
         },
         {
             label: "VT Grant Eligible?",
             key: "VTGrant",
-            description: "Is this Program/Course Eligible for a VT Grant?"
+            description: "Is this Program/Course Eligible for a VT Grant?",
+            validators: [{validate: "required"}]
         },
         {
             label: "Program Start Date",
             key: "startDate",
             description: "What Date Does the Program/Course Begin?",
-            alternates: ["Begins"]
+            alternates: ["Begins"],
+            validators: [{validate: "required"}]
         },
         {
             label: "Program End Date",
             key: "endDate",
             description: "What Date Does the Program/Course End?",
-            alternates: ["Ends"]
+            alternates: ["Ends"],
+            validators: [{validate: "required"}]
         },
         {
             label: "Provider Website",
@@ -82,12 +91,14 @@ const flatfileConfig = {
             label: "Program Contact Email",
             key: "contactEmail",
             description: "Please provide an email address for who to contact regarding the program/course",
-            alternates: ["Contact", "email"]
+            alternates: ["Contact", "email"],
+            validators: [{validate: "required"}]
         },
         {
             label: "Record Created By",
             key: "recordCreatedBy",
-            description: "Initials or name of person creating this record"
+            description: "Initials or name of person creating this record",
+            validators: [{validate: "required"}]
         },
         {
             label: "Record Created On",
