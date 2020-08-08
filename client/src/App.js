@@ -32,6 +32,7 @@ class App extends React.Component {
           <Route path='/database' component={Dbpage} />
           {/* <Route component={ErrorPage} /> */}
         </Switch>
+        <div id='page'></div>
         <Footer />
       </div>
     );
