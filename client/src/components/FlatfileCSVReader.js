@@ -53,7 +53,7 @@ const flatfileConfig = {
             key: "price",
             description: "Total Cost of Program/Course Before Aid",
             alternates: ["Price", "Tuition"],
-            validators: [{validate: "required"}, {validate: "regex_matches", regex: "\\d{2,8}", error: "Only number characters allowed (no $)"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "\\d{2,6}", error: "Only number characters allowed (no $), 2 - 6 digits in length"}]
         },
         {
             label: "Pell Grant Eligible?",
@@ -85,14 +85,15 @@ const flatfileConfig = {
             label: "Provider Website",
             key: "providerLink",
             description: "Please Provide a URL to your Program/Course Information",
-            alternates: ["Link"]
+            alternates: ["Link"],
+            validators: [{validate: "regex_matches", regex: "\/((([A-Za-z]{3,9}:(?:\\\/\\\/)?)(?:[\\-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9\\.\\-]+|(?:www\\.|[\\-;:&=\\+\\$,\\w]+@)[A-Za-z0-9\\.\\-]+)((?:\\\/[\\+~%\\\/\\.\\w\\-_]*)?\\??(?:[\\-\\+=&;%@\\.\\w_]*)#?(?:[\\.\\!\\\/\\\\\\w]*))?)\/", error: "Not a valid URL"}]
         },
         {
             label: "Program Contact Email",
             key: "contactEmail",
             description: "Please provide an email address for who to contact regarding the program/course",
             alternates: ["Contact", "email"],
-            validators: [{validate: "required"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])", error: "Please enter a valid email address, all letters must be lowercase"}]
         },
         {
             label: "Record Created By",
