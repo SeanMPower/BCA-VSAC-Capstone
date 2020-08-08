@@ -39,7 +39,7 @@ class Provider extends React.Component {
   async componentDidUpdate() {
     if (this.state.user) {
       let data = await fireData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
-      if (this.state.userData !== data) {
+      if (this.state.userData.role !== data.role) {
         this.setState({ userData: data })
         // console.log(data)
       }
@@ -64,7 +64,7 @@ class Provider extends React.Component {
   }
 
   //signing up with email and password
-  emailSignup = (evt) => {
+  emailSignup = async (evt) => {
     evt.preventDefault()
 
     let newFormName = this.state.name
@@ -75,12 +75,18 @@ class Provider extends React.Component {
     console.log(newFormEmail)
     console.log(newFormPassword)
 
-    newFormPassword === confirmFormPassword ? fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
+    newFormPassword === confirmFormPassword ? await fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
       this.setState({ user: res.user })
     }).catch(error => {
       console.log(error.message)
     })
-      : alert("Passwords must match!")
+      : alert("Passwords must match!");
+
+    fireData.ref('/users/' + this.state.user.uid).set({role: "user"}).then(res => {
+      this.setState({userData: {role: "user"}})
+      console.log(res)
+    })
+    
   }
 
   signOut = (evt) => {
@@ -96,11 +102,12 @@ class Provider extends React.Component {
   }
 
   render() {
-    console.log(fireApp)
-    console.log(fireAuth)
-    console.log(this.state.userData)
+    // console.log(fireApp)
+    // console.log(fireAuth)
+    // console.log(this.state.userData)
+    console.log(this.state.user)
     return (
-      <div className="main-container">
+      <div className="main-container" >
         <div id='navbar'>
           <Link to='/' className='btn'>
             Home
@@ -127,7 +134,7 @@ class Provider extends React.Component {
               <SignUp emailSignup={this.emailSignup} handleChange={this.handleChange} />
             </div>}
         </div>
-      </div>
+      </div >
     )
   }
 }

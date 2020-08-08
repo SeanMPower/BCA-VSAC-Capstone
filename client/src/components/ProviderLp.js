@@ -4,8 +4,9 @@ import CSVReader from './FlatfileCSVReader'
 //welcome function
 
 function ProviderLp(props) {
+  console.log(props.userData)
   return (
-    <div>{props.userData.role === "user"
+    <div>{props.userData && props.userData.role === "user"
       ? <div>
         <h1>Hello, {props.user.displayName || props.user.email}</h1>
         <CSVReader uid={props.uid} id='csv-button' />
