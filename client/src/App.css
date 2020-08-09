@@ -1,35 +1,7 @@
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-} */
-
-
 /* ---------------------------------- style --------------------------------- */
 
 html, body{
   height: 100%;
-}
-
-main{
-  min-height: 100%;
-  margin-bottom: -100px;
-  background: #ddd;
 }
 
 a{
@@ -37,6 +9,8 @@ a{
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -53,14 +27,6 @@ a{
   height: 120px;
   width: 100%;
   align-items: flex-start;
-}
-
-#limebar{
-  height: 60px;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  background-color: #cddb28;
 }
 
 #header h1{
@@ -103,19 +69,22 @@ a{
 
 #navbar{
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   background: #cddb28;
   height: 40px;
   text-transform: uppercase;
-  border-radius: 5px;
   margin-top: 83px;
   z-index: 10;
+  width: 100%
 }
 
 .btn, .msg {
   margin: auto;
   height: 50%;
   padding: 10px;
-  width: 150px;
+  /* width: 150px; */
+  min-width: 150px;
   color: #676767;
   font-weight: 500;
   transition: .3s;
@@ -137,7 +106,7 @@ a{
 }
 
 #space{
-  width: 1500px;
+  width: 2000px;
   height: 40px;
 }
 
@@ -148,9 +117,12 @@ a{
 .main-container{
   display: flex;
   width: 100%;
+  height: 800px;
   /* border: #282c34 2px solid; */
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .main-container h1 {
@@ -165,10 +137,10 @@ a{
 
 #db-info-container{
   height: 40vh;
-  width: 80vw;
-  border: 1px solid black;
-  margin-left: 10vw;
-
+  width: 55vw;
+  background: #fff;
+  padding: 1.5em;
+  box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
 }
 
 .button {
@@ -180,6 +152,15 @@ a{
 }
 
 /* Section: Sign-in Page */
+
+.content{
+  background: #fff;
+  margin: 0 0 2em;
+  margin-top: 10px;
+  padding: 1.5em;
+  box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
+  width: 45vw;
+}
 
 .main{
   margin-bottom: -20px;
@@ -266,15 +247,12 @@ a{
 /* Section: Footer */
 
 #page {
-  margin-bottom: 123px;
-  border: 1px solid black;
-  height: 10px;
+  min-height: 10px;
+  bottom: 0;
   left: 0;
-  top: 0;
-  position: absolute;
   width: 100%;
   z-index: 10;
-  background: linear-gradient(to margin-top, rgba(0,0,0,0.25) 0%, transparent 100%)
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
 }
 
 #footer{
@@ -386,13 +364,10 @@ a{
   font-weight: 500
 }
 
-.space{
-  width: 20px;
-}
-
 #footer #footer-links{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 70vw;
   color: #ffffff;
 }
