@@ -21,31 +21,11 @@ route.get("/", (req, res) => {
     });
 });
 
-route.post("/save", (req, res) => {
-  console.log("Body: ", req.body);
-  res.json({
-    msg: "We received your data!",
-  });
-});
 
-//This instead of above
-// route.post('/save', (req, res) => {
-//     const data = req.body;
-
-//     const newUser = new User(data);
-
-//     newUser.save((error) => {
-//         if (error) {
-//             res.status(500).json({ msg: 'Sorry, internal server errors'})
-//             return
-//         }
-//           return res.json({
-//                 msg: 'Your data has been saved!'
-//             })
-//     })
-// })
-
-
+route.get('/provider', async (req, res) => {
+  console.log(res.data.uid)
+  Provider.find({uid: res.data.uid})
+})
 
 route.post("/", async (req, res) => {
 

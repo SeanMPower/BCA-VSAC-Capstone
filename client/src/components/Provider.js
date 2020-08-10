@@ -1,8 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import { fireApp } from '../assets/firebaseConfig';
-// import { fireAuth } from '../assets/firebaseConfig';
-// import { fireData } from '../assets/firebaseConfig';
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 import ProviderLp from './ProviderLp'
@@ -41,7 +38,7 @@ class Provider extends React.Component {
         </div>
         <h1>This is the page for Provider users</h1>
         <div className='main-container'>
-          {props.user
+          {this.props.user
             ? <ProviderLp user={this.props.user}
               signOut={this.props.signOut}
               uid={this.props.uid}
