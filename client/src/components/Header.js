@@ -25,9 +25,9 @@ console.log(props.user)
         </Link>
         <div id='space'>
         </div>
-        {props.user ?
+        {props.email.length > 0 ?
         <div className='msg'>
-          Signed in as: {props.user.displayName || props.user.email}
+          Signed in as: {props.email}
         </div> : <div />
   }
         </div>

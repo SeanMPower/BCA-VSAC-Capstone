@@ -14,9 +14,8 @@ a{
   margin: 0;
   padding: 0;
   text-align: center;
-  height: 100vh;
-  width: 100vw;
-  /* border: #282c34 2px solid; */
+  max-height: 100%;
+  max-width: 100%;
   background-color: #ffffff;
 }
 
@@ -48,7 +47,6 @@ a{
 }
 
 #temporary-form{
-  /* border: #282c34 2px solid; */
   width: 35%;
   height: 50%;
   margin: auto;
@@ -91,7 +89,8 @@ a{
 }
 
 .msg{
-  width: 600px;
+  position: absolute;
+  right: 0;
   text-transform: none;
 }
 
@@ -106,23 +105,20 @@ a{
 }
 
 #space{
+  background-color: #cddb28;
   width: 2000px;
   height: 40px;
 }
 
-@media (max-width: 1146px) {
-
-}
-
 .main-container{
   display: flex;
-  width: 100%;
-  height: 800px;
-  /* border: #282c34 2px solid; */
+  max-width: 100%;
+  max-height: 75%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 10px;
+  background: url('./img/stripes3.png')
 }
 
 .main-container h1 {
@@ -135,14 +131,6 @@ a{
   justify-content: space-around;
 }
 
-#db-info-container{
-  height: 40vh;
-  width: 55vw;
-  background: #fff;
-  padding: 1.5em;
-  box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
-}
-
 .button {
   background-color: #cddb28;
   border-radius: 5px;
@@ -153,13 +141,14 @@ a{
 
 /* Section: Sign-in Page */
 
-.content{
+.content, #db-info-container{
   background: #fff;
   margin: 0 0 2em;
   margin-top: 10px;
   padding: 1.5em;
   box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
   width: 45vw;
+  min-height: 25vw;
 }
 
 .main{
@@ -188,9 +177,8 @@ a{
 }
 
 .form-container{
-  height: 200px;
-  width: 450px;
-  /* background-color: rgba(0, 0, 0, 0.3); */
+  max-height: 200px;
+  max-width: 450px;
   border-radius: 10px;
 }
 
@@ -208,6 +196,40 @@ a{
   margin-top: 15px;
 }
 
+/* Section: Modal */
+
+.modal{
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  margin-top: -42.5vh;
+  margin-left: -45vw;
+  width: 90vw;
+  height: 85vh;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
+  z-index: 2002;
+  background-image: url('./img/stripes3.png')
+}
+
+.modal-container{
+  z-index: 2001;
+  max-height: 100%;
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.5)
+}
+
+#close-btn{
+  transform: rotate(45deg);
+  margin-left: 885px;
+  font-size: 25px;
+}
+
+#close-btn:hover{
+  cursor: pointer;
+}
+
 /* Section: Landing Page */
 
 #csv-button{
@@ -216,10 +238,11 @@ a{
   width: 500px;
   font-size: 24px;
   text-transform: uppercase;
-  border-radius: 8px;
+  border-radius: 20px;
   border: none;
   color: #676767;
-  transition: .3s
+  transition: .3s;
+  box-shadow: 5px 10px 8px #888888;
 }
 
 #csv-button:hover{
@@ -228,7 +251,7 @@ a{
   cursor: pointer;
 }
 
-#signout-button{
+#signout-button, .sign-up{
   border: none;
   border-radius: 20px;
   width: 100px;
@@ -239,26 +262,29 @@ a{
   transition: .3s;
 }
 
-#signout-button:hover{
+#signout-button:hover, .sign-up:hover{
   background: #006877;
+  cursor: pointer;
 }
 
 
 /* Section: Footer */
 
 #page {
-  min-height: 10px;
-  bottom: 0;
-  left: 0;
+  height: 10px;
   width: 100%;
   z-index: 10;
   background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
 }
 
 #footer{
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 372.42px;
   color: #ffffff;
+  overflow: hidden;
+
 }
 
 #footer #container{
@@ -353,10 +379,6 @@ a{
   margin-top: 20px;
   margin-left: 20px;
 }
-
-/* #footer-bottom p{
-  width: 400px;
-} */
 
 #footer-bottom #text{
   width: 500px;

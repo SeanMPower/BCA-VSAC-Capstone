@@ -5,7 +5,7 @@ import { fireAuth } from "../assets/firebaseConfig";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import VsacLp from "./VsacLp";
-import Modal from "./SignUp.js";
+import Modal from "./Modal.js";
 
 class Vsac extends React.Component {
   constructor(props) {
@@ -16,24 +16,22 @@ class Vsac extends React.Component {
       password: "",
       newEmail: "",
       newPassword: "",
-      modalDisplay: "none",
+      modalDisplay: false,
     };
   }
 
-  showModal = (evt) => {
+  showModal = () => {
     console.log("show");
-    evt.preventDefault();
     this.setState(() => {
-      return { modalDisplay: "" };
+      return { modalDisplay: true };
     });
   };
 
-  handleClose = (evt) => {
+  handleClose = () => {
     console.log("close");
-    evt.preventDefault();
     this.setState(() => {
       return {
-        modalDisplay: "",
+        modalDisplay: false,
       };
     });
   };
@@ -42,71 +40,27 @@ class Vsac extends React.Component {
     this.setState({ [evt.target.name]: evt.target.value });
   };
 
-  //Signing in with email and password
-  emailSignin = (evt) => {
-    evt.preventDefault();
-
-    let formEmail = this.state.email;
-    let formPassword = this.state.password;
-
-    fireApp
-      .auth()
-      .signInWithEmailAndPassword(formEmail, formPassword)
-      .then((res) => {
-        this.setState({ user: res.user });
-      });
-  };
-
-  //signing up with email and password
-  emailSignup = (evt) => {
-    evt.preventDefault();
-
-    let newFormEmail = this.state.newEmail;
-    let newFormPassword = this.state.newPassword;
-    let confirmFormPassword = this.state.confirmPassword;
-
-    console.log(newFormEmail);
-    console.log(newFormPassword);
-
-    newFormPassword === confirmFormPassword
-      ? fireApp
-          .auth()
-          .createUserWithEmailAndPassword(newFormEmail, newFormPassword)
-          .then((res) => {
-            this.setState({ user: res.user });
-          })
-          .catch((error) => {
-            console.log(error.message);
-          })
-      : alert("Passwords must match!");
-  };
-
-  signOut = (evt) => {
-    evt.preventDefault();
-
-    fireApp
-      .auth()
-      .signOut()
-      .then((res) => {
-        this.setState({ user: "" });
-
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+      //Signing in with email and password
+      emailSignin = (evt) => {
+        evt.preventDefault();
+        this.props.signIn(this.state.email, this.state.password);
+      };
+    
+      //signing up with email and password
+      emailSignup = (evt) => {
+        evt.preventDefault();
+        this.props.signUp(this.state.name, this.state.newEmail, this.state.newPassword, this.state.confirmPassword)
+      };
 
   render() {
     return (
       <div className="main-container">
         <h1>This is the page for VSAC users</h1>
         <div className="content">
-          <div className="main">
-            {this.state.user ? (
+            {this.props.user ? (
               <VsacLp
-                user={this.state.user}
-                signOut={this.signOut}
+                user={this.props.user}
+                signOut={this.props.signOut}
                 // userData={this.state.userData}
               />
             ) : (
@@ -122,18 +76,12 @@ class Vsac extends React.Component {
                   handleChange={this.handleChange}
                 />
                 <h1>Don't have an account?</h1>
-                <button onClick={this.showModal}>Sign Up</button>
-                <Modal
-                  displayModal={this.state.modalDisplay}
-                  handleClose={this.handleClose}
-                >
-                  Message in Modal
-                </Modal>
+                <button className='sign-up' onClick={this.showModal}>Sign Up</button>
+                {this.state.modalDisplay && <Modal handleClose={this.handleClose} />}
               </div>
             )}
           </div>
         </div>
-      </div>
     );
   }
 }
