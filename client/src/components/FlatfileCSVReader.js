@@ -59,34 +59,34 @@ const flatfileConfig = {
             label: "Pell Grant Eligible?",
             key: "pell",
             description: "Is this Program/Course Eligible for a Pell Grant?",
-            validators: [{validate: "required"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "(true|false)", error: "Must be true or false"}]
         },
         {
             label: "VT Grant Eligible?",
             key: "VTGrant",
             description: "Is this Program/Course Eligible for a VT Grant?",
-            validators: [{validate: "required"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "(true|false)", error: "Must be true or false"}]
         },
         {
             label: "Program Start Date",
             key: "startDate",
             description: "What Date Does the Program/Course Begin?",
             alternates: ["Begins"],
-            validators: [{validate: "required"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "\\d{1,2}\\\/\\d{1,2}\\\/\\d{4}", error: "Date must be in M/D/YYYY format"}]
         },
         {
             label: "Program End Date",
             key: "endDate",
             description: "What Date Does the Program/Course End?",
             alternates: ["Ends"],
-            validators: [{validate: "required"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "\\d{1,2}\\\/\\d{1,2}\\\/\\d{4}", error: "Date must be in M/D/YYYY format"}]
         },
         {
             label: "Provider Website",
             key: "providerLink",
             description: "Please Provide a URL to your Program/Course Information",
-            alternates: ["Link"],
-            validators: [{validate: "regex_matches", regex: "\/((([A-Za-z]{3,9}:(?:\\\/\\\/)?)(?:[\\-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9\\.\\-]+|(?:www\\.|[\\-;:&=\\+\\$,\\w]+@)[A-Za-z0-9\\.\\-]+)((?:\\\/[\\+~%\\\/\\.\\w\\-_]*)?\\??(?:[\\-\\+=&;%@\\.\\w_]*)#?(?:[\\.\\!\\\/\\\\\\w]*))?)\/", error: "Not a valid URL"}]
+            alternates: ["Link", "URL"],
+            validators: [{validate: "regex_matches", regex: "(http:\\\/\\\/www\\.|https:\\\/\\\/www\\.|http:\\\/\\\/|https:\\\/\\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\\/.*)?", error: "Not a valid URL"}]
         },
         {
             label: "Program Contact Email",
