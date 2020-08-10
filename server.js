@@ -16,8 +16,7 @@ app.use('/provider', user)
 
 app.get('/', (req, res) => {})
 
-
-
+app.use('/provider', user)
 
 
 
