@@ -22,6 +22,11 @@ route.get("/", (req, res) => {
 });
 
 
+route.get('/provider', async (req, res) => {
+  console.log(res.data.uid)
+  Provider.find({uid: res.data.uid})
+})
+
 route.post("/", async (req, res) => {
 
   let programs = req.body.data;
