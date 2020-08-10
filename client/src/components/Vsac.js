@@ -21,14 +21,12 @@ class Vsac extends React.Component {
   }
 
   showModal = () => {
-    console.log("show");
     this.setState(() => {
       return { modalDisplay: true };
     });
   };
 
   handleClose = () => {
-    console.log("close");
     this.setState(() => {
       return {
         modalDisplay: false,
@@ -68,11 +66,6 @@ class Vsac extends React.Component {
                 <h2>Please Sign in with Email and Password</h2>
                 <SignIn
                   emailSignin={this.emailSignin}
-                  handleChange={this.handleChange}
-                />
-
-                <SignUp
-                  emailSignup={this.emailSignup}
                   handleChange={this.handleChange}
                 />
                 <h1>Don't have an account?</h1>

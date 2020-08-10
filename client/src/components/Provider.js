@@ -26,6 +26,20 @@ class Provider extends React.Component {
     };
   }
 
+  showModal = () => {
+    this.setState(() => {
+      return { modalDisplay: true };
+    });
+  };
+
+  handleClose = () => {
+    this.setState(() => {
+      return {
+        modalDisplay: false,
+      };
+    });
+  };
+
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
   };
@@ -61,10 +75,6 @@ class Provider extends React.Component {
               <h2>Please Sign in with Email and Password</h2>
               <SignIn
                 emailSignin={this.emailSignin}
-                handleChange={this.handleChange}
-              />
-              <SignUp
-                emailSignup={this.emailSignup}
                 handleChange={this.handleChange}
               />
               <h1>Don't have an account?</h1>

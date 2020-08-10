@@ -1,7 +1,7 @@
 import React from "react";
 //sign in/sign up forms
 
-export default class Modal extends React.Component {
+class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -19,10 +19,21 @@ export default class Modal extends React.Component {
 function SignUp(props) {
   return (
     <div className="container">
-      <h4>Don't have an account yet?</h4>
+      {/* <h4>Don't have an account yet?</h4> */}
       <div className="form-container">
         <h4>Sign Up:</h4>
         <form id="signup-form" onSubmit={props.emailSignup}>
+        {/* <label className="userName">
+            {" "}
+            Full Name:
+            <input
+              type="text"
+              name="userName"
+              id="new-name"
+              value={props.newName}
+              onChange={props.handleChange}
+            />
+          </label> */}
           <label className="email">
             {" "}
             Email:
@@ -63,4 +74,4 @@ function SignUp(props) {
   );
 }
 
-export { SignUp };
+export default SignUp;

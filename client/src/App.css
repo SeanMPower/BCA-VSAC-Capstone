@@ -101,11 +101,11 @@ a{
 .btn:hover{
   background: #701d45;
   color: #ffffff;
-
+  box-shadow: 5px 10px 8px #888888;
 }
 
 #space{
-  background-color: #cddb28;
+  background-color: rgba(0, 0, 0, 0);
   width: 2000px;
   height: 40px;
 }
@@ -163,6 +163,8 @@ a{
   margin-top: -20px
 }
 
+/* Section: Sign-In Form */
+
 #signin-form, #signup-form{
   display: flex;
   flex-direction: column;
@@ -170,6 +172,10 @@ a{
   align-items: center;
   width: 100%;
   margin-top: 50px;
+}
+
+.userName{
+  margin-top: -30px;
 }
 
 .email{
@@ -222,7 +228,7 @@ a{
 
 #close-btn{
   transform: rotate(45deg);
-  margin-left: 885px;
+  margin-left: 87vw;
   font-size: 25px;
 }
 
