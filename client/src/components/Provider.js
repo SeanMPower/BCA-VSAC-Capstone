@@ -11,10 +11,6 @@ import Modal from './Modal.js'
 
 function Provider (props) {
 
-    // console.log(fireApp)
-    // console.log(fireAuth)
-    // console.log(this.state.userData)
-    // console.log(this.state.user)
     return (
       <div className="main-container" >
         <h1>This is the page for Provider users</h1>
@@ -30,7 +26,7 @@ function Provider (props) {
               <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
               <h2>Don't Have an Account?</h2>
               <button onClick={props.toggleModal}>Sign Up</button>
-              {props.modalDisplay && <Modal show={props.modalDisplay} handleClose={props.handleClose} emailSignup={props.emailSignup} />}
+              {props.modalDisplay && <Modal show={props.modalDisplay} handleClose={props.handleClose} emailSignup={props.emailSignup} handleChange={props.handleChange} />}
             </div>}
         </div>
       </div >
