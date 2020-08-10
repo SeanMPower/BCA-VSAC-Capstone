@@ -10,6 +10,10 @@ app.get('/test', (req, res) => {console.log('Success!')})
 
 app.use('/user', user)
 
+app.use('/home', user)
+
+app.use('/provider', user)
+
 app.get('/', (req, res) => {})
 
 

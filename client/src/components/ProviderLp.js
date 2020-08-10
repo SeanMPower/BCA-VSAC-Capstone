@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import CSVReader from './FlatfileCSVReader'
 //welcome function
 
-function ProviderLp(props) {
+class ProviderLp(props) {
   console.log(props.userData)
   return (
     <div>{props.userData && props.userData.role === "user"

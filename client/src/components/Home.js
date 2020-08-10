@@ -1,16 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 class Home extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-
+      programs: []
     }
   }
 
-  componentDidMount
+  componentDidMount() {
+    axios.get('/home').then((res) => {
+      console.log(res)
+    })
+  }
 
   render() {
     return (

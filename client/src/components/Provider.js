@@ -6,14 +6,24 @@ import { Link } from 'react-router-dom'
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 import ProviderLp from './ProviderLp'
-// import axios from 'axios'
+import axios from 'axios'
 
-function Provider (props) {
 
-    // console.log(fireApp)
-    // console.log(fireAuth)
-    // console.log(this.state.userData)
-    // console.log(this.state.user)
+class Provider extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        providerProgs: []
+      }
+    }
+
+    componentDidMount() {
+      axios.get('/provider', this.props.uid).then((res) => {
+        console.log(res)
+      })
+    }
+
+    render() {
     return (
       <div className="main-container" >
         <div id='navbar'>
@@ -22,29 +32,29 @@ function Provider (props) {
         </Link>
           <div id='space'>
           </div>
-          {props.user ?
+          {this.props.user ?
             <div className='msg'>
-              Signed in as: {props.user.displayName || props.user.email}
+              Signed in as: {this.props.user.displayName || this.props.user.email}
             </div> : <div />
           }
         </div>
         <h1>This is the page for Provider users</h1>
         <div className='main-container'>
-          {props.user
-            ? <ProviderLp user={props.user}
-              signOut={props.signOut}
-              uid={props.uid}
-              userData={props.userData}
+          {this.props.user
+            ? <ProviderLp user={this.props.user}
+              signOut={this.props.signOut}
+              uid={this.props.uid}
+              userData={this.props.userData}
             />
             : <div>
               <h4>Please Sign in</h4>
-              <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
-              <SignUp emailSignup={props.emailSignup} handleChange={props.handleChange} />
+              <SignIn emailSignin={this.props.emailSignin} handleChange={this.props.handleChange} />
+              <SignUp emailSignup={this.props.emailSignup} handleChange={this.props.handleChange} />
             </div>}
         </div>
       </div >
     )
-  
+  }
 }
 
 
