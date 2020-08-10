@@ -3,39 +3,13 @@ import { Link } from 'react-router-dom'
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 import ProviderLp from './ProviderLp'
-import axios from 'axios'
+// import axios from 'axios'
+import Modal from './Modal.js'
 
-class Provider extends React.Component {
+function Provider (props) {
 
-  componentDidMount() {
-    axios.get('/provider').then((res) => {
-      console.log(res)
-    })
-  }
-
-
-  constructor(props) {
-    super(props)
-    this.state = {
-
-    }
-  }
-
-  render() {
     return (
       <div className="main-container" >
-        <div id='navbar'>
-          <Link to='/' className='btn'>
-            Home
-        </Link>
-          <div id='space'>
-          </div>
-          {this.props.user ?
-            <div className='msg'>
-              Signed in as: {this.props.user.displayName || this.props.user.email}
-            </div> : <div />
-          }
-        </div>
         <h1>This is the page for Provider users</h1>
         <div className='main-container'>
           {this.props.user
@@ -46,15 +20,17 @@ class Provider extends React.Component {
             />
             : <div>
               <h4>Please Sign in</h4>
-              <SignIn emailSignin={this.props.emailSignin} handleChange={this.props.handleChange} />
-              <SignUp emailSignup={this.props.emailSignup} handleChange={this.props.handleChange} />
+              <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
+              <h2>Don't Have an Account?</h2>
+              <button onClick={props.toggleModal}>Sign Up</button>
+              {props.modalDisplay && <Modal show={props.modalDisplay} handleClose={props.handleClose} emailSignup={props.emailSignup} handleChange={props.handleChange} />}
             </div>}
         </div>
       </div >
     )
   }
 
-}
+
 
 
 export default Provider;
