@@ -16,6 +16,22 @@ import { fireData } from './assets/firebaseConfig';
 
 class App extends React.Component {
 
+  handleClose = () => {
+    this.setState(() => {
+      return {
+        modalDisplay: false,
+      };
+    });
+  };
+
+  showModal = () => {
+    this.setState(() => {
+      return {
+        modalDisplay: true,
+      }
+    })
+  }
+
     //gets user data from database and sets it in state
     componentDidMount() {
       if (this.state.user) {
@@ -103,7 +119,8 @@ class App extends React.Component {
       newEmail: '',
       newPassword: '',
       uid: '',
-      userData: ''
+      userData: '',
+      modalDisplay: false
     }
   }
 
@@ -115,7 +132,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path ='/vsac-user' render={ () => (< Vsac signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData}/>)} />
-          <Route path ='/provider-user' render={ () => (< Provider signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} emailSignup={this.emailSignup} />)} />
+          <Route path ='/provider-user' render={ () => (< Provider handleClose={this.handleClose} signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} modalDisplay={this.state.modalDisplay} emailSignup={this.emailSignup} toggleModal={this.showModal} />)} />
           <Route path='/database' component={Dbpage} />
           <Route component={ErrorPage} />
         </Switch>

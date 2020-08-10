@@ -7,6 +7,7 @@ import SignUp from './SignUp'
 import SignIn from './SignIn'
 import ProviderLp from './ProviderLp'
 // import axios from 'axios'
+import Modal from './Modal.js'
 
 function Provider (props) {
 
@@ -16,18 +17,6 @@ function Provider (props) {
     // console.log(this.state.user)
     return (
       <div className="main-container" >
-        <div id='navbar'>
-          <Link to='/' className='btn'>
-            Home
-        </Link>
-          <div id='space'>
-          </div>
-          {props.user ?
-            <div className='msg'>
-              Signed in as: {props.user.displayName || props.user.email}
-            </div> : <div />
-          }
-        </div>
         <h1>This is the page for Provider users</h1>
         <div className='main-container'>
           {props.user
@@ -39,7 +28,9 @@ function Provider (props) {
             : <div>
               <h4>Please Sign in</h4>
               <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
-              <SignUp emailSignup={props.emailSignup} handleChange={props.handleChange} />
+              <h2>Don't Have an Account?</h2>
+              <button onClick={props.toggleModal}>Sign Up</button>
+              {props.modalDisplay && <Modal show={props.modalDisplay} handleClose={props.handleClose} emailSignup={props.emailSignup} />}
             </div>}
         </div>
       </div >
