@@ -9,7 +9,7 @@ function SignIn(props) {
                     <input 
                     type='text'
                     name='email' 
-                    id='new-email' 
+                    id='signin-email' 
                     value={props.email}
                     onChange={props.handleChange} />
                 </label>
@@ -17,7 +17,7 @@ function SignIn(props) {
                     <input 
                     type='password'
                     name='password' 
-                    id='new-password'
+                    id='signin-password'
                     value={props.password}
                     onChange={props.handleChange}  
                     />
