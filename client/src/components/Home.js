@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+
 class Home extends React.Component {
 
   constructor(props) {
@@ -12,20 +13,31 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/home').then((res) => {
-      console.log(res)
+    axios.get('/home').then((res) =>  {
+      this.setState({
+        programs: res.data
+      })
     })
+
+
+
   }
+
+
 
   render() {
     return (
       <div className="main-container" >
-        <h1>Please Log in as a VSAC User or a Provider</h1>
+        <h1>List of Non-Degree and Training Programs</h1>
         <div id='links'>
 
         </div>
         <div id='db-info-container'>
-          Placeholder for DB info
+          {/* <table id="programTable">
+            <tr class="header">
+              <th style={{width: 10%}}>Provider</th>
+            </tr>
+          </table> */}
         </div>
       </div>
     );

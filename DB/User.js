@@ -29,10 +29,10 @@ const userSchema = new mongoose.Schema({
         type: String, required: true
     },
     pell: {
-        type: Boolean, required: true
+        type: String, required: true
     },
-    VTGrant: {
-        type: Boolean, required: true
+    VTGrant:{
+        type: String, required: true
     },
     startDate: {
         type: Date, required: true

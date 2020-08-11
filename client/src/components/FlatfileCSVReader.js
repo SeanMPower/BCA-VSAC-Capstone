@@ -59,13 +59,13 @@ const flatfileConfig = {
             label: "Pell Grant Eligible?",
             key: "pell",
             description: "Is this Program/Course Eligible for a Pell Grant?",
-            validators: [{validate: "required"}, {validate: "regex_matches", regex: "(true|false|True|False)", error: "Must be true or false"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "(Yes|yes|No|no)", error: "Must be yes or no"}]
         },
         {
             label: "VT Grant Eligible?",
             key: "VTGrant",
             description: "Is this Program/Course Eligible for a VT Grant?",
-            validators: [{validate: "required"}, {validate: "regex_matches", regex: "(true|false|True|False)", error: "Must be true or false"}]
+            validators: [{validate: "required"}, {validate: "regex_matches", regex: "(Yes|yes|No|no)", error: "Must be yes or no"}]
         },
         {
             label: "Program Start Date",
