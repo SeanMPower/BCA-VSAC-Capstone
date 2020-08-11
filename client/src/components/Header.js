@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 let providerName = 'Provider User'
 
 function Header(props) {
+console.log(props.email)
   return (
-
+<>
     <div id="header">
+      <div id='navbar'>
       <a href='https://www.vsac.org/'>
         <img className="logo" src={Logo} title="VSAC logo" alt="VSAC logo" />
       </a>
-      <div id='navbar'>
         <Link to='/' className='btn'>
             Home
         </Link>
@@ -23,17 +24,23 @@ function Header(props) {
         </Link>
         <div id='space'>
         </div>
-        {props.user ?
+        {props.signedIn ?
         <div className='msg'>
-          Signed in as: {props.user.displayName || props.user.email}
-        </div> : <div />
-  }
-        </div>
-        {/* Division Bell Baby */}
-        <div id='navbar'>
+          Signed in as: {props.email}
+          <SignOut signOut={props.signOut}/>
+        </div> : <div />}
         </div>
     </div>
+            <div className='homepage'>
+            </div>
+            </>
   );
 }
 
-export default Header;
+function SignOut(props) {
+  return(
+    <button id='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
+  )
+}
+
+export { Header, SignOut };
