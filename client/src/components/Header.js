@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 let providerName = 'Provider User'
 
 function Header(props) {
-console.log(props.user)
-
+console.log(props.email)
   return (
 <>
     <div id="header">
@@ -25,11 +24,11 @@ console.log(props.user)
         </Link>
         <div id='space'>
         </div>
-        {props.user ?
-  <div className='msg'>
-    Signed in as: {props.user.displayName || props.user.email}
-  </div> : <div />
-}
+        {props.signedIn ?
+        <div className='msg'>
+          Signed in as: {props.email}
+          <SignOut signOut={props.signOut}/>
+        </div> : <div />}
         </div>
     </div>
             <div className='homepage'>
@@ -38,4 +37,10 @@ console.log(props.user)
   );
 }
 
-export default Header;
+function SignOut(props) {
+  return(
+    <button id='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
+  )
+}
+
+export { Header, SignOut };

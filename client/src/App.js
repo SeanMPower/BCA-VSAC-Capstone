@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router'
-import Header from './components/Header.js'
+import { Header, SignOut } from './components/Header.js'
 import Home from './components/Home.js'
 import Vsac from './components/Vsac.js'
 import Provider from './components/Provider.js'
@@ -67,7 +67,7 @@ class App extends React.Component {
       let formPassword = this.state.password
   
       fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
-        this.setState({ user: res.user, uid: res.user.uid })
+        this.setState({ user: res.user, uid: res.user.uid, signedIn: true })
         console.log(res.user.uid)
       })
     }
@@ -85,7 +85,7 @@ class App extends React.Component {
       console.log(newFormPassword)
   
       newFormPassword === confirmFormPassword ? await fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
-        this.setState({ user: res.user })
+        this.setState({ user: res.user, signedIn: true })
       }).catch(error => {
         console.log(error.message)
       })
@@ -102,7 +102,17 @@ class App extends React.Component {
       evt.preventDefault()
   
       fireApp.auth().signOut().then(res => {
-        this.setState({ user: '' })
+        this.setState({
+          user: '',
+          email: '',
+          password: '',
+          newEmail: '',
+          newPassword: '',
+          uid: '',
+          userData: '',
+          modalDisplay: false,
+          signedIn: false
+        })
   
         console.log(res)
       }).catch(error => {
@@ -120,7 +130,8 @@ class App extends React.Component {
       newPassword: '',
       uid: '',
       userData: '',
-      modalDisplay: false
+      modalDisplay: false,
+      signedIn: false
     }
   }
 
@@ -128,7 +139,7 @@ class App extends React.Component {
     // console.log(authApp)
     return (
       <div className="App" >
-        <Header />
+        <Header signedIn={this.state.signedIn} email={this.state.email} signOut={this.signOut}/>
         <div className='homepage'></div>
         <Switch>
           <Route exact path='/' component={Home} />
