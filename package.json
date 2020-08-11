@@ -17,7 +17,9 @@
     "firebase": "^7.17.1",
     "flatfile-csv-importer": "^0.2.13",
     "mongodb": "^3.5.9",
-    "mongoose": "^5.9.26"
+    "mongoose": "^5.9.26",
+    "react-table": "^7.5.0",
+    "react-table-v6": "^6.8.6"
   },
   "devDependencies": {},
   "scripts": {

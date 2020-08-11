@@ -25,9 +25,9 @@ route.get("/home", async (req, res) => {
     Provider.find({})
 })
 
-route.get("/provider", async (req, res) => {
-    console.log(req.data.uid)
-    Provider.find({uid: req.data.uid})
+route.get('/provider/:uid', async (req, res) => {
+  console.log(req.params)
+  Provider.find({uid: req.params.uid}).then((data) => {return res.json(data)})
 })
 
 route.post("/", async (req, res) => {
