@@ -135,13 +135,13 @@ a{
   justify-content: space-around;
 }
 
-#db-info-container{
+/* #db-info-container{
   height: 40vh;
-  width: 80vw;
+  width: 80%;
   border: 1px solid black;
   margin-left: 10vw;
   margin-bottom: 4vw;
-}
+} */
 
 .button {
   background-color: #cddb28;
@@ -159,7 +159,7 @@ a{
   margin-top: 10px;
   padding: 1.5em;
   box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
-  width: 45vw;
+  width: 80vw;
   min-height: 25vw;
 }
 
