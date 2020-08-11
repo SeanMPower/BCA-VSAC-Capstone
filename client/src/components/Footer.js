@@ -29,6 +29,7 @@ const myStyle = {
 
 function Footer(props) {
   return (
+    <>
     <div id="footer" style={myStyle}>
         <div id='container'>
       <div id="footer-top">
@@ -72,6 +73,7 @@ function Footer(props) {
       <hr id='hr'></hr>
       <div id='copyright'>© 2020 All Rights Reserved</div>
     </div>
+    </>
   );
 }
 
