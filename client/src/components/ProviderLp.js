@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import CSVReader from './FlatfileCSVReader'
 import axios from 'axios'
+import ReactTable from "react-table-v6"
+import "react-table-v6/react-table.css"
+
 
 class ProviderLp extends React.Component {
 
@@ -21,9 +24,84 @@ class ProviderLp extends React.Component {
     })
   }
 
+  displayPrograms = (programs) => {
+    if (!programs.length) return null;
+
+    return programs.map((program, index) =>
+      <div key={index}>
+        <h3>{program.providerName}</h3>
+        <p>{program.program}</p>
+      </div>
+    )
+  };
+
   render() {
 
     console.log(this.props.userData)
+
+    const columns = [
+      {
+        Header: "Institution",
+        accessor: "providerName"
+      },
+      {
+        Header: "Program",
+        accessor: "program"
+      },
+      {
+        Header: "Institution Link",
+        accessor: "providerLink"
+      },
+      {
+        Header: "Modality",
+        accessor: "modality"
+      },
+      {
+        Header: "Price",
+        accessor: "price"
+      },
+      {
+        Header: "State",
+        accessor: "state"
+      },
+      {
+        Header: "Region",
+        accessor: "region"
+      },
+      {
+        Header: "Start Date",
+        accessor: "startDate"
+      },
+      {
+        Header: "End Date",
+        accessor: "endDate"
+      },
+      {
+        Header: "Certification",
+        accessor: "certification"
+      },
+      {
+        Header: "VT Grant",
+        accessor: "VTGrant"
+      },
+      {
+        Header: "Pell Grant",
+        accessor: "pell"
+      },
+      {
+        Header: "Record Created By",
+        accessor: "recordCreatedBy"
+      },
+      {
+        Header: "Record Last Updated",
+        accessor: "lastUpdate"
+      },
+      {
+        Header: "Contact Email",
+        accessor: "contactEmail"
+      },
+    ]
+
     return (
       <div>{this.props.userData && this.props.userData.role === "user"
         ? <div>
@@ -34,9 +112,18 @@ class ProviderLp extends React.Component {
             <p>Click Here to Download Template</p>
           </a>
           <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
-          <div id='db-info-container'>
+          {/* <div id='db-info-container'>
+            {this.displayPrograms(this.state.programs)}
             Placeholder for DB info
-        </div>
+        </div> */}
+
+          <ReactTable
+            columns={columns}
+            data={this.state.programs}>
+            {/* sortable: true
+            filterable: true */}
+
+          </ReactTable>
         </div>
         :
         <div>
