@@ -14,7 +14,7 @@ function Provider (props) {
     return (
       <div className="main-container" >
         <h1>This is the page for Provider users</h1>
-        <div className='main-container'>
+        <div className='content'>
           {props.user
             ? <ProviderLp user={props.user}
               signOut={props.signOut}

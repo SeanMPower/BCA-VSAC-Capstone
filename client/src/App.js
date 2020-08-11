@@ -129,6 +129,7 @@ class App extends React.Component {
     return (
       <div className="App" >
         <Header />
+        <div className='homepage'></div>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path ='/vsac-user' render={ () => (< Vsac signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData}/>)} />
@@ -136,6 +137,7 @@ class App extends React.Component {
           <Route path='/database' component={Dbpage} />
           <Route component={ErrorPage} />
         </Switch>
+        <div id='page'></div>
         <Footer />
       </div>
     );
