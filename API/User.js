@@ -6,6 +6,7 @@ const route = express.Router();
 const bodyParser = require("body-parser");
 let db = mongoose.connection;
 let collection = db.collection('providers');
+const ObjectId = require("mongodb").ObjectId
 
 route.use(bodyParser.json());
 
@@ -22,12 +23,22 @@ route.get("/", (req, res) => {
 
 
 route.get("/home", async (req, res) => {
-    Provider.find({})
+  Provider.find({})
 })
 
 route.get('/provider/:uid', async (req, res) => {
   console.log(req.params)
-  Provider.find({uid: req.params.uid}).then((data) => {return res.json(data)})
+  Provider.find({ uid: req.params.uid }).then((data) => { return res.json(data) })
+})
+
+route.get('/delete/:_id', async (req, res) => {
+  let objId = new ObjectId(req.params._id)
+
+  Provider.deleteOne({ _id: objId }, (error) => {
+    console.log(error)
+  })
+  console.log(JSON.stringify(req.params._id))
+  console.log("This record has been deleted from the Database")
 })
 
 route.post("/", async (req, res) => {
@@ -43,13 +54,13 @@ route.post("/", async (req, res) => {
     });
   }
 
- Provider.insertMany(programsArr, function (err, docs) {
-     if (err) {
-         res.send(`Failed to upload, error: ${err.message}`)
-    }  else {
-        console.log("Multiple documents inserted to Collection!")
+  Provider.insertMany(programsArr, function (err, docs) {
+    if (err) {
+      res.send(`Failed to upload, error: ${err.message}`)
+    } else {
+      console.log("Multiple documents inserted to Collection!")
     }
- })
+  })
 
 });
 

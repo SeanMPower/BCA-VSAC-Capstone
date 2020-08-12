@@ -112,6 +112,7 @@ class App extends React.Component {
           userData: '',
           modalDisplay: false,
           signedIn: false
+        
         })
   
         console.log(res)
