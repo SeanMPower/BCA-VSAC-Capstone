@@ -20,7 +20,7 @@ function Vsac (props) {
               userData={props.userData}
             />
             : <div>
-              <h2>Please Sign in with Email and Password</h2>
+              <h3>Please Sign in with Email and Password</h3>
               <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
             </div>}
         </div>

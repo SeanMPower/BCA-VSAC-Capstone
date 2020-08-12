@@ -25,10 +25,10 @@ console.log(props.email)
         <div id='space'>
         </div>
         {props.signedIn ?
+        <>
         <div className='msg'>
-          Signed in as: {props.email}
-          <SignOut signOut={props.signOut}/>
-        </div> : <div />}
+          Signed in as: {props.user.displayName || props.email}
+        </div><div className='signout-container'><SignOut signOut={props.signOut}/></div></> : <div />}
         </div>
     </div>
             <div className='homepage'>

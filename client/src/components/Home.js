@@ -21,11 +21,7 @@ class Home extends React.Component {
         programs: res.data
       })
     })
-
-
-
   }
-
 
 
   render() {

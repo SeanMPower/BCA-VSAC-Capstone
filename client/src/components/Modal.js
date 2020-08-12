@@ -13,6 +13,7 @@ function Modal (props) {
               +
             </div>
             <SignUp
+              errorMessage={props.errorMessage}
               emailSignup={props.emailSignup}
               handleChange={props.handleChange}
             />

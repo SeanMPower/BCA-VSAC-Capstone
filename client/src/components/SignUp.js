@@ -3,10 +3,25 @@ import React from 'react';
 function SignUp(props) {
     return (
         <div className='container'>
-            <h4>Don't have an account yet?</h4>
             <div className='form-container'>
             <h4>Sign Up:</h4>
             <form id="signup-form" onSubmit={props.emailSignup}>
+                <label className='firstName'> First Name:
+                    <input
+                        type='text'
+                        name='newFirstname'
+                        id='new-firstname'
+                        value={props.newFirstname}
+                        onChange={props.handleChange} />
+                </label>
+                <label className='lastName'> Last Name:
+                    <input
+                        type='text'
+                        name='newLastname'
+                        id='new-lastname'
+                        value={props.newLastname}
+                        onChange={props.handleChange} />
+                </label>
                 <label className='email'> Email:
                     <input
                         type='text'
@@ -35,6 +50,7 @@ function SignUp(props) {
                 </label>
                 <input type='submit' value='Submit' className='submit' />
             </form>
+    <div className='err'>{props.errorMessage}</div>
             </div>
         </div>
     )

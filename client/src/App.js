@@ -16,24 +16,18 @@ import { fireData } from './assets/firebaseConfig';
 
 class App extends React.Component {
 
-  handleClose = () => {
-    this.setState(() => {
+  toggleModal = () => {
+    this.setState(prevState => {
       return {
-        modalDisplay: false,
-      };
-    });
-  };
-
-  showModal = () => {
-    this.setState(() => {
-      return {
-        modalDisplay: true,
+        modalDisplay: !prevState.modalDisplay,
+        error: ''
       }
     })
   }
 
     //gets user data from database and sets it in state
     componentDidMount() {
+      console.log(this.state.user)
       if (this.state.user) {
         fireData.ref('/users/' + this.state.user.uid).once('value', (data) => {
           this.setState({
@@ -56,7 +50,7 @@ class App extends React.Component {
 
     handleChange = (evt) => {
       this.setState({ [evt.target.name]: evt.target.value });
-      console.log(evt.target.value)
+      // console.log(evt.target.value)
     }
   
     //Signing in with email and password
@@ -67,8 +61,10 @@ class App extends React.Component {
       let formPassword = this.state.password
   
       fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
-        this.setState({ user: res.user, uid: res.user.uid, signedIn: true })
+        this.setState({ user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
         console.log(res.user.uid)
+      }).catch(error => {
+        this.setState({error: error.message})
       })
     }
   
@@ -76,7 +72,8 @@ class App extends React.Component {
     emailSignup = async (evt) => {
       evt.preventDefault()
   
-      let newFormName = this.state.name
+      let newFormName = this.state.newFirstname
+      let newFormLastName = this.state.newLastname
       let newFormEmail = this.state.newEmail
       let newFormPassword = this.state.newPassword
       let confirmFormPassword = this.state.confirmPassword
@@ -87,12 +84,14 @@ class App extends React.Component {
       newFormPassword === confirmFormPassword ? await fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
         this.setState({ user: res.user, signedIn: true })
       }).catch(error => {
-        console.log(error.message)
+        this.setState({error: error.message})
       })
-        : alert("Passwords must match!");
+        : alert("Passwords must match!")
   
       fireData.ref('/users/' + this.state.user.uid).set({role: "user"}).then(res => {
+        // this.setState(res)
         this.setState({userData: {role: "user"}})
+        // user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
         console.log(res)
       })
       
@@ -103,6 +102,10 @@ class App extends React.Component {
   
       fireApp.auth().signOut().then(res => {
         this.setState({
+          newFirstname: '',
+          newLastname: '',
+          firstName: '',
+          lastName: '',
           user: '',
           email: '',
           password: '',
@@ -111,18 +114,23 @@ class App extends React.Component {
           uid: '',
           userData: '',
           modalDisplay: false,
-          signedIn: false
+          signedIn: false,
+          error: ''
         })
   
         console.log(res)
       }).catch(error => {
-        console.log(error.message)
+        this.setState({error: error.message})
       })
     }
 
   constructor(props) {
     super(props)
     this.state = {
+      newFirstname: '',
+      newLastname: '',
+      firstName: '',
+      lastName: '',
       user: '',
       email: '',
       password: '',
@@ -131,20 +139,20 @@ class App extends React.Component {
       uid: '',
       userData: '',
       modalDisplay: false,
-      signedIn: false
+      signedIn: false,
+      error: ''
     }
   }
 
   render() {
-    // console.log(authApp)
     return (
       <div className="App" >
-        <Header signedIn={this.state.signedIn} email={this.state.email} signOut={this.signOut}/>
+        <Header signedIn={this.state.signedIn} email={this.state.email} signOut={this.signOut} user={this.state.user}/>
         <div className='homepage'></div>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path ='/vsac-user' render={ () => (< Vsac signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData}/>)} />
-          <Route path ='/provider-user' render={ () => (< Provider handleClose={this.handleClose} signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} modalDisplay={this.state.modalDisplay} emailSignup={this.emailSignup} toggleModal={this.showModal} />)} />
+          <Route path ='/provider-user' render={ () => (< Provider errorMessage={this.state.error} handleClose={this.toggleModal} signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} modalDisplay={this.state.modalDisplay} emailSignup={this.emailSignup} toggleModal={this.toggleModal} />)} />
           <Route path='/database' component={Dbpage} />
           <Route component={ErrorPage} />
         </Switch>
