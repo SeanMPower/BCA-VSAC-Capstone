@@ -12,6 +12,7 @@ class ProviderLp extends React.Component {
     super(props)
     this.state = {
       programs: [] || "There is no data to display yet"
+
     }
   }
 
@@ -34,6 +35,12 @@ class ProviderLp extends React.Component {
       </div>
     )
   };
+
+  deleteRow = (index) => {
+    let copyPrograms = [...this.state.programs]
+    copyPrograms.splice(index,1)
+    this.setState({programs:copyPrograms})
+  }
 
   render() {
 
@@ -100,6 +107,25 @@ class ProviderLp extends React.Component {
         Header: "Contact Email",
         accessor: "contactEmail"
       },
+      {
+        Header: "Actions",
+        Cell: props => {
+          return(
+            <button className="delete-button" onClick={() => {
+              console.log("props", props)
+              console.log("props", props.index)
+              axios.get(`/user/delete/${this.state.programs[props.index]._id}`)
+              this.deleteRow(props.index)
+              
+            }} >Delete</button>
+          )
+        },
+        sortable: false,
+        filterable: false,
+        width: 100,
+        maxWidth: 100,
+        minWidth: 100
+      }
     ]
 
     return (
@@ -116,14 +142,17 @@ class ProviderLp extends React.Component {
             {this.displayPrograms(this.state.programs)}
             Placeholder for DB info
         </div> */}
+          <div id='db-info-container'>
+            <ReactTable
+              columns={columns}
+              data={this.state.programs}
+              sortable
+              filterable
+              noDataText={"No Data To Display Yet"}
+            >
 
-          <ReactTable
-            columns={columns}
-            data={this.state.programs}>
-            {/* sortable: true
-            filterable: true */}
-
-          </ReactTable>
+            </ReactTable>
+          </div>
         </div>
         :
         <div>
