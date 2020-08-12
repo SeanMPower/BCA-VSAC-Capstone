@@ -39,34 +39,6 @@ class Home extends React.Component {
         accessor: "program"
       },
       {
-        Header: "Certification/Credential",
-        accessor: "certification"
-      },
-      {
-        Header: "State",
-        accessor: "state"
-      },
-      {
-        Header: "County",
-        accessor: "region"
-      },
-      {
-        Header: "Modality",
-        accessor: "modality"
-      },
-      {
-        Header: "Cost",
-        accessor: "price"
-      },
-      {
-        Header: "Pell Grant Eligible?",
-        accessor: "pell"
-      },
-      {
-        Header: "VT Grant Eligibile?",
-        accessor: "VTGrant"
-      },
-      {
         Header: "Start Date",
         accessor: "startDate"
       },
@@ -75,20 +47,8 @@ class Home extends React.Component {
         accessor: "endDate"
       },
       {
-        Header: "Website",
-        accessor: "providerLink"
-      },
-      {
-        Header: "Contact Email",
-        accessor: "contactEmail"
-      },
-      {
-        Header: "Record Created By",
-        accessor: "recordCreatedBy"
-      },
-      {
-        Header: "Last Updated",
-        accessor: "lastUpdate"
+        Header: "Cost",
+        accessor: "price"
       }
     ]
 

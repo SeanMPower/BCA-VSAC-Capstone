@@ -35,10 +35,10 @@ const userSchema = new mongoose.Schema({
         type: String, required: true
     },
     startDate: {
-        type: Date, required: true
+        type: String, required: true
     },
     endDate: {
-        type: Date, require: true
+        type: String, require: true
     },
     providerLink: {
         type: String, required: true

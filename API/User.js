@@ -30,6 +30,10 @@ route.get('/provider/:uid', async (req, res) => {
   Provider.find({uid: req.params.uid}).then((data) => {return res.json(data)})
 })
 
+route.get('/delete/:_id', async (req, res) => {
+  
+})
+
 route.post("/", async (req, res) => {
 
   let programs = req.body.data;

@@ -2,7 +2,6 @@ import React from "react";
 import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
-let providerName = 'Provider User'
 
 function Header(props) {
 console.log(props.email)
@@ -17,10 +16,10 @@ console.log(props.email)
             Home
         </Link>
         <Link to='/vsac-user' className='btn'>
-            VSAC User
+            VSAC Login
         </Link>
         <Link to='/provider-user' className='btn'>
-          {providerName}
+          Provider Login
         </Link>
         <div id='space'>
         </div>
