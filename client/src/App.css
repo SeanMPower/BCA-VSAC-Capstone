@@ -73,15 +73,14 @@ a{
 
 .btn{
   border-radius: 5px;
-  min-width: 150px;
+  min-width: 125px;
 }
 
 .msg{
-  position: absolute;
-  right: 105px;
-  top: 84px;
+  position: relative;
+  right: 80px;
   text-transform: none;
-  max-width: 300px;
+  min-width: 300px;
 }
 
 #space{
@@ -183,15 +182,9 @@ a{
   margin-top: -20px
 }
 
-#err{
-  margin-top: 15px;
-  height: 15px;
-}
-
 .err{
   margin-top: 15px;
   height: 15px;
-  border: 1px solid black;
 }
 
 /* Section: Sign-In Form */

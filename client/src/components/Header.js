@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 let providerName = 'Provider User'
 
 function Header(props) {
-console.log(props.email)
   return (
 <>
     <div id="header">
@@ -43,4 +42,4 @@ function SignOut(props) {
   )
 }
 
-export { Header, SignOut };
+export { Header };

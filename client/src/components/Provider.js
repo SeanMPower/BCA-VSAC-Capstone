@@ -9,12 +9,13 @@ function Provider (props) {
     return (
       <div className="main-container" >
         <div className='content'>
-        <h1>This is the page for Provider users</h1>
+        <h1>This is the page for Providers</h1>
           {props.user
             ? <ProviderLp user={props.user}
               signOut={props.signOut}
               uid={props.uid}
               userData={props.userData}
+              firstName={props.firstName} lastName={props.lastName}
             />
             : <div>
               <h3>Please Sign in with Email and Password</h3>

@@ -36,9 +36,6 @@ class ProviderLp extends React.Component {
   };
 
   render() {
-
-    console.log(this.props.userData)
-
     const columns = [
       {
         Header: "Institution",
@@ -105,7 +102,7 @@ class ProviderLp extends React.Component {
     return (
       <div>{this.props.userData && this.props.userData.role === "user"
         ? <div>
-          <h1>Hello, {this.props.user.displayName || this.props.user.email}</h1>
+          <h1>Hello, {this.props.firstName + ' ' + this.props.lastName || this.props.user.email}</h1>
           <CSVReader uid={this.props.uid} id='csv-button' />
           <a id="download-template" href="./provider_template.csv"
             download>

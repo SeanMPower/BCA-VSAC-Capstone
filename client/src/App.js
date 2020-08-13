@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router'
-import { Header, SignOut } from './components/Header.js'
+import { Header } from './components/Header.js'
 import Home from './components/Home.js'
 import Vsac from './components/Vsac.js'
 import Provider from './components/Provider.js'
@@ -10,12 +10,12 @@ import Footer from './components/Footer.js'
 // import authApp from './assets/firebaseConfig.js'
 import Dbpage from './components/Database.js'
 import { fireApp } from './assets/firebaseConfig';
-import { fireAuth } from './assets/firebaseConfig';
 import { fireData } from './assets/firebaseConfig';
 
 
 class App extends React.Component {
 
+//Sets modal display to opposite or prevstate, sets error to none.
   toggleModal = () => {
     this.setState(prevState => {
       return {
@@ -25,7 +25,7 @@ class App extends React.Component {
     })
   }
 
-    //gets user data from database and sets it in state
+    //Gets user data from database and sets it in state
     componentDidMount() {
       console.log(this.state.user)
       if (this.state.user) {
@@ -37,20 +37,22 @@ class App extends React.Component {
       }
     }
   
-    //gets data for users when they sign in
+//gets data for users when they sign in
     async componentDidUpdate() {
       if (this.state.user) {
         let data = await fireData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
+        this.setState({
+          firstName: data.firstName,
+          lastName: data.lastName
+        })
         if (this.state.userData.role !== data.role) {
           this.setState({ userData: data })
-          // console.log(data)
         }
       }
     }
 
     handleChange = (evt) => {
       this.setState({ [evt.target.name]: evt.target.value });
-      // console.log(evt.target.value)
     }
   
     //Signing in with email and password
@@ -88,7 +90,7 @@ class App extends React.Component {
       })
         : alert("Passwords must match!")
   
-      fireData.ref('/users/' + this.state.user.uid).set({role: "user"}).then(res => {
+      fireData.ref('/users/' + this.state.user.uid).set({role: "user", firstName: newFormName, lastName: newFormLastName}).then(res => {
         // this.setState(res)
         this.setState({userData: {role: "user"}})
         // user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
@@ -151,8 +153,8 @@ class App extends React.Component {
         <div className='homepage'></div>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path ='/vsac-user' render={ () => (< Vsac signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData}/>)} />
-          <Route path ='/provider-user' render={ () => (< Provider errorMessage={this.state.error} handleClose={this.toggleModal} signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} modalDisplay={this.state.modalDisplay} emailSignup={this.emailSignup} toggleModal={this.toggleModal} />)} />
+          <Route path ='/vsac-user' render={ () => (< Vsac signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} errorMessage={this.state.error}/>)} />
+          <Route path ='/provider-user' render={ () => (< Provider errorMessage={this.state.error} handleClose={this.toggleModal} signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} modalDisplay={this.state.modalDisplay} emailSignup={this.emailSignup} toggleModal={this.toggleModal} firstName={this.state.firstName} lastName={this.state.lastName} />)} />
           <Route path='/database' component={Dbpage} />
           <Route component={ErrorPage} />
         </Switch>
@@ -160,9 +162,7 @@ class App extends React.Component {
         <Footer />
       </div>
     );
-
   }
-
 }
 
 export default App;
