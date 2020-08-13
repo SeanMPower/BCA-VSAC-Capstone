@@ -90,7 +90,7 @@ class Home extends React.Component {
 
     return (
       <div className="main-container" >
-        <h1>List of Non-Degree and Training Programs</h1>
+        <h1>List of Certificate and Training Programs</h1>
         <div id='links'>
 
         </div>

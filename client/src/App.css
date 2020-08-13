@@ -78,9 +78,9 @@ a{
 
 .msg{
   position: relative;
-  right: 80px;
+  right: 40px;
   text-transform: none;
-  min-width: 300px;
+  min-width: 500px;
 }
 
 #space{
@@ -288,7 +288,7 @@ a{
   cursor: pointer;
 }
 
-#signout-button, .sign-up{
+.signout-button, .sign-up, .submit{
   border: none;
   border-radius: 20px;
   width: 100px;
@@ -299,7 +299,7 @@ a{
   transition: .3s;
 }
 
-#signout-button:hover, .sign-up:hover{
+.signout-button:hover, .sign-up:hover, .submit:hover{
   background: #006877;
   cursor: pointer;
 }

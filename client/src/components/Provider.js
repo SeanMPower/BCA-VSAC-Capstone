@@ -20,7 +20,7 @@ function Provider (props) {
               <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
           <div className='err'>{props.errorMessage}</div>
               <h2>Don't Have an Account?</h2>
-              <button onClick={props.toggleModal}>Sign Up</button>
+              <button onClick={props.toggleModal} className='submit'>Sign Up</button>
               {props.modalDisplay && <Modal
               errorMessage={props.errorMessage} show={props.modalDisplay} handleClose={props.handleClose} emailSignup={props.emailSignup} handleChange={props.handleChange} />}
             </div>}

@@ -74,12 +74,13 @@ class App extends React.Component {
     emailSignup = async (evt) => {
       evt.preventDefault()
   
+      let newFormOrg = this.state.newOrganization
       let newFormName = this.state.newFirstname
       let newFormLastName = this.state.newLastname
       let newFormEmail = this.state.newEmail
       let newFormPassword = this.state.newPassword
       let confirmFormPassword = this.state.confirmPassword
-  
+
       console.log(newFormEmail)
       console.log(newFormPassword)
   

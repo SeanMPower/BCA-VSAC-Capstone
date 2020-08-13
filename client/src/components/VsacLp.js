@@ -7,7 +7,7 @@ function VsacLp(props) {
     <div>{props.userData.role === "admin"
     ? <div>
     <h1>Hello, {props.user.displayName || props.user.email}</h1>
-    <button id='signout-button'type="button" onClick={props.signOut}>Sign Out</button>
+    <button className='signout-button'type="button" onClick={props.signOut}>Sign Out</button>
     <div id='db-info-container'>
         Placeholder for DB info
       </div>
@@ -18,7 +18,7 @@ function VsacLp(props) {
         <p><Link to='/provider-user'>
           Provider User
         </Link></p>
-        <button id='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
+        <button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
       </div>
     }
     </div>
