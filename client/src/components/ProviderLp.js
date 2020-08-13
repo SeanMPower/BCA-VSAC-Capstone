@@ -112,11 +112,8 @@ class ProviderLp extends React.Component {
         Cell: props => {
           return(
             <button className="delete-button" onClick={() => {
-              console.log("props", props)
-              console.log("props", props.index)
               axios.get(`/user/delete/${this.state.programs[props.index]._id}`)
-              this.deleteRow(props.index)
-              
+              this.deleteRow(props.index) 
             }} >Delete</button>
           )
         },
@@ -144,6 +141,7 @@ class ProviderLp extends React.Component {
         </div> */}
           <div id='db-info-container'>
             <ReactTable
+              className="-striped -highlight"
               columns={columns}
               data={this.state.programs}
               sortable

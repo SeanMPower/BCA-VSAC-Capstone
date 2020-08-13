@@ -11,23 +11,11 @@ const ObjectId = require("mongodb").ObjectId
 route.use(bodyParser.json());
 
 //Routes
-route.get("/", (req, res) => {
-  Provider.find({})
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((error) => {
-      console.log("error: we could not process this request");
-    });
-});
-
-
 route.get("/home", async (req, res) => {
   Provider.find({})
 })
 
 route.get('/provider/:uid', async (req, res) => {
-  console.log(req.params)
   Provider.find({ uid: req.params.uid }).then((data) => { return res.json(data) })
 })
 
@@ -37,13 +25,22 @@ route.get('/delete/:_id', async (req, res) => {
   Provider.deleteOne({ _id: objId }, (error) => {
     console.log(error)
   })
-  console.log(JSON.stringify(req.params._id))
   console.log("This record has been deleted from the Database")
 })
 
-route.get('/delete/:_id', async (req, res) => {
-  
+route.get('/program/:_id', async (req, res) => {
+  Provider.find({ uid: req.params._id }).then((data) => { return res.json(data) })
 })
+
+route.get("/", (req, res) => {
+  Provider.find({})
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: we could not process this request");
+    });
+});
 
 route.post("/", async (req, res) => {
 
