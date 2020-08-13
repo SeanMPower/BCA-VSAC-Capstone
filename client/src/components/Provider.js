@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import SignUp from './SignUp'
 import SignIn from './SignIn'
 import ProviderLp from './ProviderLp'
 import Modal from './Modal.js'
