@@ -38,7 +38,7 @@ function Header(props) {
 
 function SignOut(props) {
   return(
-    <button id='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
+    <button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
   )
 }
 

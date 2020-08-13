@@ -15,12 +15,20 @@ import { fireData } from './assets/firebaseConfig';
 
 class App extends React.Component {
 
-//Sets modal display to opposite or prevstate, sets error to none.
+//Sets modal display to opposite of its prevstate, sets error to none. disables scrolling when modal is opened.
   toggleModal = () => {
     this.setState(prevState => {
       return {
         modalDisplay: !prevState.modalDisplay,
         error: ''
+      }
+    }, () => {
+      if (this.state.modalDisplay === true) {
+        this.windowOffset = window.scrollY
+        document.body.setAttribute('style', `position: fixed; top: -${this.windowOffset}px; left: 0; right: 0`)
+      } else {
+        document.body.setAttribute('style', '')
+        window.scrollTo(0, this.windowOffset)
       }
     })
   }
@@ -145,6 +153,7 @@ class App extends React.Component {
       signedIn: false,
       error: ''
     }
+    this.windowOffset = 0
   }
 
   render() {
