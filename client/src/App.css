@@ -29,6 +29,15 @@ a{
 
 @media only screen and (max-width: 1048px) {
   .msg{
+    top: 40px;
+    right: -100px;
+    position: fixed;
+    margin: none;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .msg{
     display: none;
   }
 }
@@ -70,7 +79,6 @@ a{
 
 .btn, .msg {
   margin: auto;
-  height: 50%;
   padding: 10px;
   color: #676767;
   font-weight: 500;

@@ -66,11 +66,12 @@ class App extends React.Component {
     //Signing in with email and password
     emailSignin = (evt) => {
       evt.preventDefault()
-  
+
       let formEmail = this.state.email
       let formPassword = this.state.password
   
       fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
+        console.log(res.user.role)
         this.setState({ user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
         console.log(res.user.uid)
       }).catch(error => {
