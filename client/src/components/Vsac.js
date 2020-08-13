@@ -13,18 +13,17 @@ function Vsac (props) {
       <div className="main-container">
         <div className='content'>
         <h1>This is the page for VSAC users</h1>
-        <div className='main'>
           {props.user
             ? <VsacLp user={props.user}
               signOut={props.signOut}
               userData={props.userData}
             />
             : <div>
-              <h2>Please Sign in with Email and Password</h2>
+              <h3>Please Sign in with Email and Password</h3>
               <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
+              <div className='err'>{props.errorMessage}</div>
             </div>}
         </div>
-      </div>
       </div>
     );
   
