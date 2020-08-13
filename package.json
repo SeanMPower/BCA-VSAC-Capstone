@@ -16,8 +16,10 @@
     "express": "^4.17.1",
     "firebase": "^7.17.1",
     "flatfile-csv-importer": "^0.2.13",
+    "match-sorter": "^4.2.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.26",
+    "react-csv": "^2.0.3",
     "react-table": "^7.5.0",
     "react-table-v6": "^6.8.6"
   },
