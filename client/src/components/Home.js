@@ -5,6 +5,69 @@ import ReactTable from "react-table-v6"
 import "react-table-v6/react-table.css"
 
 
+const columns = [
+  {
+    Header: "Provider",
+    accessor: "providerName"
+  },
+  {
+    Header: "Program",
+    accessor: "program"
+  },
+  {
+    Header: "Certification/Credential",
+    accessor: "certification"
+  },
+  {
+    Header: "State",
+    accessor: "state"
+  },
+  {
+    Header: "County",
+    accessor: "region"
+  },
+  {
+    Header: "Modality",
+    accessor: "modality"
+  },
+  {
+    Header: "Cost",
+    accessor: "price"
+  },
+  {
+    Header: "Pell Grant Eligible?",
+    accessor: "pell"
+  },
+  {
+    Header: "VT Grant Eligibile?",
+    accessor: "VTGrant"
+  },
+  {
+    Header: "Start Date",
+    accessor: "startDate"
+  },
+  {
+    Header: "End Date",
+    accessor: "endDate"
+  },
+  {
+    Header: "Website",
+    accessor: "providerLink"
+  },
+  {
+    Header: "Contact Email",
+    accessor: "contactEmail"
+  },
+  {
+    Header: "Record Created By",
+    accessor: "recordCreatedBy"
+  },
+  {
+    Header: "Last Updated",
+    accessor: "lastUpdate"
+  }
+]
+
 
 class Home extends React.Component {
 
@@ -25,68 +88,7 @@ class Home extends React.Component {
 
 
   render() {
-    const columns = [
-      {
-        Header: "Provider",
-        accessor: "providerName"
-      },
-      {
-        Header: "Program",
-        accessor: "program"
-      },
-      {
-        Header: "Certification/Credential",
-        accessor: "certification"
-      },
-      {
-        Header: "State",
-        accessor: "state"
-      },
-      {
-        Header: "County",
-        accessor: "region"
-      },
-      {
-        Header: "Modality",
-        accessor: "modality"
-      },
-      {
-        Header: "Cost",
-        accessor: "price"
-      },
-      {
-        Header: "Pell Grant Eligible?",
-        accessor: "pell"
-      },
-      {
-        Header: "VT Grant Eligibile?",
-        accessor: "VTGrant"
-      },
-      {
-        Header: "Start Date",
-        accessor: "startDate"
-      },
-      {
-        Header: "End Date",
-        accessor: "endDate"
-      },
-      {
-        Header: "Website",
-        accessor: "providerLink"
-      },
-      {
-        Header: "Contact Email",
-        accessor: "contactEmail"
-      },
-      {
-        Header: "Record Created By",
-        accessor: "recordCreatedBy"
-      },
-      {
-        Header: "Last Updated",
-        accessor: "lastUpdate"
-      }
-    ]
+
 
     return (
       <div className="main-container" >
@@ -98,13 +100,11 @@ class Home extends React.Component {
           <ReactTable
             columns={columns}
             data={this.state.programs}  
-          >
-
-          </ReactTable>
+          />
         </div>
       </div>
     );
   }
 }
 
-export default Home;
+export { Home, columns };

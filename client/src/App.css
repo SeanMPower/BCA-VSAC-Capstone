@@ -30,9 +30,15 @@ a{
 @media only screen and (max-width: 1048px) {
   .msg{
     top: 40px;
-    right: -100px;
+    right: 0;
     position: fixed;
     margin: none;
+  }
+}
+
+@media only screen and (max-width: 721px) {
+  #header .signout-button{
+    display: none;
   }
 }
 
@@ -163,14 +169,6 @@ a{
   margin-bottom: 4vw;
 } */
 
-.button {
-  background-color: #cddb28;
-  border-radius: 5px;
-  height: 30px;
-  width: 150px;
-
-}
-
 /* Section: Sign-in Page */
 
 .content, #db-info-container{
@@ -283,26 +281,40 @@ a{
 
 /* Section: Landing Page */
 
-#csv-button{
-  background-color: #cddb28;
-  height: 120px;
-  width: 500px;
-  font-size: 24px;
-  text-transform: uppercase;
-  border-radius: 20px;
-  border: none;
-  color: #676767;
-  transition: .3s;
-  box-shadow: 5px 10px 8px #888888;
+.vsac-lp .signout-button{
+  margin-top: 12px;
 }
 
-#csv-button:hover{
-  background: #006877;
+.button-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
   color: #ffffff;
-  cursor: pointer;
+  background-color: #701d45;
+  border-radius: 20px;
+  text-transform: uppercase;
+  height: 30px;
+  width: 150px;
+  border: none
 }
 
-.signout-button, .sign-up, .submit{
+#csv-button{
+  background-color: #701d45;
+  height: 100px;
+  width: 400px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: none;
+  color: #ffffff;
+  transition: .3s;
+}
+
+.signout-button, .sign-up, .submit, .download-button{
   border: none;
   border-radius: 20px;
   width: 100px;
@@ -313,9 +325,25 @@ a{
   transition: .3s;
 }
 
-.signout-button:hover, .sign-up:hover, .submit:hover{
+.button-container .signout-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-button{
+  background-color: #701d45;
+  width: 170px;
+  height: 50px;
+  margin-top: 9px;
+  margin-bottom: 5px;
+}
+
+.button:hover, #csv-button:hover, .download-button:hover, .signout-button:hover, .sign-up:hover, .submit:hover{
   background: #006877;
   cursor: pointer;
+  color: #ffffff;
+
 }
 
 /* Section: Footer */

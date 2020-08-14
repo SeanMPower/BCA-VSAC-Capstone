@@ -6,7 +6,7 @@ let providerName = 'Provider User'
 
 function Header(props) {
   return (
-<>
+    <>
     <div id="header">
       <div id='navbar'>
       <a href='https://www.vsac.org/'>

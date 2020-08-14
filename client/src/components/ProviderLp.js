@@ -1,138 +1,158 @@
-import React from 'react';
-import { Link } from 'react-router-dom'
-import CSVReader from './FlatfileCSVReader'
-import axios from 'axios'
-import ReactTable from "react-table-v6"
-import "react-table-v6/react-table.css"
-
+import React from "react";
+import { Link } from "react-router-dom";
+import CSVReader from "./FlatfileCSVReader";
+import axios from "axios";
+import ReactTable from "react-table-v6";
+import "react-table-v6/react-table.css";
 
 class ProviderLp extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      programs: [] || "There is no data to display yet"
-    }
+      programs: [] || "There is no data to display yet",
+    };
   }
 
   componentDidMount() {
     axios.get(`/user/provider/${this.props.uid}`).then((res) => {
       this.setState({
-        programs: res.data
-      })
-      console.log(this.state.programs)
-    })
+        programs: res.data,
+      });
+      console.log(this.state.programs);
+    });
   }
 
   displayPrograms = (programs) => {
     if (!programs.length) return null;
 
-    return programs.map((program, index) =>
+    return programs.map((program, index) => (
       <div key={index}>
         <h3>{program.providerName}</h3>
         <p>{program.program}</p>
       </div>
-    )
+    ));
   };
 
   render() {
     const columns = [
       {
         Header: "Institution",
-        accessor: "providerName"
+        accessor: "providerName",
       },
       {
         Header: "Program",
-        accessor: "program"
+        accessor: "program",
       },
       {
         Header: "Institution Link",
-        accessor: "providerLink"
+        accessor: "providerLink",
       },
       {
         Header: "Modality",
-        accessor: "modality"
+        accessor: "modality",
       },
       {
         Header: "Price",
-        accessor: "price"
+        accessor: "price",
       },
       {
         Header: "State",
-        accessor: "state"
+        accessor: "state",
       },
       {
         Header: "Region",
-        accessor: "region"
+        accessor: "region",
       },
       {
         Header: "Start Date",
-        accessor: "startDate"
+        accessor: "startDate",
       },
       {
         Header: "End Date",
-        accessor: "endDate"
+        accessor: "endDate",
       },
       {
         Header: "Certification",
-        accessor: "certification"
+        accessor: "certification",
       },
       {
         Header: "VT Grant",
-        accessor: "VTGrant"
+        accessor: "VTGrant",
       },
       {
         Header: "Pell Grant",
-        accessor: "pell"
+        accessor: "pell",
       },
       {
         Header: "Record Created By",
-        accessor: "recordCreatedBy"
+        accessor: "recordCreatedBy",
       },
       {
         Header: "Record Last Updated",
-        accessor: "lastUpdate"
+        accessor: "lastUpdate",
       },
       {
         Header: "Contact Email",
-        accessor: "contactEmail"
+        accessor: "contactEmail",
       },
-    ]
+    ];
 
     return (
-      <div>{this.props.userData && this.props.userData.role === "user"
-        ? <div>
-          {this.props.firstName === undefined || this.props.lastName === undefined ? <h1>Hello, {this.props.user.email}</h1> : <h1>Hello, {this.props.firstName + ' ' + this.props.lastName || this.props.user.email}</h1>}
-          <CSVReader uid={this.props.uid} id='csv-button' />
-          <a id="download-template" href="./provider_template.csv"
-            download>
-            <p>Click Here to Download Template</p>
-          </a>
-          <button className='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
-          {/* <div id='db-info-container'>
+      <div>
+        {this.props.userData && this.props.userData.role === "user" ? (
+          <div>
+            {this.props.firstName === undefined ||
+            this.props.lastName === undefined ? (
+              <h3>Hello, {this.props.user.email}</h3>
+            ) : (
+              <h1>
+                Hello,{" "}
+                {this.props.firstName + " " + this.props.lastName ||
+                  this.props.user.email}
+              </h1>
+            )}
+            <CSVReader uid={this.props.uid} id="csv-button" />
+            <div className="button-container">
+              <a id="download-template" href="./provider_template.csv" download>
+                <button className="download-button">
+                  Click Here to Download Template
+                </button>
+              </a>
+              <button
+                className="signout-button"
+                type="button"
+                onClick={this.props.signOut}
+              >
+                Sign Out
+              </button>
+            </div>
+            {/* <div id='db-info-container'>
             {this.displayPrograms(this.state.programs)}
             Placeholder for DB info
         </div> */}
 
-          <ReactTable
-            columns={columns}
-            data={this.state.programs}>
-            {/* sortable: true
+            <ReactTable columns={columns} data={this.state.programs}>
+              {/* sortable: true
             filterable: true */}
-
-          </ReactTable>
-        </div>
-        :
-        <div>
-          <p>Please sign in on the VSAC page</p>
-          <p><Link to='/vsac-user'>
-            VSAC User
-        </Link></p>
-          <button className='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
-        </div>
-      }
+            </ReactTable>
+          </div>
+        ) : (
+          <div className="button-container">
+            <p>Please sign in on the VSAC page</p>
+            <p>
+              <Link to="/vsac-user">VSAC User</Link>
+            </p>
+            <button
+              className="signout-button"
+              type="button"
+              onClick={this.props.signOut}
+            >
+              Sign Out
+            </button>
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 

@@ -1,29 +1,53 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-//welcome function
+import { Link } from 'react-router-dom';
+import { columns } from './Home.js';
+import ReactTable from "react-table-v6"
+import "react-table-v6/react-table.css"
+import axios from 'axios'
 
-function VsacLp(props) {
+
+export default class VsacLp extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      programs: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/home').then((res) =>  {
+      this.setState({
+        programs: res.data
+      })
+    })
+  }
+
+render() {
   return (
-    <div>{props.userData.role === "admin"
+// Displays welcome message & table if admin, else prompts user to sign from Provider Login
+    <div>{this.props.userData.role === "admin"
     ? <div>
-    <h1>Hello, {props.user.displayName || props.user.email}</h1>
-    <button className='signout-button'type="button" onClick={props.signOut}>Sign Out</button>
+    <h1>Hello, {this.props.user.displayName || this.props.user.email}</h1>
+    <button className='signout-button'type="button" onClick={this.props.signOut}>Sign Out</button>
     <div id='db-info-container'>
-        Placeholder for DB info
+    <ReactTable
+            columns={columns}
+            data={this.state.programs}  
+          />
       </div>
   </div>
   : 
-  <div>
+  <div className='vsac-lp'>
         <p>Please sign in on the Provider page</p>
-        <p><Link to='/provider-user'>
-          Provider User
-        </Link></p>
-        <button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
+        <div className='button-container'><Link to='/provider-user'>
+          <button className='button'>Provider User</button>
+        </Link>
+        <button className='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+        </div>
       </div>
     }
     </div>
   )
 }
-
-export default VsacLp;
+}
 

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router'
 import { Header } from './components/Header.js'
-import Home from './components/Home.js'
+import { Home } from './components/Home.js'
 import Vsac from './components/Vsac.js'
 import Provider from './components/Provider.js'
 import ErrorPage from './components/ErrorPage.js'
