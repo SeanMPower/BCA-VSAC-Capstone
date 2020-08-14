@@ -39,6 +39,17 @@ route.get("/", (req, res) => {
     });
 });
 
+//need to review with Sean
+route.get("/vsac", (req, res) => {
+  Provider.find({})
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log("error: we could not process this request");
+    });
+});
+
 route.post("/", async (req, res) => {
 
   let programs = req.body.data;
@@ -51,6 +62,22 @@ route.post("/", async (req, res) => {
       ...program,
     });
   }
+
+  //need to review with Sean
+  route.post("/vsac", async (req, res) => {
+
+    let programs = req.body.data;
+    let programsArr = [];
+  
+    for (program of programs) {
+      programsArr.push({
+        uid: req.body.uid,
+        viewable: true,
+        ...program,
+      });
+    }
+
+  
 
   Provider.insertMany(programsArr, function (err, docs) {
     if (err) {
