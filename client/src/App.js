@@ -4,11 +4,10 @@ import { Switch, Route } from 'react-router'
 import { Header } from './components/Header.js'
 import Home from './components/Home.js'
 import Vsac from './components/Vsac.js'
+import ProgramPage from './components/ProgramPage.js'
 import Provider from './components/Provider.js'
 import ErrorPage from './components/ErrorPage.js'
 import Footer from './components/Footer.js'
-// import authApp from './assets/firebaseConfig.js'
-import Dbpage from './components/Database.js'
 import { fireApp } from './assets/firebaseConfig';
 import { fireData } from './assets/firebaseConfig';
 
@@ -27,7 +26,6 @@ class App extends React.Component {
 
     //Gets user data from database and sets it in state
     componentDidMount() {
-      console.log(this.state.user)
       if (this.state.user) {
         fireData.ref('/users/' + this.state.user.uid).once('value', (data) => {
           this.setState({
@@ -155,7 +153,7 @@ class App extends React.Component {
           <Route exact path='/' component={Home} />
           <Route path ='/vsac-user' render={ () => (< Vsac signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} errorMessage={this.state.error}/>)} />
           <Route path ='/provider-user' render={ () => (< Provider errorMessage={this.state.error} handleClose={this.toggleModal} signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} modalDisplay={this.state.modalDisplay} emailSignup={this.emailSignup} toggleModal={this.toggleModal} firstName={this.state.firstName} lastName={this.state.lastName} />)} />
-          <Route path='/database' component={Dbpage} />
+          <Route path='/program/:_id' render={ () => (< ProgramPage />)} />
           <Route component={ErrorPage} />
         </Switch>
         <div id='page'></div>

@@ -11,9 +11,6 @@ const ObjectId = require("mongodb").ObjectId
 route.use(bodyParser.json());
 
 //Routes
-route.get("/home", async (req, res) => {
-  Provider.find({})
-})
 
 route.get('/provider/:uid', async (req, res) => {
   Provider.find({ uid: req.params.uid }).then((data) => { return res.json(data) })
@@ -29,7 +26,7 @@ route.get('/delete/:_id', async (req, res) => {
 })
 
 route.get('/program/:_id', async (req, res) => {
-  Provider.find({ uid: req.params._id }).then((data) => { return res.json(data) })
+  Provider.find({ _id: req.params._id }).then((data) => { return res.json(data) })
 })
 
 route.get("/", (req, res) => {

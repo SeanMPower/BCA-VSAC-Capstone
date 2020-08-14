@@ -1,8 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-// import { fireApp } from '../assets/firebaseConfig';
-// import { fireAuth } from '../assets/firebaseConfig';
-// import { fireData } from '../assets/firebaseConfig';
 import SignIn from './SignIn'
 import VsacLp from './VsacLp'
 

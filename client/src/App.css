@@ -73,7 +73,7 @@ a{
 
 .btn{
   border-radius: 5px;
-  min-width: 125px;
+  min-width: 130px;
 }
 
 .msg{
@@ -131,7 +131,8 @@ a{
   background: url('./img/stripes3.png')
 }
 
-.main-container h1 {
+.main-container h1, h4 {
+  margin: 10px;
   color: #006877;
 }
 
@@ -450,4 +451,32 @@ a{
 .delete-button{
   background-color: red;
   color: #fefefe
+}
+
+/* Section Program Page */
+
+#program-table {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60vw;
+}
+
+.left-side {
+  text-align: end;
+  width: 50%;
+  padding-right: 20px;
+}
+
+.right-side {
+  width: 47%;
+  text-align: start;
+}
+
+.program-content {
+  text-align: center;
+  display: contents;
+}
+
+#program-header {
+  width: 100%;
 }

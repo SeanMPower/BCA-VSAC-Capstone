@@ -4,7 +4,6 @@ import CSVReader from './FlatfileCSVReader'
 import axios from 'axios'
 import ReactTable from "react-table-v6"
 import "react-table-v6/react-table.css"
-import { CSVLink, CSVDownload } from "react-csv";
 import matchSorter from 'match-sorter'
 
 
@@ -42,6 +41,19 @@ class ProviderLp extends React.Component {
     let copyPrograms = [...this.state.programs]
     copyPrograms.splice(index, 1)
     this.setState({ programs: copyPrograms })
+  }
+
+  makePlaceholderFilter(placeholder) {
+    return ({filter, onFilterChange}) => (
+        <input type='text'
+          placeholder={placeholder}
+          style={{
+            width: '100%'
+          }}
+          value={filter ? filter.value : ''}
+          onChange={(event) => onFilterChange(event.target.value)}
+        />
+      )
   }
 
   render() {
@@ -194,7 +206,6 @@ class ProviderLp extends React.Component {
                 String(row[filter.id]) === filter.value}
               noDataText={"No Data To Display Yet"}
               defaultPageSize={10}
-              className="-striped -highlight"
             >
 
             </ReactTable>
