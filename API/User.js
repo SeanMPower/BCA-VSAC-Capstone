@@ -64,18 +64,18 @@ route.post("/", async (req, res) => {
   }
 
   //need to review with Sean
-  route.post("/vsac", async (req, res) => {
+  // route.post("/vsac", async (req, res) => {
 
-    let programs = req.body.data;
-    let programsArr = [];
+  //   let programs = req.body.data;
+  //   let programsArr = [];
   
-    for (program of programs) {
-      programsArr.push({
-        uid: req.body.uid,
-        viewable: true,
-        ...program,
-      });
-    }
+  //   for (program of programs) {
+  //     programsArr.push({
+  //       uid: req.body.uid,
+  //       viewable: true,
+  //       ...program,
+  //     });
+  //   }
 
   
 

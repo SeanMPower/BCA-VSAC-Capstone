@@ -30,7 +30,7 @@ class VsacLp extends React.Component {
     this.setState({ programs: copyPrograms })
   }
 
-render(){
+  render() {
 
     const columns = [
       {
@@ -153,7 +153,7 @@ render(){
           return (
             <button className="delete-button" onClick={() => {
               axios.get(`/user/delete/${this.state.programs[props.index]._id}`)
-              this.deleteRow(props.index) 
+              this.deleteRow(props.index)
             }} >Delete</button>
           )
         },
@@ -165,18 +165,20 @@ render(){
       }
     ]
 
-  return (
-    <div>{this.props.userData.role === "admin"
-    ? <div>
-    <h1>Hello, {this.props.user.displayName || this.props.user.email}</h1>
-    <button id='signout-button'type="button" onClick={this.props.signOut}>Sign Out</button>
-    <div id='db-info-container'>
-    <CSVLink data={this.state.programs}
+    return (
+      <div>{this.props.userData.role === "admin"
+        ? <div>
+          <h1>Hello, {this.props.user.displayName || this.props.user.email}</h1>
+          <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+          <div id='db-info-container'>
+            <div>
+              <CSVLink data={this.state.programs}
                 columns={columns}
                 filename="training-data.csv">
                 Export Data
               </CSVLink>
-    <ReactTable
+            </div>
+            <ReactTable
               className="-striped -highlight"
               columns={columns}
               data={this.state.programs}
@@ -189,20 +191,20 @@ render(){
             >
 
             </ReactTable>
-      </div>
-  </div>
-  : 
-  <div>
-        <p>Please sign in on the Provider page</p>
-        <p><Link to='/provider-user'>
-          Provider User
+          </div>
+        </div>
+        :
+        <div>
+          <p>Please sign in on the Provider page</p>
+          <p><Link to='/provider-user'>
+            Provider User
         </Link></p>
-        <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+          <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+        </div>
+      }
       </div>
-    }
-    </div>
-  )
-}
+    )
+  }
 }
 
 export default VsacLp;
