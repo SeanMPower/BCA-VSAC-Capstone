@@ -4,6 +4,7 @@ import axios from 'axios'
 import ReactTable from "react-table-v6"
 import "react-table-v6/react-table.css"
 import matchSorter from 'match-sorter'
+import { CSVLink } from "react-csv";
 
 class VsacLp extends React.Component {
 
@@ -170,6 +171,11 @@ render(){
     <h1>Hello, {this.props.user.displayName || this.props.user.email}</h1>
     <button id='signout-button'type="button" onClick={this.props.signOut}>Sign Out</button>
     <div id='db-info-container'>
+    <CSVLink data={this.state.programs}
+                columns={columns}
+                filename="training-data.csv">
+                Export Data
+              </CSVLink>
     <ReactTable
               className="-striped -highlight"
               columns={columns}
