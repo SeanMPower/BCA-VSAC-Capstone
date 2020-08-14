@@ -87,13 +87,15 @@ a{
   margin: auto;
   padding: 10px;
   color: #676767;
-  font-weight: 500;
+  font-weight: 350;
   transition: .3s;
 }
 
 .btn{
-  border-radius: 5px;
   min-width: 125px;
+  background-color: #cddb28;
+  color: #676767;
+  border-radius: 5px;
 }
 
 .msg{
@@ -110,8 +112,8 @@ a{
 }
 
 .btn:hover{
-  background: #701d45;
-  color: #ffffff;
+  background: #01535f;
+  color: #cddb28;
   /* box-shadow: 5px 10px 8px #888888; */
 }
 
@@ -172,7 +174,7 @@ a{
 /* Section: Sign-in Page */
 
 .content, #db-info-container{
-  background: #fff;
+  background: #ffffff;
   margin: 0 0 2em;
   margin-top: 10px;
   padding: 1.5em;
@@ -299,7 +301,8 @@ a{
   text-transform: uppercase;
   height: 30px;
   width: 150px;
-  border: none
+  border: none;
+  transition: .3s;
 }
 
 #csv-button{
@@ -340,9 +343,9 @@ a{
 }
 
 .button:hover, #csv-button:hover, .download-button:hover, .signout-button:hover, .sign-up:hover, .submit:hover{
-  background: #006877;
+  background: #015663;
   cursor: pointer;
-  color: #ffffff;
+  color: #cddb28;
 
 }
 

@@ -75,6 +75,15 @@ class App extends React.Component {
         this.setState({ user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
         console.log(res.user.uid)
       }).catch(error => {
+        if (error.message === "The password is invalid or the user does not have a password.") {
+          this.setState({error: "That doesn't seem to be the right password... Please try again or Sign up."})
+        } else if (error.message === "There is no user record corresponding to this identifier. The user may have been deleted.") {
+          this.setState({error: "The email you entered doesn't appear to be in our database... Please try a different email address or Sign up."})
+        } else if (error.message === "The email address is badly formatted.") {
+          this.setState({error: "Please enter a valid email, or Sign up for a new account."})
+        }
+        // console.log(error.message)
+        // console.log(typeof error.message)
         this.setState({error: error.message})
       })
     }
