@@ -22,7 +22,7 @@ function SignIn(props) {
                     onChange={props.handleChange}  
                     />
                 </label>
-                <input type='submit' value='Submit' className='submit' />
+                <input type='submit' value='Log In' className='submit' />
             </form>
             </div>
         </div>

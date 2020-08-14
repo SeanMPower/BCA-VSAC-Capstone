@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { columns } from './Home.js';
 import ReactTable from "react-table-v6"
 import "react-table-v6/react-table.css"
 import axios from 'axios'
@@ -31,7 +30,7 @@ render() {
     <button className='signout-button'type="button" onClick={this.props.signOut}>Sign Out</button>
     <div id='db-info-container'>
     <ReactTable
-            columns={columns}
+            // columns={columns}
             data={this.state.programs}  
           />
       </div>

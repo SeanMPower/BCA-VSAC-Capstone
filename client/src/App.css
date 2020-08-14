@@ -1,16 +1,18 @@
 /* ---------------------------------- style --------------------------------- */
 
-html, body{
+html,
+body {
   height: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 
-main{
+main {
   min-height: 100%;
   margin-bottom: -100px;
   background: #ddd;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -28,7 +30,7 @@ a{
 /* Section: Header */
 
 @media only screen and (max-width: 1048px) {
-  .msg{
+  .msg {
     top: 40px;
     right: 0;
     position: fixed;
@@ -37,25 +39,26 @@ a{
 }
 
 @media only screen and (max-width: 721px) {
-  #header .signout-button{
+  #header .signout-button {
     display: none;
   }
 }
 
 @media only screen and (max-width: 630px) {
-  .msg{
+  .msg {
     display: none;
   }
 }
 
-#header{
+#header {
   display: flex;
   height: 120px;
   width: 100%;
   align-items: flex-start;
+  background: url("./img/stripes3.png");
 }
 
-#header h1{
+#header h1 {
   color: #006877;
   text-align: left;
   font-size: 20px;
@@ -65,7 +68,7 @@ a{
 }
 
 #header .logo {
-  min-width: .45in;
+  min-width: 0.45in;
   width: 171px;
   height: auto;
   margin-left: 15px;
@@ -73,7 +76,7 @@ a{
   z-index: 10;
 }
 
-#navbar{
+#navbar {
   display: flex;
   background: #cddb28;
   height: 40px;
@@ -83,53 +86,56 @@ a{
   max-width: 100vw;
 }
 
-.btn, .msg {
+.btn,
+.msg {
   margin: auto;
   padding: 10px;
   color: #676767;
   font-weight: 350;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.btn{
-  min-width: 125px;
+.btn {
+  min-width: 140px;
   background-color: #cddb28;
-  color: #ffffff;
-  border-radius: 5px;
+  color: #676767;
+  border-radius: .25em;
+  font-weight: 400;
+  border: 1px solid #cddb28;
 }
 
-.msg{
+.msg {
   position: absolute;
   right: 40px;
   text-transform: none;
   min-width: 500px;
 }
 
-#space{
+#space {
   background-color: rgba(0, 0, 0, 0);
   width: 2000px;
   height: 40px;
 }
 
-.btn:hover{
-  background: #01535f;
+.btn:hover {
+  border: 1px solid #676767;
   color: #cddb28;
   /* box-shadow: 5px 10px 8px #888888; */
 }
 
-.signout-container{
+.signout-container {
   position: absolute;
   right: 5px;
   top: 88px;
 }
 
-#temporary-form{
+#temporary-form {
   width: 35%;
   height: 50%;
   margin: auto;
 }
 
-.homepage{
+.homepage {
   margin-top: 123px;
   height: 10px;
   left: 0;
@@ -137,12 +143,16 @@ a{
   position: absolute;
   width: 100%;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, transparent 100%)
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0%,
+    transparent 100%
+  );
 }
 
 /* Section: Home */
 
-.main-container{
+.main-container {
   display: flex;
   max-width: 100%;
   max-height: 75%;
@@ -150,14 +160,16 @@ a{
   align-items: center;
   flex-direction: column;
   margin-top: 10px;
-  background: url('./img/stripes3.png')
+  background: url("./img/stripes3.png");
 }
 
-.main-container h1 {
+.main-container h1,
+h4 {
+  margin: 10px;
   color: #006877;
 }
 
-.main-container #links{
+.main-container #links {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -165,37 +177,69 @@ a{
 
 /* Section: Sign-in Page */
 
-.content, #db-info-container{
+.login-message{
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
+.main-container h2 {
+  color: #2eb198;
+  font-size: 38px;
+  font-weight: 300;
+  text-transform: uppercase;
+  min-width: 260px;
+}
+
+.content .title span {
+  font-weight: 700;
+  color: #006877;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.line {
+  background: #2eb198;
+  height: 3px;
+  width: 85%;
+  margin-top: 50px;
+}
+
+.content,
+#db-info-container {
   background: #ffffff;
   margin: 0 0 2em;
   margin-top: 10px;
   padding: 1.5em;
-  box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
+  box-shadow: 0px 0px 8px 0px rgba(102, 102, 102, 0.5);
   width: 80vw;
   min-height: 25vw;
-  overflow: scroll;
 }
 
-.main{
+.main {
   margin-bottom: -20px;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: -20px
+  margin-top: -20px;
 }
 
-.err{
+.err {
   margin-top: 15px;
   height: 15px;
 }
 
 /* Section: Sign-In Form */
 
-#signin-form, #signup-form{
+#signin-form,
+#signup-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -204,44 +248,43 @@ a{
   margin-top: 50px;
 }
 
-.firstName{
+.firstName {
   margin-top: -30px;
   margin-left: -40px;
 }
 
-.lastName{
+.lastName {
   margin-top: 15px;
   margin-left: -39px;
-
 }
 
-.email{
+.email {
   margin-top: 15px;
 }
 
-.form-container{
+.form-container {
   max-height: 200px;
   max-width: 450px;
   border-radius: 10px;
 }
 
-.password{
+.password {
   margin-top: 15px;
   margin-left: -31px;
 }
 
-.c-password{
+.c-password {
   margin-top: 15px;
   margin-left: -94px;
 }
 
-.submit{
+.submit {
   margin-top: 15px;
 }
 
 /* Section: Modal */
 
-.modal{
+.modal {
   position: fixed;
   z-index: 10;
   top: 50%;
@@ -251,35 +294,35 @@ a{
   width: 90vw;
   height: 85vh;
   background-color: #ffffff;
-  box-shadow: 0px 0px 8px 0px rgba(102,102,102,0.5);
+  box-shadow: 0px 0px 8px 0px rgba(102, 102, 102, 0.5);
   z-index: 2002;
-  background-image: url('./img/stripes3.png');
+  background-image: url("./img/stripes3.png");
 }
 
-.modal-container{
+.modal-container {
   z-index: 2001;
   max-height: 100%;
   max-width: 100%;
-  background: rgba(0, 0, 0, 0.5)
+  background: rgba(0, 0, 0, 0.5);
 }
 
-#close-btn{
+#close-btn {
   transform: rotate(45deg);
   margin-left: 87vw;
   font-size: 25px;
 }
 
-#close-btn:hover{
+#close-btn:hover {
   cursor: pointer;
 }
 
 /* Section: Landing Page */
 
-.vsac-lp .signout-button{
+.vsac-lp .signout-button {
   margin-top: 12px;
 }
 
-.button-container{
+.button-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -288,16 +331,17 @@ a{
 
 .button {
   color: #ffffff;
+  border: 1px solid #006877;
   background-color: #701d45;
-  border-radius: 20px;
+  border-radius: .25rem;
   text-transform: uppercase;
   height: 30px;
   width: 150px;
   border: none;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-#csv-button{
+#csv-button {
   background-color: #701d45;
   height: 100px;
   width: 400px;
@@ -306,27 +350,30 @@ a{
   border-radius: 25px;
   border: none;
   color: #ffffff;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.signout-button, .sign-up, .submit, .download-button{
-  border: none;
-  border-radius: 20px;
+.signout-button,
+.sign-up,
+.submit,
+.download-button {
+  border: 1px solid #006877;
+  border-radius: .25rem;
   width: 100px;
   height: 30px;
-  text-transform: uppercase;
-  background: #701d45;
+  font-weight: 700;
+  background: #006877;
   color: #ffffff;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.button-container .signout-button{
+.button-container .signout-button {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.download-button{
+.download-button {
   background-color: #701d45;
   width: 170px;
   height: 50px;
@@ -334,11 +381,15 @@ a{
   margin-bottom: 5px;
 }
 
-.button:hover, #csv-button:hover, .download-button:hover, .signout-button:hover, .sign-up:hover, .submit:hover{
-  background: #015663;
+.button:hover,
+#csv-button:hover,
+.download-button:hover,
+.signout-button:hover,
+.sign-up:hover,
+.submit:hover {
+  background: rgba(0, 0, 0, 0);
   cursor: pointer;
-  color: #cddb28;
-
+  color: #006877;
 }
 
 /* Section: Footer */
@@ -347,49 +398,51 @@ a{
   height: 10px;
   width: 100%;
   z-index: 10;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
 }
 
-#footer{
+#footer {
   left: 0;
   bottom: 0;
   width: 100%;
   height: 372.42px;
   color: #ffffff;
   overflow: hidden;
-
 }
 
-#footer #container{
+#footer #container {
   padding-right: 30px;
   padding-left: 30px;
   margin-right: auto;
   margin-left: auto;
 }
 
-#footer #footer-top{
+#footer #footer-top {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
 #footer .logo {
-  min-width: .45in;
+  min-width: 0.45in;
   width: 140px;
   height: 74.92px;
   margin-left: 15px;
   margin-top: 50px;
 }
 
-#footer-content{
+#footer-content {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
-
 }
 
-#footer #contact{
+#footer #contact {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -398,35 +451,36 @@ a{
   margin-left: 30px;
 }
 
-#footer #contact .contact{
+#footer #contact .contact {
   width: 200px;
   margin-top: 10px;
   display: flex;
   flex-direction: row;
 }
 
-#footer #contact .icon{
+#footer #contact .icon {
   height: auto;
   width: 30px;
   margin: 0px 0px 0px 0px;
 }
 
-#email, #phone{
+#email,
+#phone {
   margin-left: -8px;
 }
 
-.contact .info{
+.contact .info {
   margin-top: 5px;
   margin-left: 10px;
 }
 
-#footer #social-container{
+#footer #social-container {
   width: 100%;
   display: flex;
   align-self: flex-start;
 }
 
-#footer #social-media{
+#footer #social-media {
   display: flex;
   flex-direction: row;
   width: 200px;
@@ -435,31 +489,31 @@ a{
   margin-left: 80vw;
 }
 
-#footer #social-media .icon{
+#footer #social-media .icon {
   color: #ffffff;
   height: 30px;
   width: 40px;
 }
 
-#footer #social-media .icon:hover{
+#footer #social-media .icon:hover {
   color: #cddb28;
   cursor: pointer;
 }
 
-#footer #footer-bottom{
+#footer #footer-bottom {
   display: flex;
   width: 100%;
   margin-top: 20px;
   margin-left: 20px;
 }
 
-#footer-bottom #text{
+#footer-bottom #text {
   width: 500px;
   display: flex;
-  font-weight: 500
+  font-weight: 500;
 }
 
-#footer #footer-links{
+#footer #footer-links {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -467,20 +521,53 @@ a{
   color: #ffffff;
 }
 
-#footer #footer-links a{
+#footer #footer-links a {
   color: #ffffff;
 }
 
-#footer #footer-links a:hover{
+#footer #footer-links a:hover {
   color: #cddb28;
 }
 
-#hr{
+#hr {
   width: 94vw;
   margin-top: 20px;
 }
 
-#copyright{
+#copyright {
   margin-top: 20px;
   margin-left: 65vw;
+}
+
+.delete-button {
+  background-color: red;
+  color: #fefefe;
+}
+
+/* Section Program Page */
+
+#program-table {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60vw;
+}
+
+.left-side {
+  text-align: end;
+  width: 50%;
+  padding-right: 20px;
+}
+
+.right-side {
+  width: 47%;
+  text-align: start;
+}
+
+.program-content {
+  text-align: center;
+  display: contents;
+}
+
+#program-header {
+  width: 100%;
 }

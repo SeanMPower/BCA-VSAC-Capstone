@@ -2,13 +2,12 @@ import React from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router'
 import { Header } from './components/Header.js'
-import { Home } from './components/Home.js'
+import Home from './components/Home.js'
 import Vsac from './components/Vsac.js'
+import ProgramPage from './components/ProgramPage.js'
 import Provider from './components/Provider.js'
 import ErrorPage from './components/ErrorPage.js'
 import Footer from './components/Footer.js'
-// import authApp from './assets/firebaseConfig.js'
-import Dbpage from './components/Database.js'
 import { fireApp } from './assets/firebaseConfig';
 import { fireData } from './assets/firebaseConfig';
 
@@ -35,7 +34,6 @@ class App extends React.Component {
 
     //Gets user data from database and sets it in state
     componentDidMount() {
-      console.log(this.state.user)
       if (this.state.user) {
         fireData.ref('/users/' + this.state.user.uid).once('value', (data) => {
           this.setState({
@@ -70,24 +68,19 @@ class App extends React.Component {
       let formEmail = this.state.email
       let formPassword = this.state.password
       
-      console.log(formEmail)
-      console.log(window.location.path)
-      
       fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
-        console.log(res.user.role)
         this.setState({ user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
-        console.log(res.user.uid)
       }).catch(error => {
+        console.log(error.message)
         if (error.message === "The password is invalid or the user does not have a password.") {
-          this.setState({error: "That doesn't seem to be the right password... Please try again or Sign up."})
+          this.setState({error: "That doesn't seem to be the right password... Please try again or sign up for an account."})
         } else if (error.message === "There is no user record corresponding to this identifier. The user may have been deleted.") {
           this.setState({error: "The email you entered doesn't appear to be in our database... Please try a different email address or Sign up for an account."})
         } else if (error.message === "The email address is badly formatted.") {
           this.setState({error: "Please enter a valid email, or Sign up for a new account."})
-        }
-        // console.log(error.message)
-        // console.log(typeof error.message)
+        } else {
         this.setState({error: error.message})
+        }
       })
     }
   
@@ -178,7 +171,7 @@ class App extends React.Component {
           <Route exact path='/' component={Home} />
           <Route path ='/vsac-user' render={ () => (< Vsac signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} errorMessage={this.state.error}/>)} />
           <Route path ='/provider-user' render={ () => (< Provider errorMessage={this.state.error} handleClose={this.toggleModal} signOut={this.signOut} emailSignin={this.emailSignin} handleChange={this.handleChange} user = {this.state.user} userData={this.state.userData} uid={this.state.uid} modalDisplay={this.state.modalDisplay} emailSignup={this.emailSignup} toggleModal={this.toggleModal} firstName={this.state.firstName} lastName={this.state.lastName} />)} />
-          <Route path='/database' component={Dbpage} />
+          <Route path='/program/:_id' render={ () => (< ProgramPage />)} />
           <Route component={ErrorPage} />
         </Switch>
         <div id='page'></div>
