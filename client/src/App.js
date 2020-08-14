@@ -69,7 +69,10 @@ class App extends React.Component {
 
       let formEmail = this.state.email
       let formPassword = this.state.password
-  
+      
+      console.log(formEmail)
+      console.log(window.location.path)
+      
       fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
         console.log(res.user.role)
         this.setState({ user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
@@ -78,7 +81,7 @@ class App extends React.Component {
         if (error.message === "The password is invalid or the user does not have a password.") {
           this.setState({error: "That doesn't seem to be the right password... Please try again or Sign up."})
         } else if (error.message === "There is no user record corresponding to this identifier. The user may have been deleted.") {
-          this.setState({error: "The email you entered doesn't appear to be in our database... Please try a different email address or Sign up."})
+          this.setState({error: "The email you entered doesn't appear to be in our database... Please try a different email address or Sign up for an account."})
         } else if (error.message === "The email address is badly formatted.") {
           this.setState({error: "Please enter a valid email, or Sign up for a new account."})
         }

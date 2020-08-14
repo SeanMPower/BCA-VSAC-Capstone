@@ -94,7 +94,7 @@ a{
 .btn{
   min-width: 125px;
   background-color: #cddb28;
-  color: #676767;
+  color: #ffffff;
   border-radius: 5px;
 }
 
@@ -162,14 +162,6 @@ a{
   flex-direction: row;
   justify-content: space-around;
 }
-
-/* #db-info-container{
-  height: 40vh;
-  width: 80%;
-  border: 1px solid black;
-  margin-left: 10vw;
-  margin-bottom: 4vw;
-} */
 
 /* Section: Sign-in Page */
 
