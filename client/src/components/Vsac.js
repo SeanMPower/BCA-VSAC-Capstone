@@ -8,7 +8,7 @@ function Vsac(props) {
       <div className="content">
       <div className="title">
         <div className="line"></div>
-        <h2>VSAC <span>users</span></h2>
+        <h2>VSAC <span>user</span></h2>
         <div className="line"></div>
       </div>
         {props.user ? (

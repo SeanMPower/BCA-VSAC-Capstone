@@ -9,7 +9,7 @@ function Header(props) {
     <div id="header">
       <div id='navbar'>
       <a href='https://www.vsac.org/'>
-        <img className="logo" src={Logo} title="VSAC logo" alt="VSAC logo" />
+        <img className="logo fadeInDown" src={Logo} title="VSAC logo" alt="VSAC logo" />
       </a>
         <Link to='/' className='btn'>
             Home

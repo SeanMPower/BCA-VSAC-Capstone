@@ -37,7 +37,7 @@ render() {
   </div>
   : 
   <div className='vsac-lp'>
-        <p>Please sign in on the Provider page</p>
+        <p>Looks like you have a provider account...<br></br>Please go to the Provider page.</p>
         <div className='button-container'><Link to='/provider-user'>
           <button className='button'>Provider User</button>
         </Link>
