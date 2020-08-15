@@ -186,7 +186,7 @@ class ProviderLp extends React.Component {
           <div>
             {this.props.firstName === undefined ||
             this.props.lastName === undefined ? (
-              <h3>Hello, {this.props.user.email}</h3>
+              <h3 id='welcome-msg'>Hello, {this.props.user.email}</h3>
             ) : (
               <h1>
                 Hello,{" "}
@@ -198,7 +198,7 @@ class ProviderLp extends React.Component {
             <div className="button-container">
               <a id="download-template" href="./provider_template.csv" download>
                 <button className="download-button">
-                  Click Here to Download Template
+                  Download Template
                 </button>
               </a>
               <button

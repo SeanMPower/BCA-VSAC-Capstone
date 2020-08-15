@@ -146,7 +146,7 @@ function CSVReader(props) {
     return (
         <div className="csv-reader">
             <button id="csv-button" uid={props.uid} onClick={() => {launchFlatfile(props.uid)}}>
-                Click Here <br />to Upload CSV File <br />or Manually Input Program Data
+                Upload CSV File or Manually Input Program Data
             </button>
         </div>
     )

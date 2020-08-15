@@ -4,6 +4,8 @@ html,
 body {
   height: 100%;
   font-family: 'Open Sans', sans-serif;
+  max-width: 100%;
+
 }
 
 main {
@@ -29,7 +31,7 @@ a {
 
 /* Section: Header */
 
-@media only screen and (max-width: 1048px) {
+@media only screen and (max-width: 1110px) {
   .msg {
     top: 40px;
     right: 0;
@@ -44,9 +46,13 @@ a {
   }
 }
 
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 666px) {
   .msg {
     display: none;
+  }
+  .navbar{
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -90,7 +96,7 @@ a {
 .msg {
   margin: auto;
   padding: 10px;
-  color: #676767;
+  color: #000000;
   font-weight: 350;
   transition: 0.3s;
 }
@@ -98,7 +104,7 @@ a {
 .btn {
   min-width: 140px;
   background-color: #cddb28;
-  color: #676767;
+  color: #000000;
   border-radius: .25em;
   font-weight: 400;
   border: 1px solid #cddb28;
@@ -118,8 +124,8 @@ a {
 }
 
 .btn:hover {
-  border: 1px solid #676767;
-  color: #cddb28;
+  color: #ffffff;
+  background: #2eb198;
   /* box-shadow: 5px 10px 8px #888888; */
 }
 
@@ -176,6 +182,14 @@ h4 {
 }
 
 /* Section: Sign-in Page */
+
+#acct-msg{
+  margin-bottom: -1px;
+}
+
+#provider h2{
+  min-width: 340px;
+}
 
 .login-message{
   margin-top: -10px;
@@ -318,6 +332,10 @@ h4 {
 
 /* Section: Landing Page */
 
+#welcome-msg{
+  margin-top: -17px
+}
+
 .vsac-lp .signout-button {
   margin-top: 12px;
 }
@@ -332,22 +350,22 @@ h4 {
 .button {
   color: #ffffff;
   border: 1px solid #006877;
-  background-color: #701d45;
+  background-color: #006877;
   border-radius: .25rem;
-  text-transform: uppercase;
   height: 30px;
   width: 150px;
   border: none;
   transition: 0.3s;
+  font-weight: 700;
 }
 
 #csv-button {
-  background-color: #701d45;
+  background-color: #006877;
   height: 100px;
   width: 400px;
   font-size: 18px;
-  text-transform: uppercase;
-  border-radius: 25px;
+  font-weight: 700;
+  border-radius: .25em;
   border: none;
   color: #ffffff;
   transition: 0.3s;
@@ -374,7 +392,7 @@ h4 {
 }
 
 .download-button {
-  background-color: #701d45;
+  background-color: #006877;
   width: 170px;
   height: 50px;
   margin-top: 9px;
@@ -387,6 +405,7 @@ h4 {
 .signout-button:hover,
 .sign-up:hover,
 .submit:hover {
+  border: 1px solid #006877;
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
   color: #006877;
