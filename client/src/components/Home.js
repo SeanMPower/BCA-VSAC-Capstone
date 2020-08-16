@@ -72,7 +72,7 @@ class Home extends React.Component {
         <h2>Certificate {'&'} Training <span>Programs</span></h2>
         <div className="line"></div>
         </div>
-        <h4>Click on a program for more info</h4>
+        <h4>Click on a program for more information</h4>
         <div id="links">
         <div id="db-info-container">
           <ReactTable

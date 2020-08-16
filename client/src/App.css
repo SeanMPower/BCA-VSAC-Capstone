@@ -38,6 +38,20 @@ a {
     position: absolute;
     margin: none;
   }
+  #program-content #program-table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #program-table .right-side{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    text-justify: left;
+    align-items: center;
+    margin-left: 10rem;
+    margin-top: -1.5rem;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -171,8 +185,13 @@ a {
 
 /* Section: Home */
 
+#home h2{
+  max-width: 100rem;
+}
+
 #home .line{
-  max-width: 2.5rem;
+  max-width: 23rem;
+  min-width: 1rem;
   margin: 0, 0, 0, 3rem;
 }
 
@@ -190,7 +209,11 @@ a {
 .main-container h1,
 h4 {
   margin: 10px;
-  color: #006877;
+  color: #000000;
+}
+
+.main-container h4{
+  margin-top: -1rem;
 }
 
 .main-container #links {
@@ -214,12 +237,13 @@ h4 {
   margin-bottom: -10px;
 }
 
-.main-container h2 {
+.main-container h2, .content .program-header h1 {
   color: #2eb198;
   font-size: 38px;
   font-weight: 300;
   text-transform: uppercase;
   min-width: 260px;
+  width: 100%;
 }
 
 .content .title span {
@@ -237,7 +261,8 @@ h4 {
   background: #2eb198;
   height: 3px;
   width: 85%;
-  margin-top: 50px;
+  margin-top: 3.5rem;
+  min-width: 1rem;
 }
 
 .content,
@@ -314,6 +339,13 @@ h4 {
   margin-top: 15px;
 }
 
+/* Section: Program Page */
+
+.program-content {
+  text-align: center;
+  display: contents;
+}
+
 /* Section: Modal */
 
 .modal {
@@ -375,6 +407,15 @@ h4 {
   border: none;
   transition: 0.3s;
   font-weight: 700;
+  text-decoration: none;
+}
+
+a:visited{
+  text-decoration: none;
+}
+
+.button a:hover{
+  color: #006877;
 }
 
 #csv-button {
@@ -610,11 +651,27 @@ h4 {
   text-align: start;
 }
 
-.program-content {
-  text-align: center;
-  display: contents;
-}
-
 #program-header {
   width: 100%;
+}
+
+.program-header h1{
+  margin-top: 2rem;
+  margin-left: .2rem;
+}
+
+#program-content .line{
+  width: 30%;
+}
+
+/* text formatting */
+#program-table .left-side h3{
+  color: #006877;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+#program-table .right-side h3{
+  font-weight: 350;
 }

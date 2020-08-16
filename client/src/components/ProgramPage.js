@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from 'react-router-dom'
 
 function ProgramPage() {
   let { _id } = useParams();
@@ -25,9 +26,13 @@ function ProgramPage() {
     <div>
       {data ? (
         <div className="main-container">
-          <div className="content program-content">
-            <div id="program-header">
+          <div className="content" id='program-content'>
+            <div className='title'>
+            <div className='line'></div>
+            <div className="program-header">
               <h1>{data.program}</h1>
+            </div>
+            <div className='line'></div>
             </div>
             <div id="program-table">
               <div className="left-side">
@@ -112,6 +117,7 @@ function ProgramPage() {
                 <h3>{dateConvert(data.lastUpdate)}</h3>
               </div>
             </div>
+            <button className='button'><a href='/'>Back to home</a></button>
           </div>
         </div>
       ) : null}
