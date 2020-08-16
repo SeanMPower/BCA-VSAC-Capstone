@@ -35,7 +35,7 @@ a {
   .msg {
     top: 40px;
     right: 0;
-    position: fixed;
+    position: absolute;
     margin: none;
   }
 }
@@ -43,7 +43,12 @@ a {
 @media only screen and (max-width: 768px) {
   #header .signout-button {
     display: none;
-    /* insert mobile view here */
+  }
+  .main-container{
+    background: #cddb28;
+  }
+  #header{
+    display: none;
   }
 }
 
@@ -74,7 +79,7 @@ a {
   z-index: 10;
 }
 
-@keyframes example {
+@keyframes animate {
   from {margin-top: -200rem;}
   to {margin-top: -5.2rem;}
 }
@@ -86,7 +91,7 @@ a {
   margin-left: 15px;
   margin-top: -5.2rem;
   z-index: 10;
-  animation-name: example;
+  animation-name: animate;
   animation-duration: 1s;
 }
 
@@ -165,6 +170,11 @@ a {
 }
 
 /* Section: Home */
+
+#home .line{
+  max-width: 2.5rem;
+  margin: 0, 0, 0, 3rem;
+}
 
 .main-container {
   display: flex;
@@ -368,14 +378,14 @@ h4 {
 }
 
 #csv-button {
-  background-color: #006877;
+  background-color: #ffffff;
   height: 100px;
   width: 400px;
   font-size: 18px;
   font-weight: 700;
   border-radius: .25em;
-  border: none;
-  color: #ffffff;
+  border: 1px solid #006877;
+  color: #006877;
   transition: 0.3s;
 }
 
@@ -400,7 +410,9 @@ h4 {
 }
 
 .download-button {
-  background-color: #006877;
+  border: 1px solid #006877;
+  background-color: #ffffff;
+  color: #006877;
   width: 170px;
   height: 50px;
   margin-top: 9px;
@@ -408,8 +420,6 @@ h4 {
 }
 
 .button:hover,
-#csv-button:hover,
-.download-button:hover,
 .signout-button:hover,
 .sign-up:hover,
 .submit:hover {
@@ -417,6 +427,13 @@ h4 {
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
   color: #006877;
+}
+
+.download-button:hover, #csv-button:hover{
+  border: 1px solid #006877;
+  background: #006877;
+  cursor: pointer;
+  color: #ffffff;
 }
 
 /* Section: Footer */
@@ -462,7 +479,7 @@ h4 {
   width: 140px;
   height: 74.92px;
   margin-top: 50px;
-  margin-left: -1vw;
+  margin-left: -1rem;
 }
 
 #footer-content {
@@ -524,7 +541,7 @@ h4 {
   width: 40px;
 }
 
-#footer #social-media .icon:hover {
+#footer #social-media .icon:hover, #footer #footer-links a:hover {
   color: #cddb28;
   cursor: pointer;
 }
@@ -554,10 +571,6 @@ h4 {
 
 #footer #footer-links a {
   color: #ffffff;
-}
-
-#footer #footer-links a:hover {
-  color: #cddb28;
 }
 
 #hr {

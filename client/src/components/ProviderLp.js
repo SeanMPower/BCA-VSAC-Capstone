@@ -198,7 +198,7 @@ class ProviderLp extends React.Component {
             <div className="button-container">
               <a id="download-template" href="./provider_template.csv" download>
                 <button className="download-button">
-                  Download Template
+                  Click here to Download Template
                 </button>
               </a>
               <button
@@ -208,12 +208,7 @@ class ProviderLp extends React.Component {
               >
                 Sign Out
               </button>
-            </div>
-            {/* <div id='db-info-container'>
-            {this.displayPrograms(this.state.programs)}
-            Placeholder for DB info
-        </div> */}
-          <div id='db-info-container'>
+              <div id='db-info-container'>
             <ReactTable
               className="-striped -highlight"
               columns={columns}
@@ -228,6 +223,7 @@ class ProviderLp extends React.Component {
 
             </ReactTable>
           </div>
+            </div>
         </div>
         )
         :
