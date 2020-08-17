@@ -191,10 +191,6 @@ class ProviderLp extends React.Component {
             <p>Click Here to Download Template</p>
           </a>
           <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
-          {/* <div id='db-info-container'>
-            {this.displayPrograms(this.state.programs)}
-            Placeholder for DB info
-        </div> */}
           <div id='db-info-container'>
             <ReactTable
               className="-striped -highlight"
