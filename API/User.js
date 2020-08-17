@@ -19,7 +19,7 @@ route.get('/provider/:uid', async (req, res) => {
 route.get('/delete/:_id', async (req, res) => {
   let objId = new ObjectId(req.params._id)
 
-  Provider.deleteOne({ _id: objId }, (error) => {
+  Provider.deleteOne({ _id: objId }).catch((error) => {
     console.log(error)
   })
   console.log("This record has been deleted from the Database")
@@ -29,7 +29,7 @@ route.get('/program/:_id', async (req, res) => {
   Provider.find({ _id: req.params._id }).then((data) => { return res.json(data) })
 })
 
-route.get("/", (req, res) => {
+route.get("/vsac", (req, res) => {
   Provider.find({})
     .then((data) => {
       res.json(data);
@@ -39,8 +39,7 @@ route.get("/", (req, res) => {
     });
 });
 
-//need to review with Sean
-route.get("/vsac", (req, res) => {
+route.get("/", (req, res) => {
   Provider.find({})
     .then((data) => {
       res.json(data);
@@ -62,22 +61,6 @@ route.post("/", async (req, res) => {
       ...program,
     });
   }
-
-  //need to review with Sean
-  // route.post("/vsac", async (req, res) => {
-
-  //   let programs = req.body.data;
-  //   let programsArr = [];
-  
-  //   for (program of programs) {
-  //     programsArr.push({
-  //       uid: req.body.uid,
-  //       viewable: true,
-  //       ...program,
-  //     });
-  //   }
-
-  
 
   Provider.insertMany(programsArr, function (err, docs) {
     if (err) {

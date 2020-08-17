@@ -17,7 +17,7 @@ class VsacLp extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("/vsac").then((res) => {
+    axios.get("/user/vsac").then((res) => {
       this.setState({
         programs: res.data,
       });
@@ -143,7 +143,7 @@ class VsacLp extends React.Component {
         Header: "Viewable",
         accessor: "viewable",
         filterMethod: (filter, rows) =>
-          matchSorter(rows, filter.value, { keys: ["contactEmail"] }),
+          matchSorter(rows, filter.value, { keys: ["viewable"] }),
         filterAll: true
       },
 
