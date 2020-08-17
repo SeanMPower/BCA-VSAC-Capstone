@@ -121,21 +121,18 @@ const launchFlatfile = (uid) => {
         importer.displayLoader();
         setTimeout( () => {
             importer.displaySuccess("Successful Upload");
-            //console.log(results)
+    
             let dataSet = results.validData
 
             let payload = {
                 uid: uid,
                 data: dataSet
             }
-            // for (let data of dataSet) {
-                
-            // }
+            
             axios.post('/user', 
               payload).then((res) => {
                 console.log(res)
               })
-
 
 
         },  1500)

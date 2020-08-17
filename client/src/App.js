@@ -14,6 +14,26 @@ import { fireData } from './assets/firebaseConfig';
 
 class App extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      newFirstname: '',
+      newLastname: '',
+      firstName: '',
+      lastName: '',
+      user: '',
+      email: '',
+      password: '',
+      newEmail: '',
+      newPassword: '',
+      uid: '',
+      userData: '',
+      modalDisplay: false,
+      signedIn: false,
+      error: ''
+    }
+  }
+
 //Sets modal display to opposite or prevstate, sets error to none.
   toggleModal = () => {
     this.setState(prevState => {
@@ -62,7 +82,6 @@ class App extends React.Component {
   
       fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
         this.setState({ user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
-        console.log(res.user.uid)
       }).catch(error => {
         this.setState({error: error.message})
       })
@@ -124,25 +143,7 @@ class App extends React.Component {
       })
     }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      newFirstname: '',
-      newLastname: '',
-      firstName: '',
-      lastName: '',
-      user: '',
-      email: '',
-      password: '',
-      newEmail: '',
-      newPassword: '',
-      uid: '',
-      userData: '',
-      modalDisplay: false,
-      signedIn: false,
-      error: ''
-    }
-  }
+  
 
   render() {
     return (

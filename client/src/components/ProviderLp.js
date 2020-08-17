@@ -22,20 +22,25 @@ class ProviderLp extends React.Component {
       this.setState({
         programs: res.data
       })
-      console.log(this.state.programs)
     })
   }
 
-  displayPrograms = (programs) => {
-    if (!programs.length) return null;
+  // displayPrograms = (programs) => {
+  //   if (!programs.length) return null;
 
-    return programs.map((program, index) =>
-      <div key={index}>
-        <h3>{program.providerName}</h3>
-        <p>{program.program}</p>
-      </div>
-    )
-  };
+  //   return programs.map((program, index) =>
+  //     <div key={index}>
+  //       <h3>{program.providerName}</h3>
+  //       <p>{program.program}</p>
+  //     </div>
+  //   )
+  // };
+
+  // updateTable() {
+  //   this.setState({
+  //     programs: res.data
+  //   })
+  // }
 
   deleteRow = (index) => {
     let copyPrograms = [...this.state.programs]
@@ -43,18 +48,6 @@ class ProviderLp extends React.Component {
     this.setState({ programs: copyPrograms })
   }
 
-  makePlaceholderFilter(placeholder) {
-    return ({filter, onFilterChange}) => (
-        <input type='text'
-          placeholder={placeholder}
-          style={{
-            width: '100%'
-          }}
-          value={filter ? filter.value : ''}
-          onChange={(event) => onFilterChange(event.target.value)}
-        />
-      )
-  }
 
   render() {
     const columns = [
