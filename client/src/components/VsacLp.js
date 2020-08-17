@@ -21,6 +21,7 @@ class VsacLp extends React.Component {
       this.setState({
         programs: res.data
       });
+      console.log(res.data)
     });
   }
 
@@ -141,7 +142,7 @@ class VsacLp extends React.Component {
 
       {
         Header: "Viewable",
-        accessor: "viewable",
+        accessor: d => d.viewable.toString(),
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["viewable"] }),
         filterAll: true

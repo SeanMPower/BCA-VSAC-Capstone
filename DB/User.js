@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
         type: String, required: true
     },
     viewable: {
-        type: Boolean, required: true
+        type: String, required: true
     },
     providerName: {
         type: String, required: true
