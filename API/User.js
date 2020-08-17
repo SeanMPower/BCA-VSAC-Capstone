@@ -29,7 +29,7 @@ route.get('/program/:_id', async (req, res) => {
   Provider.find({ _id: req.params._id }).then((data) => { return res.json(data) })
 })
 
-route.get("/", (req, res) => {
+route.get("/vsac", (req, res) => {
   Provider.find({})
     .then((data) => {
       res.json(data);
@@ -39,8 +39,7 @@ route.get("/", (req, res) => {
     });
 });
 
-//need to review with Sean
-route.get("/vsac", (req, res) => {
+route.get("/", (req, res) => {
   Provider.find({})
     .then((data) => {
       res.json(data);

@@ -14,7 +14,7 @@ app.use('/home', user)
 
 app.use('/provider', user)
 
-app.use('/vsac', user)
+// app.use('/vsac', user)
 
 app.get('/', (req, res) => {})
 
