@@ -1,11 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Provider = require("../DB/User");
-const { json } = require("express");
 const route = express.Router();
 const bodyParser = require("body-parser");
 let db = mongoose.connection;
-let collection = db.collection('providers');
 const ObjectId = require("mongodb").ObjectId
 
 route.use(bodyParser.json());
@@ -66,7 +64,7 @@ route.post("/", async (req, res) => {
     if (err) {
       res.send(`Failed to upload, error: ${err.message}`)
     } else {
-      console.log("Multiple documents inserted to Collection!")
+      console.log("Document(s) inserted in Database!")
     }
   })
 

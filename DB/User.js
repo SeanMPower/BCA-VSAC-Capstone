@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
         type: String, required: true
     },
     lastUpdate: {
-        type: Date, default: Date.now
+       type: Date, default: Date.now, expires: 365*24*60*60 // "expires sets a Time-To-Live index on a date field in seconds"
     }
 })
 
