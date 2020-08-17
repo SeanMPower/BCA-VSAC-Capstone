@@ -30,7 +30,8 @@ class App extends React.Component {
       userData: '',
       modalDisplay: false,
       signedIn: false,
-      error: ''
+      error: '',
+      shouldUpdate: true
     }
   }
 
@@ -57,17 +58,22 @@ class App extends React.Component {
   
 //gets data for users when they sign in
     async componentDidUpdate() {
-      if (this.state.user) {
+      
+      if (this.state.shouldUpdate && this.state.user) {
+      
         let data = await fireData.ref('/users/' + this.state.user.uid).once('value').then(data => data.val())
         this.setState({
           firstName: data.firstName,
-          lastName: data.lastName
+          lastName: data.lastName,
+          shouldUpdate: false
         })
-        if (this.state.userData.role !== data.role) {
+        console.log(data)
+      if (this.state.userData.role !== data.role) {
           this.setState({ userData: data })
         }
-      }
+      
     }
+  }
 
     handleChange = (evt) => {
       this.setState({ [evt.target.name]: evt.target.value });
@@ -134,7 +140,8 @@ class App extends React.Component {
           userData: '',
           modalDisplay: false,
           signedIn: false,
-          error: ''
+          error: '',
+          shouldUpdate: true
         })
   
         console.log(res)

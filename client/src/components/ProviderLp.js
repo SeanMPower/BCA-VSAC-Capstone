@@ -36,11 +36,11 @@ class ProviderLp extends React.Component {
   //   )
   // };
 
-  // updateTable() {
-  //   this.setState({
-  //     programs: res.data
-  //   })
-  // }
+  updateTable(data) {
+    this.setState({
+      programs: data
+    })
+  }
 
   deleteRow = (index) => {
     let copyPrograms = [...this.state.programs]
@@ -178,7 +178,7 @@ class ProviderLp extends React.Component {
       <div>{this.props.userData && this.props.userData.role === "user"
         ? <div>
           {this.props.firstName === undefined || this.props.lastName === undefined ? <h1>Hello, {this.props.user.email}</h1> : <h1>Hello, {this.props.firstName + ' ' + this.props.lastName || this.props.user.email}</h1>}
-          <CSVReader uid={this.props.uid} id='csv-button' />
+          <CSVReader uid={this.props.uid} id='csv-button' update={this.updateTable}/>
           <a id="download-template" href="./provider_template.csv"
             download>
             <p>Click Here to Download Template</p>

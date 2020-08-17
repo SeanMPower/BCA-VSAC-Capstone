@@ -141,6 +141,7 @@ class VsacLp extends React.Component {
       },
 
       {
+        id: 'viewable',
         Header: "Viewable",
         accessor: d => d.viewable.toString(),
         filterMethod: (filter, rows) =>
