@@ -31,51 +31,6 @@ a {
 
 /* Section: Header */
 
-@media only screen and (max-width: 1110px) {
-  .msg {
-    top: 40px;
-    right: 0;
-    position: absolute;
-    margin: none;
-  }
-  #program-content #program-table{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #program-table .right-side{
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    text-justify: left;
-    align-items: center;
-    margin-left: 10rem;
-    margin-top: -1.5rem;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  #header .signout-button {
-    display: none;
-  }
-  .main-container{
-    background: #cddb28;
-  }
-  #header{
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 666px) {
-  .msg {
-    display: none;
-  }
-  .navbar{
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 #header {
   display: flex;
   height: 120px;
@@ -224,6 +179,10 @@ h4 {
 
 /* Section: Sign-in Page */
 
+#vsac .line{
+  max-width: 100rem;
+}
+
 #acct-msg{
   margin-bottom: -1px;
 }
@@ -242,7 +201,7 @@ h4 {
   font-size: 38px;
   font-weight: 300;
   text-transform: uppercase;
-  min-width: 260px;
+  min-width: 20rem;
   width: 100%;
 }
 
@@ -523,8 +482,13 @@ a:visited{
   margin-left: -1rem;
 }
 
+.footer-content{
+  /* border: 2px solid green; */
+  width: 100vw;
+}
+
 #footer-content {
-  width: 100%;
+  max-width: 50vw;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -536,6 +500,7 @@ a:visited{
   justify-content: space-between;
   width: 100%;
   margin-top: 20px;
+  font-size: 17px;
 }
 
 #footer #contact .contact {
@@ -595,7 +560,7 @@ a:visited{
 }
 
 #footer-bottom #text {
-  width: 500px;
+  max-width: 40vw;
   display: flex;
   justify-content: flex-start;
   font-weight: 700;
@@ -605,9 +570,9 @@ a:visited{
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 50vw;
+  width: 60vw;
   color: #ffffff;
-  right: 0;
+  font-weight: 400
 }
 
 #footer #footer-links a {
@@ -675,3 +640,152 @@ a:visited{
 #program-table .right-side h3{
   font-weight: 350;
 }
+
+/* Section: Media queries */
+
+@media only screen and (max-width: 1110px) {
+  .msg {
+    top: 40px;
+    right: 0;
+    position: absolute;
+    margin: none;
+  }
+  #program-content #program-table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #program-table .right-side{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    text-justify: left;
+    align-items: center;
+    margin-left: 10rem;
+    margin-top: -1.5rem;
+  }
+}
+
+@media all and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 769px) {
+.msg{
+  display: none;
+}
+.btn{
+  display: none;
+}
+#footer .logo{
+  display: none;
+}
+#footer-bottom > #footer-links{
+  width: 92vw;
+  right: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+  top: -1rem;
+  
+}
+#footer #footer-bottom{
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+#footer-bottom > #text{
+  justify-content: center;
+  margin-top: 7rem;
+}
+#footer > #hr-holder{
+  position: relative;
+  top: -13rem;
+  min-width: 1px;
+}
+#footer > #container{
+  /* border: 1px solid red; */
+}
+#footer #social-container{
+  /* border: 1px solid green; */
+  justify-content: center;
+  margin-left: 0;
+  right: 2rem;
+  position: relative;
+  width: 100vw;
+  bottom: 3rem;
+}
+#footer #social-media{
+  /* border: 1px solid orange; */
+  margin-left: 0;
+  position: relative;
+}
+#footer-top > #contact{
+  /* border: 1px solid red; */
+  position: relative;
+  left: 3vw;
+  top: 10rem;
+  align-items: center;
+}
+#footer > #copyright{
+  display: none;
+}
+}
+
+/* .msg {
+  display: none;
+}
+.navbar{
+  display: flex;
+  flex-direction: column;
+}
+.btn{
+  display: none;
+}
+#footer #container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20rem;
+}
+#footer > #social-container{
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  left: 0;
+  margin-top: -40rem;
+}
+#social-container > #social-media{
+  border: 1px solid black;
+  margin: 0;
+  left: 0;
+  width: 30vw;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  align-self: center;
+  margin-left: 0vw;
+}
+#footer-bottom{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+#footer-bottom hr{
+border: 50px solid black;
+}
+#footer-links{
+  display: flex;
+  justify-content: space-between;
+}
+#footer #text{
+  color:red;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 20rem;
+} */
