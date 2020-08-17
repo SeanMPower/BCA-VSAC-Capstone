@@ -482,9 +482,12 @@ a:visited{
   margin-left: -1rem;
 }
 
-.footer-content{
+#footer .footer-content{
   /* border: 2px solid green; */
-  width: 100vw;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #footer-content {
