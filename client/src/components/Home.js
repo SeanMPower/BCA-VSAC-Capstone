@@ -13,7 +13,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("/home").then((res) => {
+    axios.get("/user").then((res) => {
       this.setState({
         programs: res.data,
       });

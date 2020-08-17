@@ -116,26 +116,26 @@ importer.setCustomer ({
      userId: "VSAC"
 })
 
-const launchFlatfile = (uid) => {
+const launchFlatfile = (uid, update) => {
     importer.requestDataFromUser().then(results => {
         importer.displayLoader();
         setTimeout( () => {
             importer.displaySuccess("Successful Upload");
-            //console.log(results)
+    
             let dataSet = results.validData
 
             let payload = {
                 uid: uid,
                 data: dataSet
             }
-            // for (let data of dataSet) {
-                
-            // }
+            
             axios.post('/user', 
               payload).then((res) => {
                 console.log(res)
               })
-
+            //   .then((res) => {
+            //       update(res)
+            //     })
 
 
         },  1500)

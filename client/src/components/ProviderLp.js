@@ -19,22 +19,27 @@ class ProviderLp extends React.Component {
   componentDidMount() {
     axios.get(`/user/provider/${this.props.uid}`).then((res) => {
       this.setState({
-        programs: res.data,
-      });
-      console.log(this.state.programs);
-    });
+        programs: res.data
+      })
+    })
   }
 
-  displayPrograms = (programs) => {
-    if (!programs.length) return null;
+  // displayPrograms = (programs) => {
+  //   if (!programs.length) return null;
 
-    return programs.map((program, index) => (
-      <div key={index}>
-        <h3>{program.providerName}</h3>
-        <p>{program.program}</p>
-      </div>
-    ));
-  };
+  //   return programs.map((program, index) =>
+  //     <div key={index}>
+  //       <h3>{program.providerName}</h3>
+  //       <p>{program.program}</p>
+  //     </div>
+  //   )
+  // };
+
+  updateTable(data) {
+    this.setState({
+      programs: data
+    })
+  }
 
   deleteRow = (index) => {
     let copyPrograms = [...this.state.programs]
@@ -42,18 +47,6 @@ class ProviderLp extends React.Component {
     this.setState({ programs: copyPrograms })
   }
 
-  makePlaceholderFilter(placeholder) {
-    return ({filter, onFilterChange}) => (
-        <input type='text'
-          placeholder={placeholder}
-          style={{
-            width: '100%'
-          }}
-          value={filter ? filter.value : ''}
-          onChange={(event) => onFilterChange(event.target.value)}
-        />
-      )
-  }
 
   render() {
     const columns = [
@@ -181,21 +174,11 @@ class ProviderLp extends React.Component {
     ]
 
     return (
-      <div>
-        {this.props.userData && this.props.userData.role === "user" ? (
-          <div>
-            {this.props.firstName === undefined ||
-            this.props.lastName === undefined ? (
-              <h3 id='welcome-msg'>Hello, {this.props.user.email}</h3>
-            ) : (
-              <h1>
-                Hello,{" "}
-                {this.props.firstName + " " + this.props.lastName ||
-                  this.props.user.email}
-              </h1>
-            )}
-            <CSVReader uid={this.props.uid} id="csv-button" />
-            <div className="button-container">
+      <div>{this.props.userData && this.props.userData.role === "user"
+        ? <div>
+          {this.props.firstName === undefined || this.props.lastName === undefined ? <h1>Hello, {this.props.user.email}</h1> : <h1>Hello, {this.props.firstName + ' ' + this.props.lastName || this.props.user.email}</h1>}
+          <CSVReader uid={this.props.uid} id='csv-button' update={this.updateTable}/>
+          <div className="button-container">
               <a id="download-template" href="./provider_template.csv" download>
                 <button className="download-button">
                   Click here to Download Template
@@ -208,6 +191,7 @@ class ProviderLp extends React.Component {
               >
                 Sign Out
               </button>
+              </div>
               <div id='db-info-container'>
             <ReactTable
               className="-striped -highlight"
@@ -220,12 +204,9 @@ class ProviderLp extends React.Component {
               noDataText={"No Data To Display Yet"}
               defaultPageSize={10}
             >
-
             </ReactTable>
           </div>
             </div>
-        </div>
-        )
         :
         <div className='vsac-lp'>
         <p>Looks like you have a VSAC account...<br></br>Please go to the VSAC login page.</p>
