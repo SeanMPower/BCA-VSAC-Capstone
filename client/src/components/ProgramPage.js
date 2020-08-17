@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Link } from 'react-router-dom'
 
 function ProgramPage() {
   let { _id } = useParams();
@@ -15,7 +14,7 @@ function ProgramPage() {
     };
 
     fetchData();
-  }, []);
+  }, [_id]);
 
   let dateConvert = (dateString) => {
     let convertedDate = new Date(dateString);

@@ -22,6 +22,14 @@ function SignUp(props) {
                         value={props.newLastname}
                         onChange={props.handleChange} />
                 </label>
+                <label className='organization'> Organization:
+                    <input
+                        type='text'
+                        name='newOrganization'
+                        id='new-lastname'
+                        value={props.newOrganization}
+                        onChange={props.handleChange} />
+                </label>
                 <label className='email'> Email:
                     <input
                         type='text'

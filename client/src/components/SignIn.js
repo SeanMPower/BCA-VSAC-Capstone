@@ -11,7 +11,9 @@ function SignIn(props) {
                     name='email' 
                     id='signin-email' 
                     value={props.email}
-                    onChange={props.handleChange} />
+                    onChange={props.handleChange}
+                    autoComplete={'email'}
+                     />
                 </label>
                 <label className='password'> Password:
                     <input 
@@ -19,7 +21,8 @@ function SignIn(props) {
                     name='password' 
                     id='signin-password'
                     value={props.password}
-                    onChange={props.handleChange}  
+                    onChange={props.handleChange} 
+                    autoComplete={'current-password'} 
                     />
                 </label>
                 <input type='submit' value='Log In' className='submit' />

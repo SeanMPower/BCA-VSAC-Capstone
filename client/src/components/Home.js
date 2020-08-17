@@ -3,7 +3,6 @@ import axios from "axios";
 import ReactTable from "react-table-v6";
 import "react-table-v6/react-table.css";
 import matchSorter from "match-sorter";
-import { faAmazonPay } from "@fortawesome/free-brands-svg-icons";
 
 class Home extends React.Component {
   constructor(props) {

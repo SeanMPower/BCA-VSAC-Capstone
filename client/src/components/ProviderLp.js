@@ -227,13 +227,14 @@ class ProviderLp extends React.Component {
         </div>
         )
         :
-        <div>
-          <p>Please sign in on the VSAC page</p>
-          <p><Link to='/vsac-user'>
-            VSAC User
-        </Link></p>
-          <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+        <div className='vsac-lp'>
+        <p>Looks like you have a VSAC account...<br></br>Please go to the VSAC login page.</p>
+        <div className='button-container'><Link to='/vsac-user'>
+          <button className='button'>VSAC User</button>
+        </Link>
+        <button className='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
         </div>
+      </div>
       }
       </div>
     );

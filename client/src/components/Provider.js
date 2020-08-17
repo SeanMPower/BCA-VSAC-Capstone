@@ -12,6 +12,7 @@ function Provider (props) {
         <h2>Provider <span>User</span></h2>
         <div className='line'></div>
         </div>
+        <h3 id='provider-message'>This page is for short-term training providers</h3>
           {props.user
             ? <ProviderLp user={props.user}
               signOut={props.signOut}

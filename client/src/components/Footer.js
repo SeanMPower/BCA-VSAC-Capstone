@@ -72,7 +72,9 @@ function Footer(props) {
         </div>
       </div>
       <span id='hr-holder'><hr id='hr'></hr></span>
+      <div id='copyright-wrapper'>
       <div id='copyright'>© 2020 All Rights Reserved</div>
+      </div>
     </div>
     </div>
     </>
