@@ -15,7 +15,9 @@ class ProviderLp extends React.Component {
     super(props)
     this.state = {
       programs: [] || "There is no data to display yet",
-      updateModal: false
+      updateModal: "none",
+      updatedProgram: {}
+
     }
   }
 
@@ -39,12 +41,51 @@ class ProviderLp extends React.Component {
     this.setState({ programs: copyPrograms })
   }
 
-  openUpdateModal = () => {
+  openUpdateModal = (evt) => {
+    console.log(this.state.programs)
+    console.log(evt.target.dataset._id)
+
+    let _id = evt.target.dataset._id
+    let programToUpdate = this.state.programs.filter((program) => {
+      return program._id === _id
+
+    })
+
+    console.log(programToUpdate)
+
     this.setState({
-      updateModal: true
+      updateModal: "inline",
+      updatedProgram: programToUpdate[0]
     })
   }
 
+  closeUpdateModal = (evt) => {
+    evt.preventDefault()
+    this.setState({
+      updateModal: "none"
+    })
+  }
+
+  updateInfo = (evt) => {
+    evt.preventDefault()
+    let payLoad = this.state.updatedProgram
+    let idVariable = this.state.updatedProgram._id
+    
+    axios.post(`/user/update/${idVariable}`, payLoad)
+      this.setState({
+        updateModal: "none"
+      })        
+  }
+
+  handleUpdateChange = (evt) => {
+    evt.persist()
+    this.setState((prevState) => ({
+      updatedProgram: {
+        ...prevState.updatedProgram, [evt.target.name]: evt.target.value
+      }
+    }));
+    console.log(evt.target.name)
+  }
 
   render() {
     const columns = [
@@ -249,9 +290,9 @@ class ProviderLp extends React.Component {
         Header: "Update Records",
         Cell: props => {
           return (
-            <button className="delete-button" onClick={() => {
-              // this.props.openUpdateModal
-            }} >Update Record</button>
+            <button data-_id={this.state.programs[props.index]._id} name="test" className="delete-button" onClick={
+              this.openUpdateModal
+            } > Update Record</button>
           )
         },
         sortable: false,
@@ -266,7 +307,7 @@ class ProviderLp extends React.Component {
       <div>{this.props.userData && this.props.userData.role === "user"
         ? <div>
           {this.props.firstName === undefined || this.props.lastName === undefined ? <h1>Hello, {this.props.user.email}</h1> : <h1>Hello, {this.props.firstName + ' ' + this.props.lastName || this.props.user.email}</h1>}
-          <CSVReader uid={this.props.uid} id='csv-button' update={this.updateTable}/>
+          <CSVReader uid={this.props.uid} id='csv-button' update={this.updateTable} />
           <a id="download-template" href="./provider_template.csv"
             download>
             <p>Click Here to Download Template</p>
@@ -284,11 +325,14 @@ class ProviderLp extends React.Component {
               noDataText={"No Data To Display Yet"}
               defaultPageSize={10}
             >
-
             </ReactTable>
             <UpdateRecord
-            openUpdateModal={this.state.openUpdateModal}
-            // onSubmit={this.updateInfo}
+              openUpdateModal={this.openUpdateModal}
+              updateModal={this.state.updateModal}
+              closeUpdateModal={this.closeUpdateModal}
+              updatedProgram={this.state.updatedProgram}
+              updateInfo={this.updateInfo}
+              handleChange={this.handleUpdateChange}
             >
             </UpdateRecord>
           </div>

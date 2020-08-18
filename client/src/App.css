@@ -189,7 +189,7 @@ a{
 
 /* Section: Sign-In Form */
 
-#signin-form, #signup-form{
+#signin-form, #signup-form, #update-records{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -480,3 +480,16 @@ a{
 #program-header {
   width: 100%;
 }
+
+
+
+
+
+
+
+
+.arrows{
+  width: 15px;
+  height: 15px;
+}
+
