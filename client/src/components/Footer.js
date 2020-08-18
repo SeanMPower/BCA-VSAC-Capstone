@@ -31,6 +31,7 @@ function Footer(props) {
   return (
     <>
     <div id="footer" style={myStyle}>
+      <div className='footer-content'>
         <div id='container'>
       <div id="footer-top">
         <img
@@ -70,8 +71,11 @@ function Footer(props) {
         <div id="footer-links"><a href='https://www.vsac.org/contact'>Contact</a><a href='https://www.vsac.org/investors'>Investors</a><a href='https://www.vsac.org/vsf'>Scholarship Donors</a><a href='https://www.vsac.org/privacy-notice'>Privacy Notice</a><a href='https://www.vsac.org/terms-of-use'>Terms of Use</a><a href='https://asp1.humanic.com/pls/vsac/hapss_index.apss'>Jobs at VSAC</a></div>
         </div>
       </div>
-      <hr id='hr'></hr>
+      <span id='hr-holder'><hr id='hr'></hr></span>
+      <div id='copyright-wrapper'>
       <div id='copyright'>© 2020 All Rights Reserved</div>
+      </div>
+    </div>
     </div>
     </>
   );

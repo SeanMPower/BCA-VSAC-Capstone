@@ -6,7 +6,7 @@ import "react-table-v6/react-table.css"
 import matchSorter from 'match-sorter'
 import { CSVLink } from "react-csv";
 
-class VsacLp extends React.Component {
+export default class VsacLp extends React.Component {
 
   constructor(props) {
     super(props)
@@ -168,10 +168,10 @@ class VsacLp extends React.Component {
     ]
 
     return (
-      <div>{this.props.userData.role === "admin"
+      <>
+      {this.props.userData.role === "admin"
         ? <div>
-          <h1>Hello, {this.props.user.displayName || this.props.user.email}</h1>
-          <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+          <h1 id='welcome-msg'>Hello, {this.props.user.displayName || this.props.user.email}</h1>
           <div id='db-info-container'>
             <div>
               <CSVLink data={this.state.programs}
@@ -196,18 +196,18 @@ class VsacLp extends React.Component {
           </div>
         </div>
         :
-        <div>
-          <p>Please sign in on the Provider page</p>
-          <p><Link to='/provider-user'>
-            Provider User
-        </Link></p>
-          <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+        <>
+        <div className='vsac-lp'>
+        <p>Looks like you have a provider account...<br></br>Please go to the Provider page.</p>
+        <div className='button-container'><Link to='/provider-user'>
+          <button className='button'>Provider User</button>
+        </Link>
+        <button className='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
         </div>
+        </div>
+        </>
       }
-      </div>
+  </>
     )
   }
 }
-
-export default VsacLp;
-

@@ -5,9 +5,14 @@ import Modal from './Modal.js'
 
 function Provider (props) {
     return (
-      <div className="main-container" >
+      <div className="main-container">
         <div className='content'>
-        <h1>This is the page for Providers</h1>
+          <div className='title' id='provider'>
+          <div className='line'></div>
+        <h2>Provider <span>User</span></h2>
+        <div className='line'></div>
+        </div>
+        <h3 id='provider-message'>This page is for short-term training providers</h3>
           {props.user
             ? <ProviderLp user={props.user}
               signOut={props.signOut}
@@ -16,11 +21,11 @@ function Provider (props) {
               firstName={props.firstName} lastName={props.lastName}
             />
             : <div>
-              <h3>Please Sign in with Email and Password</h3>
+              <h3 className='login-message'>Log into your provider account</h3>
               <SignIn emailSignin={props.emailSignin} handleChange={props.handleChange} />
           <div className='err'>{props.errorMessage}</div>
-              <h2>Don't Have an Account?</h2>
-              <button onClick={props.toggleModal}>Sign Up</button>
+              <h3 id='acct-msg'>Don't Have an Account?</h3>
+              <button onClick={props.toggleModal} className='submit'>Sign Up</button>
               {props.modalDisplay && <Modal
               errorMessage={props.errorMessage} show={props.modalDisplay} handleClose={props.handleClose} emailSignup={props.emailSignup} handleChange={props.handleChange} />}
             </div>}

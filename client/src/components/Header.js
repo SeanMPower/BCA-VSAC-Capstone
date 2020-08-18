@@ -2,25 +2,27 @@ import React from "react";
 import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
-
 function Header(props) {
   return (
-<>
+    <>
     <div id="header">
       <div id='navbar'>
       <a href='https://www.vsac.org/'>
-        <img className="logo" src={Logo} title="VSAC logo" alt="VSAC logo" />
+        <img className="logo fadeInDown" src={Logo} title="VSAC logo" alt="VSAC logo" />
       </a>
-        <Link to='/' className='btn'>
+        <Link to='/' className='btn' id='home'>
             Home
         </Link>
-        <Link to='/vsac-user' className='btn'>
+        <Link to='/vsac-user' className='btn' id='vsac'>
             VSAC Login
         </Link>
         <Link to='/provider-user' className='btn'>
-          Provider Login
+          Institution Login
         </Link>
         <div id='space'>
+        </div>
+        <div className={`menu-btn ${props.menuDisplay ? 'open' : ''}`} onClick={props.openMenu}>
+          <div className='menu-btn__burger'></div>
         </div>
         {props.signedIn ?
         <>
@@ -37,7 +39,7 @@ function Header(props) {
 
 function SignOut(props) {
   return(
-    <button id='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
+    <button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
   )
 }
 

@@ -12,11 +12,13 @@ function Modal (props) {
           <div id="close-btn" onClick={props.handleClose}>
               +
             </div>
+            <div id='signup-modal'>
             <SignUp
               errorMessage={props.errorMessage}
               emailSignup={props.emailSignup}
               handleChange={props.handleChange}
             />
+            </div>
           </div>
         </div>
       </>

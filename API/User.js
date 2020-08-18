@@ -22,6 +22,17 @@ route.get('/delete/:_id', async (req, res) => {
   console.log("This record has been deleted from the Database")
 })
 
+route.post('/update/:_id', async (req, res) => {
+console.log(req.body)
+  
+  let objId = new ObjectId(req.body._id)
+
+  Provider.findByIdAndUpdate({ _id: objId }, req.body).catch((error) => {
+    console.log(error)
+  })
+  console.log("This record has been updated")
+})
+
 route.get('/program/:_id', async (req, res) => {
   Provider.find({ _id: req.params._id }).then((data) => { return res.json(data) })
 })
