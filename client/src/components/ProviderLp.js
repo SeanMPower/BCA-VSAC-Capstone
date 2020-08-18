@@ -5,6 +5,7 @@ import axios from 'axios'
 import ReactTable from "react-table-v6"
 import "react-table-v6/react-table.css"
 import matchSorter from 'match-sorter'
+import Arrows from '../img/arrows1.png'
 import UpdateRecord from './UpdateRecord'
 
 
