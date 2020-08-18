@@ -72,7 +72,6 @@ class Home extends React.Component {
         <div className="line"></div>
         </div>
         <h4>Click on a program for more information</h4>
-        <div id="links">
         <div id="db-info-container">
           <ReactTable
             className="-striped -highlight"
@@ -97,7 +96,6 @@ class Home extends React.Component {
               };
             }}
           ></ReactTable>
-        </div>
         </div>
         </div>
       </div>

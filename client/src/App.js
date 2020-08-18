@@ -12,26 +12,26 @@ import { fireApp } from "./assets/firebaseConfig";
 import { fireData } from "./assets/firebaseConfig";
 
 class App extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      newFirstname: '',
-      newLastname: '',
-      firstName: '',
-      lastName: '',
-      user: '',
-      email: '',
-      password: '',
-      newEmail: '',
-      newPassword: '',
-      uid: '',
-      userData: '',
+      newFirstname: "",
+      newLastname: "",
+      firstName: "",
+      lastName: "",
+      user: "",
+      email: "",
+      password: "",
+      newEmail: "",
+      newPassword: "",
+      uid: "",
+      userData: "",
       modalDisplay: false,
       signedIn: false,
-      error: '',
-      shouldUpdate: true
-    }
+      error: "",
+      shouldUpdate: true,
+      menuDisplay: false,
+    };
   }
 
   //Sets modal display to opposite of its prevstate, sets error to none. disables scrolling when modal is opened.
@@ -58,105 +58,135 @@ class App extends React.Component {
     );
   };
 
-    //Gets user data from database and sets it in state
-    componentDidMount() {
-      if (this.state.user) {
-        fireData.ref('/users/' + this.state.user.uid).once('value', (data) => {
-          this.setState({
-            userData: data.val()
-          })
-        })
-      }
-    }
-  
-//gets data for users when they sign in
-    async componentDidUpdate() {
-      
-      if (this.state.shouldUpdate && this.state.user) {
-      console.log(this.state.user.uid)
-        let data = await fireData.ref('/users/' + this.state.user.uid).once('value').then(
-          data => data.val())
+  toggleMenu = () => {
+    this.setState((prevState) => ({
+      menuDisplay: !prevState.menuDisplay,
+    }));
+    console.log(this.state.menuDisplay);
+  };
+
+  //Gets user data from database and sets it in state
+  componentDidMount() {
+    if (this.state.user) {
+      fireData.ref("/users/" + this.state.user.uid).once("value", (data) => {
         this.setState({
-          firstName: data.firstName,
-          lastName: data.lastName,
-          shouldUpdate: false
-        })
-        console.log(data)
+          userData: data.val(),
+        });
+      });
+    }
+  }
+
+  //gets data for users when they sign in
+  async componentDidUpdate() {
+    if (this.state.shouldUpdate && this.state.user) {
+      console.log(this.state.user.uid);
+      let data = await fireData
+        .ref("/users/" + this.state.user.uid)
+        .once("value")
+        .then((data) => data.val());
+      this.setState({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        shouldUpdate: false,
+      });
+      console.log(data);
       if (this.state.userData.role !== data.role) {
-          this.setState({ userData: data })
-        }
-      
+        this.setState({ userData: data });
+      }
     }
   }
 
   handleChange = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
   };
-  
-    //Signing in with email and password
-    emailSignin = (evt) => {
-      evt.preventDefault()
-  
-      let formEmail = this.state.email
-      let formPassword = this.state.password
-  
-      fireApp.auth().signInWithEmailAndPassword(formEmail, formPassword).then(res => {
-        this.setState({ user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
-      }).catch(error => {
-        this.setState({error: error.message})
+
+  //Signing in with email and password
+  emailSignin = (evt) => {
+    evt.preventDefault();
+
+    let formEmail = this.state.email;
+    let formPassword = this.state.password;
+
+    fireApp
+      .auth()
+      .signInWithEmailAndPassword(formEmail, formPassword)
+      .then((res) => {
+        this.setState({
+          user: res.user,
+          uid: res.user.uid,
+          signedIn: true,
+          firstName: res.firstName,
+          lastName: res.lastName,
+          email: res.user.email
+        });
+        console.log(res.user.email)
       })
-    }
-  
-    //signing up with email and password
-    emailSignup = async (evt) => {
-      evt.preventDefault()
-  
-      let newFormName = this.state.newFirstname
-      let newFormLastName = this.state.newLastname
-      let newFormEmail = this.state.newEmail
-      let newFormPassword = this.state.newPassword
-      let confirmFormPassword = this.state.confirmPassword
-  
-      console.log(newFormEmail)
-      console.log(newFormPassword)
-  
-      newFormPassword === confirmFormPassword ? await fireApp.auth().createUserWithEmailAndPassword(newFormEmail, newFormPassword).then(res => {
-        this.setState({ user: res.user, signedIn: true })
-      })      .catch((error) => {
-        console.log(error.message);
-        if (
-          error.message ===
-          "The password is invalid or the user does not have a password."
-        ) {
-          this.setState({
-            error:
-              "That doesn't seem to be the right password... Please try again or sign up for an account.",
-          });
-        } else if (
-          error.message ===
-          "There is no user record corresponding to this identifier. The user may have been deleted."
-        ) {
-          this.setState({
-            error:
-              "The email you entered doesn't appear to be in our database... Please try a different email address or Sign up for an account.",
-          });
-        } else if (error.message === "The email address is badly formatted.") {
-          this.setState({
-            error: "Please enter a valid email, or Sign up for a new account.",
-          });
-        } else {
-          this.setState({ error: error.message });
-        }
-      })
-        : alert("Passwords must match!")
-  
-      fireData.ref('/users/' + this.state.user.uid).set({role: "user", firstName: newFormName, lastName: newFormLastName}).then(res => {
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+  };
+
+  //signing up with email and password
+  emailSignup = async (evt) => {
+    evt.preventDefault();
+
+    let newFormName = this.state.newFirstname;
+    let newFormLastName = this.state.newLastname;
+    let newFormEmail = this.state.newEmail;
+    let newFormPassword = this.state.newPassword;
+    let confirmFormPassword = this.state.confirmPassword;
+
+    console.log(newFormEmail);
+    console.log(newFormPassword);
+
+    newFormPassword === confirmFormPassword
+      ? await fireApp
+          .auth()
+          .createUserWithEmailAndPassword(newFormEmail, newFormPassword)
+          .then((res) => {
+            this.setState({ user: res.user, signedIn: true });
+          })
+          .catch((error) => {
+            console.log(error.message);
+            if (
+              error.message ===
+              "The password is invalid or the user does not have a password."
+            ) {
+              this.setState({
+                error:
+                  "That doesn't seem to be the right password... Please try again or sign up for an account.",
+              });
+            } else if (
+              error.message ===
+              "There is no user record corresponding to this identifier. The user may have been deleted."
+            ) {
+              this.setState({
+                error:
+                  "The email you entered doesn't appear to be in our database... Please try a different email address or Sign up for an account.",
+              });
+            } else if (
+              error.message === "The email address is badly formatted."
+            ) {
+              this.setState({
+                error:
+                  "Please enter a valid email, or Sign up for a new account.",
+              });
+            } else {
+              this.setState({ error: error.message });
+            }
+          })
+      : alert("Passwords must match!");
+
+    fireData
+      .ref("/users/" + this.state.user.uid)
+      .set({ role: "user", firstName: newFormName, lastName: newFormLastName })
+      .then((res) => {
         // this.setState(res)
-        this.setState({userData: {role: "user"}})
+        this.setState({ userData: { role: "user" } });
         // user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
-        console.log(res)
-      })
-  }
+        console.log(res);
+      });
+  };
 
   signOut = (evt) => {
     evt.preventDefault();
@@ -181,23 +211,31 @@ class App extends React.Component {
           userData: "",
           modalDisplay: false,
           signedIn: false,
-          error: '',
-          shouldUpdate: true
-        })
-  
-        console.log(res)
-      }).catch(error => {
-        this.setState({error: error.message})
-      })}
-  
+          error: "",
+          shouldUpdate: true,
+        });
+
+        console.log(res);
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+  };
+
   render() {
     return (
       <div className="App">
+        <div
+          id="main-menu"
+          style={{ display: this.state.menuDisplay ? "flex" : "none" }}
+        ></div>
         <Header
           signedIn={this.state.signedIn}
           email={this.state.email}
           signOut={this.signOut}
           user={this.state.user}
+          openMenu={this.toggleMenu}
+          menuDisplay={this.state.menuDisplay}
         />
         <div className="homepage"></div>
         <Switch>

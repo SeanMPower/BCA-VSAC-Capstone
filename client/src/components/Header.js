@@ -2,7 +2,6 @@ import React from "react";
 import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 
-
 function Header(props) {
   return (
     <>
@@ -11,16 +10,19 @@ function Header(props) {
       <a href='https://www.vsac.org/'>
         <img className="logo fadeInDown" src={Logo} title="VSAC logo" alt="VSAC logo" />
       </a>
-        <Link to='/' className='btn'>
+        <Link to='/' className='btn' id='home'>
             Home
         </Link>
-        <Link to='/vsac-user' className='btn'>
+        <Link to='/vsac-user' className='btn' id='vsac'>
             VSAC Login
         </Link>
         <Link to='/provider-user' className='btn'>
-          Provider Login
+          Institution Login
         </Link>
         <div id='space'>
+        </div>
+        <div className='menu-btn' onClick={props.openMenu}>
+          <div className='menu-btn__burger'></div>
         </div>
         {props.signedIn ?
         <>

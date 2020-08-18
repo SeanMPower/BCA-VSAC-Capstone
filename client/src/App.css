@@ -84,12 +84,28 @@ a {
 }
 
 .btn {
-  min-width: 140px;
+  min-width: 9.7rem;
   background-color: #cddb28;
   color: #000000;
   border-radius: .25em;
   font-weight: 400;
   border: 1px solid #cddb28;
+}
+
+.menu-btn{
+  display: none;
+}
+
+.menu-btn__burger{
+  display: none;
+}
+
+#navbar #home{
+  min-width: 8rem;
+}
+
+#navbar #vsac{
+  min-width: 9rem;
 }
 
 .msg {
@@ -237,6 +253,10 @@ h4 {
   box-shadow: 0px 0px 8px 0px rgba(102, 102, 102, 0.5);
   width: 80vw;
   min-height: 25vw;
+}
+
+#db-info-container{
+  width: auto;
 }
 
 .main {
@@ -683,6 +703,55 @@ a:visited{
 }
 
 @media only screen and (max-width: 769px) {
+#space{
+  width: 100vw;
+}
+.App #main-menu{
+  position: absolute;
+  width: 12rem;
+  height: 20rem;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 12;
+  right: 0;
+}
+.menu-btn{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 60px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  right: 0px;
+  margin-right: .5rem;
+}
+.menu-btn__burger{
+  display: flex;
+  width: 30px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255,101,47,.2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before,
+.menu-btn__burger::after{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255,101,47,.2);
+  transition: all .5s ease-in-out;
+}
+.menu-btn__burger::before{
+  transform: translateY(-10px);
+}
+.menu-btn__burger::after{
+  transform: translateY(10px);
+}
 .msg{
   display: none;
 }

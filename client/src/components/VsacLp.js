@@ -171,8 +171,7 @@ export default class VsacLp extends React.Component {
       <>
       {this.props.userData.role === "admin"
         ? <div>
-          <h1>Hello, {this.props.user.displayName || this.props.user.email}</h1>
-          <button id='signout-button' type="button" onClick={this.props.signOut}>Sign Out</button>
+          <h1 id='welcome-msg'>Hello, {this.props.user.displayName || this.props.user.email}</h1>
           <div id='db-info-container'>
             <div>
               <CSVLink data={this.state.programs}
