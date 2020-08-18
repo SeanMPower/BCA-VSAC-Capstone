@@ -21,7 +21,7 @@ function Header(props) {
         </Link>
         <div id='space'>
         </div>
-        <div className='menu-btn' onClick={props.openMenu}>
+        <div className={`menu-btn ${props.menuDisplay ? 'open' : ''}`} onClick={props.openMenu}>
           <div className='menu-btn__burger'></div>
         </div>
         {props.signedIn ?

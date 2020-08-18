@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Switch, Route } from "react-router";
+import { Link } from "react-router-dom";
 import { Header } from "./components/Header.js";
 import Home from "./components/Home.js";
 import Vsac from "./components/Vsac.js";
@@ -117,9 +118,9 @@ class App extends React.Component {
           signedIn: true,
           firstName: res.firstName,
           lastName: res.lastName,
-          email: res.user.email
+          email: res.user.email,
         });
-        console.log(res.user.email)
+        console.log(res.user.email);
       })
       .catch((error) => {
         this.setState({ error: error.message });
@@ -227,8 +228,20 @@ class App extends React.Component {
       <div className="App">
         <div
           id="main-menu"
-          style={{ display: this.state.menuDisplay ? "flex" : "none" }}
-        ></div>
+          style={{ display: (window.innerWidth > '769px') ? 'none' : (this.state.menuDisplay ? "flex" : "none" )}}
+        >
+          <div id='link-container'>
+          <Link to="/" id="home" className='link' onClick={this.toggleMenu}>
+            Home
+          </Link>
+          <Link to="/vsac-user" id="vsac" className='link' onClick={this.toggleMenu}>
+            VSAC Login
+          </Link>
+          <Link to="/provider-user" className='link' onClick={this.toggleMenu}>
+            Institution Login
+          </Link>
+          </div>
+        </div>
         <Header
           signedIn={this.state.signedIn}
           email={this.state.email}

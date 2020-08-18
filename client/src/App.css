@@ -29,6 +29,14 @@ a {
   background-color: #ffffff;
 }
 
+.App #main-menu{
+  display: none;
+}
+
+.App #main-menu .link{
+  display: none;
+}
+
 /* Section: Header */
 
 #header {
@@ -97,6 +105,10 @@ a {
 }
 
 .menu-btn__burger{
+  display: none;
+}
+
+#main-menu{
   display: none;
 }
 
@@ -702,17 +714,57 @@ a:visited{
   }
 }
 
+@media only screen and (min-width: 770px){
+  #main-menu{
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 769px) {
 #space{
   width: 100vw;
 }
+#link-container{
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 1rem;
+}
+@keyframes animateMenu {
+  from {top: -5rem}
+  to {top: calc(7.6rem + 1px)}
+}
+@keyframes closeMenu {
+  from {top: calc(7.6rem + 1px)}
+  to {top: -5rem}
+}
 .App #main-menu{
   position: absolute;
-  width: 12rem;
-  height: 20rem;
+  flex-direction: column;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  justify-content: space-around;
+  width: 14rem;
+  height: 12rem;
+  font-weight: 500;
   background: rgba(0, 0, 0, 0.6);
   z-index: 12;
   right: 0;
+  top: calc(7.6rem + 1px);
+  line-height: 20px;
+  text-align: left;
+  animation-name: animateMenu;
+  animation-duration: .8s;
+}
+.App #main-menu .link{
+  display: flex;
+  text-decoration: none;
+  color: #ffffff;
+}
+.App #main-menu .link:hover{
+  color: #cddb28;
 }
 .menu-btn{
   position: relative;
@@ -725,6 +777,7 @@ a:visited{
   transition: all .5s ease-in-out;
   right: 0px;
   margin-right: .5rem;
+  z-index: 13;
 }
 .menu-btn__burger{
   display: flex;
@@ -751,6 +804,18 @@ a:visited{
 }
 .menu-btn__burger::after{
   transform: translateY(10px);
+}
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger{
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn.open .menu-btn__burger::before{
+  transform: rotate(45deg) translate(35px, -35px);
+}
+.menu-btn.open .menu-btn__burger::after{
+  transform: rotate(-45deg) translate(35px, 35px);
 }
 .msg{
   display: none;
@@ -788,9 +853,6 @@ a:visited{
   margin-right: 2rem;
   left: .5rem;
   min-width: 1px;
-}
-#footer > #container{
-  /* border: 1px solid red; */
 }
 #footer #social-container{
   /* border: 1px solid green; */
