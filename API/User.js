@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const Provider = require("../DB/User");
 const route = express.Router();
 const bodyParser = require("body-parser");
-let db = mongoose.connection;
 const ObjectId = require("mongodb").ObjectId
 
 route.use(bodyParser.json());
@@ -38,9 +37,10 @@ route.get("/vsac", (req, res) => {
 });
 
 route.get("/", (req, res) => {
-  Provider.find({})
-    .then((data) => {
-      res.json(data);
+Provider.find({ viewable: 'true' })
+  .then((data) => {
+       res.json(data);
+       console.log(data)
     })
     .catch((error) => {
       console.log("error: we could not process this request");
@@ -55,7 +55,7 @@ route.post("/", async (req, res) => {
   for (program of programs) {
     programsArr.push({
       uid: req.body.uid,
-      viewable: false,
+      viewable: 'false',
       ...program,
     });
   }

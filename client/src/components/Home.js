@@ -16,6 +16,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     axios.get("/user").then((res) => {
+      console.log(res.data)
       this.setState({
         programs: res.data,
       });
