@@ -12,8 +12,8 @@ class ProviderLp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      programs: [] || "There is no data to display yet"
-
+      programs: [] || "There is no data to display yet",
+      updateModal: false
     }
   }
 
@@ -25,17 +25,6 @@ class ProviderLp extends React.Component {
     })
   }
 
-  // displayPrograms = (programs) => {
-  //   if (!programs.length) return null;
-
-  //   return programs.map((program, index) =>
-  //     <div key={index}>
-  //       <h3>{program.providerName}</h3>
-  //       <p>{program.program}</p>
-  //     </div>
-  //   )
-  // };
-
   updateTable(data) {
     this.setState({
       programs: data
@@ -46,6 +35,12 @@ class ProviderLp extends React.Component {
     let copyPrograms = [...this.state.programs]
     copyPrograms.splice(index, 1)
     this.setState({ programs: copyPrograms })
+  }
+
+  openUpdateModal = () => {
+    this.setState({
+      updateModal: true
+    })
   }
 
 
@@ -289,6 +284,11 @@ class ProviderLp extends React.Component {
             >
 
             </ReactTable>
+            <UpdateRecord
+            openUpdateModal={this.state.openUpdateModal}
+            // onSubmit={this.updateInfo}
+            >
+            </UpdateRecord>
           </div>
         </div>
         :
