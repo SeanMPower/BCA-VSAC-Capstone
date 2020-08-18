@@ -376,7 +376,7 @@ h4 {
 
 #close-btn {
   transform: rotate(45deg);
-  margin-left: 87vw;
+  margin-left: 85vw;
   font-size: 25px;
 }
 
@@ -757,7 +757,7 @@ a:visited{
   line-height: 20px;
   text-align: left;
   animation-name: animateMenu;
-  animation-duration: .7s;
+  animation-duration: .5s;
 }
 .App #main-menu .link{
   display: flex;
