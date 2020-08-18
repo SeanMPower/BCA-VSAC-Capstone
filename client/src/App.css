@@ -290,8 +290,7 @@ h4 {
 
 /* Section: Sign-In Form */
 
-#signin-form,
-#signup-form {
+#signin-form, #signup-form, #update-records{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -903,60 +902,8 @@ a:visited{
   }
 }
 
-/* .msg {
-  display: none;
+.arrows{
+  width: 15px;
+  height: 15px;
 }
-.navbar{
-  display: flex;
-  flex-direction: column;
-}
-.btn{
-  display: none;
-}
-#footer #container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: -20rem;
-}
-#footer > #social-container{
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  left: 0;
-  margin-top: -40rem;
-}
-#social-container > #social-media{
-  border: 1px solid black;
-  margin: 0;
-  left: 0;
-  width: 30vw;
-  display: flex;
-  flex-direction: center;
-  align-items: center;
-  align-self: center;
-  margin-left: 0vw;
-}
-#footer-bottom{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-#footer-bottom hr{
-border: 50px solid black;
-}
-#footer-links{
-  display: flex;
-  justify-content: space-between;
-}
-#footer #text{
-  color:red;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-left: 20rem;
-} */
+
