@@ -116,7 +116,7 @@ function ProgramPage() {
                 <h3>{dateConvert(data.lastUpdate)}</h3>
               </div>
             </div>
-            <button className='button'><a href='/'>Back to home</a></button>
+            <button className='button' id='home-btn'><a href='/'>Back to home</a></button>
           </div>
         </div>
       ) : null}

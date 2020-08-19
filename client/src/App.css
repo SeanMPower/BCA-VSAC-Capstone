@@ -18,6 +18,15 @@ a {
   text-decoration: none;
 }
 
+#home-btn a {
+  text-decoration: none;
+  color: #ffffff;
+}
+#home-btn a:hover {
+  text-decoration: none;
+  color: #006877;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -98,6 +107,10 @@ a {
   border-radius: .25em;
   font-weight: 500;
   border: 1px solid #cddb28;
+}
+
+#navbar #institution{
+  min-width: 11rem;
 }
 
 .menu-btn{
@@ -212,7 +225,11 @@ h4 {
 }
 
 #vsac .line{
-  max-width: 100rem;
+  max-width: 120rem;
+}
+
+#vsac h2{
+  min-width: 15rem;
 }
 
 #acct-msg{
@@ -297,6 +314,14 @@ h4 {
   align-items: center;
   width: 100%;
   margin-top: 50px;
+}
+
+.signin-page .container{
+  margin-left: -2rem;
+}
+.signin-page .container .submit{
+  margin-left: 2rem;
+  margin-top: 1.5rem;
 }
 
 .firstName {
@@ -719,7 +744,23 @@ a:visited{
   }
 }
 
+@media only screen and (max-width: 335px) {
+  .signout-container .signout-button{
+    width: auto
+  }
+}
+
 @media only screen and (max-width: 769px) {
+.signout-container{
+  border: 2px solid grey;
+  width: 70vw;
+  display: flex;
+  justify-content: flex-end;
+  right: 3rem;
+}
+.signout-container .signout-button{
+  padding-right: -2px;  
+}
 #space{
   width: 100vw;
 }
@@ -823,12 +864,16 @@ a:visited{
 .btn{
   display: none;
 }
+#footer{
+  display: flex;
+  align-items: center;
+}
 #footer .logo{
   display: none;
 }
 #footer-bottom > #footer-links{
-  width: 92vw;
-  right: 1rem;
+  width: 90vw;
+  right: 1.5rem;
   flex-wrap: wrap;
   justify-content: space-around;
   position: relative;
@@ -848,11 +893,12 @@ a:visited{
 }
 
 #footer hr{
+  align-self: center;
   position: relative;
   top: -14rem;
-  margin-right: 2rem;
+  margin-right: 8rem;
   left: .5rem;
-  min-width: 1px;
+  width: auto;
 }
 #footer #social-container{
   /* border: 1px solid green; */
@@ -869,10 +915,9 @@ a:visited{
   position: relative;
 }
 #footer-top > #contact{
-  /* border: 1px solid red; */
   position: relative;
-  left: 5.5vw;
   top: 9rem;
+  left: -20px;
   align-items: center;
 }
 #copyright-wrapper > #copyright{
@@ -899,6 +944,18 @@ a:visited{
   #footer #text{
     margin-top: 5.5rem;
     margin-left: -1rem
+  }
+}
+
+@media only screen and (max-width: 305px) {
+  .signout-container{
+    width: auto;
+    border: 1px solid red;
+    right: 0rem;
+    margin-top: -2.5rem;
+  }
+  .signout-container .signout-button{
+    width: auto
   }
 }
 

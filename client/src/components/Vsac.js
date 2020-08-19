@@ -4,7 +4,7 @@ import VsacLp from "./VsacLp";
 
 function Vsac(props) {
   return (
-    <div className="main-container">
+    <div className="main-container signin-page">
       <div className="content">
       <div className="title" id='vsac'>
         <div className="line"></div>

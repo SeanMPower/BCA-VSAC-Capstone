@@ -5,14 +5,14 @@ import Modal from './Modal.js'
 
 function Provider (props) {
     return (
-      <div className="main-container">
+      <div className="main-container signin-page">
         <div className='content'>
           <div className='title' id='provider'>
           <div className='line'></div>
         <h2>Provider <span>User</span></h2>
         <div className='line'></div>
         </div>
-        <h3 id='provider-message'>This page is for short-term training providers</h3>
+        <h3 id='provider-message'>This page is for short-term training providers.</h3>
           {props.user
             ? <ProviderLp user={props.user}
               signOut={props.signOut}

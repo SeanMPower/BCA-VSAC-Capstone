@@ -14,10 +14,10 @@ function Header(props) {
             Home
         </Link>
         <Link to='/vsac-user' className='btn' id='vsac'>
-            VSAC Login
+            VSAC Portal
         </Link>
-        <Link to='/provider-user' className='btn'>
-          Institution Login
+        <Link to='/provider-user' className='btn' id='institution'>
+          Institution Portal
         </Link>
         <div id='space'>
         </div>
@@ -28,7 +28,7 @@ function Header(props) {
         <>
         <div className='msg'>
           Signed in as: {props.user.displayName || props.email}
-        </div><div className='signout-container'><SignOut signOut={props.signOut}/></div></> : <div />}
+        </div><div className='signout-container'><button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button></div></> : <div />}
         </div>
     </div>
             <div className='homepage'>

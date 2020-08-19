@@ -149,6 +149,7 @@ class App extends React.Component {
           })
           .catch((error) => {
             console.log(error.message);
+            console.log(typeof error.message)
             if (
               error.message ===
               "The password is invalid or the user does not have a password."
@@ -235,10 +236,10 @@ class App extends React.Component {
             Home
           </Link>
           <Link to="/vsac-user" id="vsac" className='link' onClick={this.toggleMenu}>
-            VSAC Login
+            VSAC Portal
           </Link>
           <Link to="/provider-user" className='link' onClick={this.toggleMenu}>
-            Institution Login
+            Institution Portal
           </Link>
           </div>
         </div>

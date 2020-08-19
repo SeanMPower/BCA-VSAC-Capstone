@@ -5,7 +5,7 @@ function SignIn(props) {
         <div className='container'>
             <div className='form-container'>
             <form id="signin-form" onSubmit={props.emailSignin}>
-                <label> Email:
+                <label> Email:{' '}
                     <input 
                     type='text'
                     name='email' 
@@ -15,7 +15,7 @@ function SignIn(props) {
                     autoComplete={'email'}
                      />
                 </label>
-                <label className='password'> Password:
+                <label className='password'> Password:{' '}
                     <input 
                     type='password'
                     name='password' 
