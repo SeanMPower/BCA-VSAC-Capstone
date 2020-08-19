@@ -6,7 +6,7 @@ import ReactTable from "react-table-v6"
 import "react-table-v6/react-table.css"
 import matchSorter from 'match-sorter'
 import Arrows from '../img/arrows1.png'
-import UpdateRecord from './UpdateRecord'
+import UpdateRecordProvider from './UpdateRecordProvider'
 
 
 class ProviderLp extends React.Component {
@@ -138,7 +138,7 @@ class ProviderLp extends React.Component {
         filterAll: true
       },
       {
-        Header: <div id="table-div"><p id="table-header">Price <img
+        Header: <div id="table-div"><p id="table-header">Cost <img
           src={Arrows}
           className="arrows"
           title="sort"
@@ -334,7 +334,7 @@ class ProviderLp extends React.Component {
               defaultPageSize={10}
             >
             </ReactTable>
-            <UpdateRecord
+            <UpdateRecordProvider
               openUpdateModal={this.openUpdateModal}
               updateModal={this.state.updateModal}
               closeUpdateModal={this.closeUpdateModal}
@@ -342,7 +342,7 @@ class ProviderLp extends React.Component {
               updateInfo={this.updateInfo}
               handleChange={this.handleUpdateChange}
             >
-            </UpdateRecord>
+            </UpdateRecordProvider>
           </div>
             </div>
         :

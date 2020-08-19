@@ -3,6 +3,7 @@ import axios from "axios";
 import ReactTable from "react-table-v6";
 import "react-table-v6/react-table.css";
 import matchSorter from "match-sorter";
+import Arrows from '../img/arrows1.png'
 
 class Home extends React.Component {
   constructor(props) {
@@ -28,35 +29,61 @@ class Home extends React.Component {
   render() {
     const columns = [
       {
-        Header: "Provider",
+        Header: <div id="table-div"><p id="table-header">Institution <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p>
+        <p>Search:</p></div>,
         accessor: "providerName",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["providerName"] }),
         filterAll: true,
       },
       {
-        Header: "Program",
+        Header: <div id="table-div"><p id="table-header">Program <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "program",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["program"] }),
         filterAll: true,
       },
       {
-        Header: "Start Date",
+        Header: <div id="table-div"><p id="table-header">Start Date <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "startDate",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["startDate"] }),
         filterAll: true,
       },
       {
-        Header: "End Date",
+        Header: <div id="table-div"><p id="table-header">End Date <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "endDate",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["endDate"] }),
         filterAll: true,
       },
       {
-        Header: "Cost",
+        Header: <div id="table-div"><p id="table-header">Cost <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "price",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["price"] }),

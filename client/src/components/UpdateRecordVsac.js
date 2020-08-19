@@ -1,6 +1,6 @@
 import React from 'react';
 //sign in/sign up forms
-function UpdateRecord(props) {
+function UpdateRecordVsac(props) {
     return (
             <div className='update-form-container' style={{display: props.updateModal}} >
             <form id="update-records" onSubmit={props.updateInfo}>
@@ -154,7 +154,7 @@ function UpdateRecord(props) {
                         
                     />
                 </label>
-                {/* <label className='viewable'> Viewable:
+                <label className='viewable'> Viewable:
                     <input
                         type='text'
                         name='updatedviewable'
@@ -163,7 +163,7 @@ function UpdateRecord(props) {
                         onChange={props.handleChange}
                         
                     />
-                </label> */}
+                </label>
                 <input type='submit' value='Update Records' className='submit' />
                 <button onClick={props.closeUpdateModal}>Close
             </button>
@@ -174,4 +174,4 @@ function UpdateRecord(props) {
     )
 }
 
-export default UpdateRecord;
+export default UpdateRecordVsac;
