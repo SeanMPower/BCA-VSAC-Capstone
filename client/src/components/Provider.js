@@ -9,7 +9,7 @@ function Provider (props) {
         <div className='content'>
           <div className='title' id='provider'>
           <div className='line'></div>
-        <h2>Provider <span>User</span></h2>
+        <h2>Institution <span>User</span></h2>
         <div className='line'></div>
         </div>
         <h3 id='provider-message'>This page is for short-term training providers.</h3>

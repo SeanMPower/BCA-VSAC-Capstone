@@ -403,6 +403,15 @@ h4 {
   display: contents;
 }
 
+/* Section: React Table */
+
+.delete-button{
+  border: none;
+  border-radius: 15px;
+  text-transform: uppercase;
+   
+}
+
 /* Section: Modal */
 
 #signup-modal {
@@ -442,6 +451,11 @@ h4 {
 }
 
 /* Section: Landing Page */
+
+#provider h2{
+  border: 1px solid black;
+  min-width: 22rem;
+}
 
 #welcome-msg {
   margin-top: -17px;
