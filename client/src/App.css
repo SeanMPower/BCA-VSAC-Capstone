@@ -200,7 +200,7 @@ a {
 /* Section: Home */
 
 #home h2 {
-  max-width: 100rem;
+  min-width: 30rem;
 }
 
 #home .line {
@@ -302,14 +302,6 @@ h4 {
   width: 78vw;
 }
 
-.container{
-  border: 1px solid #d3d3d3;
-  border-radius: 5px;
-  padding-left: 13rem;
-  padding-right: 13rem;
-  
-}
-
 .content,
 #db-info-container {
   background: #ffffff;
@@ -322,7 +314,9 @@ h4 {
 }
 
 #db-info-container {
-  width: auto;
+  min-width: 75vw;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .main {
@@ -769,7 +763,9 @@ a:visited {
 }
 
 @media only screen and (max-width: 734px) {
-  
+  #form-email{
+    margin-top: -1rem;
+  }
 }
 
 @media only screen and (min-width: 770px) {
@@ -786,7 +782,6 @@ a:visited {
 
 @media only screen and (max-width: 769px) {
   .signout-container {
-    border: 2px solid grey;
     width: 70vw;
     display: flex;
     justify-content: flex-end;

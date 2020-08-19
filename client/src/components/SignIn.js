@@ -5,7 +5,7 @@ function SignIn(props) {
         <div className='container'>
             <div className='form-container'>
             <form id="signin-form" onSubmit={props.emailSignin}>
-                <label> Email:{' '}
+                <label id='form-email'> Email:{' '}
                     <input 
                     type='text'
                     name='email' 

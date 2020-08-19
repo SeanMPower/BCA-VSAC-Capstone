@@ -27,7 +27,7 @@ function Header(props) {
         {props.signedIn ?
         <>
         <div className='msg'>
-          Signed in as: {props.user.displayName || props.email}
+          Signed in as: {props.user.displayName || props.user.email}
         </div><div className='signout-container'><button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button></div></> : <div />}
         </div>
     </div>
