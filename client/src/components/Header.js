@@ -31,8 +31,6 @@ function Header(props) {
         </div><div className='signout-container'><button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button></div></> : <div />}
         </div>
     </div>
-            <div className='homepage'>
-            </div>
             </>
   );
 }
