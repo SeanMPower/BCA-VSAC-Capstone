@@ -45,16 +45,20 @@ class App extends React.Component {
         };
       },
       () => {
-        if (this.state.modalDisplay === true) {
-          this.windowOffset = window.scrollY;
-          document.body.setAttribute(
-            "style",
-            `position: fixed; top: -${this.windowOffset}px; left: 0; right: 0`
-          );
-        } else {
-          document.body.setAttribute("style", "");
-          window.scrollTo(0, this.windowOffset);
-        }
+        // if (this.state.modalDisplay === true) {
+        //   this.windowOffset = window.scrollY;
+        //   document.body.setAttribute(
+        //     "style",
+        //     `position: fixed; top: -${this.windowOffset}px; left: 0; right: 0`
+        //   );
+        // } else {
+        //   document.body.setAttribute("style", "");
+        //   window.scrollTo(0, this.windowOffset);
+        //   document.body.removeAttribute(
+        //     "style",
+        //     `position: fixed; top: -${this.windowOffset}px; left: 0; right: 0`
+        //   );
+        // }
       }
     );
   };
@@ -145,7 +149,7 @@ class App extends React.Component {
           .auth()
           .createUserWithEmailAndPassword(newFormEmail, newFormPassword)
           .then((res) => {
-            this.setState({ user: res.user, signedIn: true });
+            this.setState({ user: res.user, signedIn: true, email: newFormEmail });
           })
           .catch((error) => {
             console.log(error.message);
@@ -184,8 +188,8 @@ class App extends React.Component {
       .then((res) => {
         // this.setState(res)
         this.setState({ userData: { role: "user" } });
-        // user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName})
-        console.log(res);
+        // user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName, email: res.email} );
+        
       });
   };
 

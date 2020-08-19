@@ -66,7 +66,7 @@ route.post("/", async (req, res) => {
   for (program of programs) {
     programsArr.push({
       uid: req.body.uid,
-      viewable: 'false',
+      viewable: 'true',
       ...program,
     });
   }
