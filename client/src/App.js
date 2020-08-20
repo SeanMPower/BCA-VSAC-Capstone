@@ -156,7 +156,13 @@ class App extends React.Component {
           .auth()
           .createUserWithEmailAndPassword(newFormEmail, newFormPassword)
           .then((res) => {
-            this.setState({ user: res.user, signedIn: true, email: newFormEmail });
+            this.setState({
+              user: res.user,
+              signedIn: true,
+              email: newFormEmail,
+              uid: res.user.uid,
+              user: res.user
+            });
           })
           .catch((error) => {
             console.log(error.message);
