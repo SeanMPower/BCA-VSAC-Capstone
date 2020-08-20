@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+// Component for loading all information about a particular program in the database selected from the Home table
+
 function ProgramPage() {
   let { _id } = useParams();
   const [data, setData] = useState({ program: [] });
 
-  useEffect(() => {
+  useEffect(() => {                                 // React hook to mimic state for a functional component
     const fetchData = async () => {
       const result = await axios.get(`/user/program/${_id}`);
 
@@ -16,13 +18,14 @@ function ProgramPage() {
     fetchData();
   }, [_id]);
 
-  let dateConvert = (dateString) => {
+  let dateConvert = (dateString) => {                // Converting ISO date to MM/DD/YYYY format
     let convertedDate = new Date(dateString);
     return convertedDate.toLocaleString().split(",", 1);
   };
 
+  // Template display for rendering individual program information
   return (
-    <div>
+     <div>                                           
       {data ? (
         <div className="main-container">
           <div className="content" id='program-content'>
@@ -106,7 +109,7 @@ function ProgramPage() {
               </div>
               <div className="right-side">
                 <h3>
-                  <a href={data.providerLink}>{data.providerLink}</a>
+                  <a href={data.providerLink} target="_blank">{data.providerLink}</a>
                 </h3>
               </div>
               <div className="left-side">

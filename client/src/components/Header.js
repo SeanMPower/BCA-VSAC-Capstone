@@ -35,10 +35,4 @@ function Header(props) {
   );
 }
 
-function SignOut(props) {
-  return(
-    <button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button>
-  )
-}
-
 export { Header };

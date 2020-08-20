@@ -219,7 +219,7 @@ a {
   background: url("./img/stripes3.png");
 }
 
-.main-container h1,
+.main-container h1, 
 h4 {
   margin: 10px;
   color: #000000;
@@ -254,7 +254,11 @@ h4 {
 }
 
 #provider h2 {
-  min-width: 340px;
+  min-width: 15rem;
+}
+
+#provider h1{
+  max-width: 5rem;
 }
 
 .login-message {
@@ -405,14 +409,111 @@ h4 {
 
 /* Section: React Table */
 
-.delete-button{
+.delete-button, .update-button{
   border: none;
   border-radius: 15px;
   text-transform: uppercase;
-   
+  height: 1.5rem;
+  transition: .3s;
+}
+
+.delete-button{
+  background: #701d45;
+  color: #ffffff;
+  width: 5rem;
+  cursor: pointer;
+}
+
+.update-button{
+  background: #cddb28;
+  color: #676767;
+  transition: 0.3s;
+  width: 8.5rem;
+  cursor: pointer;
+}
+
+.update-button:hover{
+  color: #ffffff;
+  background: #006877;
+}
+
+.delete-button:hover{
+  background: red;
 }
 
 /* Section: Modal */
+
+.institutionName{
+  margin-left: -3.5rem;
+}
+
+.institutionLink{
+  margin-left: -2.6rem;
+}
+
+.programPrice{
+  margin-left: 1.4rem;
+}
+
+.programState{
+  margin-left: 1.4rem;
+}
+
+.programRegion{
+    margin-left: 7px;
+}
+
+.programStartDate{
+  margin-left: -1rem
+}
+
+.programEndDate{
+  margin-left: -.6rem;
+}
+
+.programCertification{
+  margin-left: -1.7rem;
+}
+
+.programVtgrant{
+  margin-left: -.5rem;
+}
+
+.programPellgrant{
+  margin-left: -.7rem;
+}
+
+.createdBy{
+  margin-left: -4.8rem;
+}
+
+.lastUpdated{
+  margin-left: -6rem;
+}
+
+.contactEmail{
+  margin-left: -2.7rem;
+}
+
+.update-form-container #update-records{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 38rem;
+  align-items: center;
+}
+
+.update-form-container .submit{
+  min-width: 9rem;
+  height: 2rem;
+  margin-bottom: -.2rem;
+  margin-top: -.2rem
+}
+
+.update-form-container .button{
+  max-width: 6rem;
+}
 
 #signup-modal {
   margin-top: 5rem;
@@ -453,7 +554,6 @@ h4 {
 /* Section: Landing Page */
 
 #provider h2{
-  border: 1px solid black;
   min-width: 22rem;
 }
 
@@ -589,7 +689,6 @@ a:visited {
 }
 
 #footer .footer-content {
-  /* border: 2px solid green; */
   padding-right: 30px;
   padding-left: 30px;
   margin-right: auto;
@@ -663,7 +762,7 @@ a:visited {
 }
 
 #footer-bottom #text {
-  max-width: 40vw;
+  min-width: 60rem;
   display: flex;
   justify-content: flex-start;
   font-weight: 700;
@@ -697,17 +796,11 @@ a:visited {
   display: flex;
   justify-content: flex-end;
   width: 30vw;
-  /* right: 2.5vw; */
   position: relative;
   padding-right: 1rem;
 }
 
-.delete-button {
-  background-color: red;
-  color: #fefefe;
-}
-
-/* Section Program Page */
+/* Section: Program Page */
 
 #program-table {
   display: flex;
@@ -755,6 +848,8 @@ a:visited {
 
 @media only screen and (max-width: 1110px) {
   .msg {
+    display: flex;
+    justify-content: flex-end;
     top: 40px;
     right: 0;
     position: absolute;

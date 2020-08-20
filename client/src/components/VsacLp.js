@@ -5,14 +5,17 @@ import ReactTable from "react-table-v6"
 import "react-table-v6/react-table.css"
 import matchSorter from 'match-sorter'
 import { CSVLink } from "react-csv";
+import Arrows from '../img/arrows1.png'
+import UpdateRecordVsac from './UpdateRecordVsac'
 
 export default class VsacLp extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      programs: [] || "There is no data to display yet"
-
+      programs: [] || "There is no data to display yet",
+      updateModal: "none",
+      updatedProgram: {}
     }
   }
 
@@ -31,109 +34,231 @@ export default class VsacLp extends React.Component {
     this.setState({ programs: copyPrograms })
   }
 
+  openUpdateModal = (evt) => {
+    console.log(this.state.programs)
+    console.log(evt.target.dataset._id)
+
+    let _id = evt.target.dataset._id
+    let programToUpdate = this.state.programs.filter((program) => {
+      return program._id === _id
+
+    })
+
+    console.log(programToUpdate)
+
+    this.setState({
+      updateModal: "inline",
+      updatedProgram: programToUpdate[0]
+    })
+  }
+
+  closeUpdateModal = (evt) => {
+    evt.preventDefault()
+    this.setState({
+      updateModal: "none"
+    })
+  }
+
+  updateInfo = (evt) => {
+    evt.preventDefault()
+    let payLoad = this.state.updatedProgram
+    let idVariable = this.state.updatedProgram._id
+    
+    axios.post(`/user/update/${idVariable}`, payLoad)
+      this.setState({
+        updateModal: "none"
+      })        
+  }
+
+  handleUpdateChange = (evt) => {
+    evt.persist()
+    this.setState((prevState) => ({
+      updatedProgram: {
+        ...prevState.updatedProgram, [evt.target.name]: evt.target.value
+      }
+    }));
+    console.log(evt.target.name)
+  }
+
   render() {
 
     const columns = [
       {
-        Header: "Institution",
+        Header: <div id="table-div"><p id="table-header">Institution <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p>
+        <p>Search:</p></div>,
         accessor: "providerName",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["providerName"] }),
         filterAll: true
       },
       {
-        Header: "Program",
+        Header: <div id="table-div"><p id="table-header">Program <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "program",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["program"] }),
         filterAll: true
       },
       {
-        Header: "Institution Link",
+        Header: <div id="table-div"><p id="table-header">Institution Link <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "providerLink",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["providerLink"] }),
         filterAll: true
       },
       {
-        Header: "Modality",
+        Header: <div id="table-div"><p id="table-header">Modality <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "modality",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["modality"] }),
         filterAll: true
       },
       {
-        Header: "Price",
+        Header: <div id="table-div"><p id="table-header">Cost <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "price",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["price"] }),
         filterAll: true
       },
       {
-        Header: "State",
+        Header: <div id="table-div"><p id="table-header">State <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "state",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["state"] }),
         filterAll: true
       },
       {
-        Header: "Region",
+        Header: <div id="table-div"><p id="table-header">Region <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "region",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["region"] }),
         filterAll: true
       },
       {
-        Header: "Start Date",
+        Header: <div id="table-div"><p id="table-header">Start Date <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "startDate",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["startDate"] }),
         filterAll: true
       },
       {
-        Header: "End Date",
+        Header: <div id="table-div"><p id="table-header">End Date <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "endDate",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["endDate"] }),
         filterAll: true
       },
       {
-        Header: "Certification",
+        Header: <div id="table-div"><p id="table-header">Certification <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "certification",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["certification"] }),
         filterAll: true
       },
       {
-        Header: "VT Grant",
+        Header: <div id="table-div"><p id="table-header">VT Grant <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "VTGrant",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["VTGrant"] }),
         filterAll: true
       },
       {
-        Header: "Pell Grant",
+        Header: <div id="table-div"><p id="table-header">Pell Grant <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "pell",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["pell"] }),
         filterAll: true
       },
       {
-        Header: "Record Created By",
+        Header: <div id="table-div"><p id="table-header">Record Created By <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "recordCreatedBy",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["recordCreatedBy"] }),
         filterAll: true
       },
       {
-        Header: "Record Last Updated",
+        Header: <div id="table-div"><p id="table-header">Record Last Updated <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "lastUpdate",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["lastUpdate"] }),
         filterAll: true
       },
       {
-        Header: "Contact Email",
+        Header: <div id="table-div"><p id="table-header">Contact Email <img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: "contactEmail",
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["contactEmail"] }),
@@ -142,7 +267,12 @@ export default class VsacLp extends React.Component {
 
       {
         id: 'viewable',
-        Header: "Viewable",
+        Header: <div id="table-div"><p id="table-header">Visible on Home Page<img
+        src={Arrows}
+        className="arrows"
+        title="sort"
+        alt="sort"
+      /></p><p>Search:</p></div>,
         accessor: d => d.viewable.toString(),
         filterMethod: (filter, rows) =>
           matchSorter(rows, filter.value, { keys: ["viewable"] }),
@@ -157,6 +287,21 @@ export default class VsacLp extends React.Component {
               axios.get(`/user/delete/${this.state.programs[props.index]._id}`)
               this.deleteRow(props.index)
             }} >Delete</button>
+          )
+        },
+        sortable: false,
+        filterable: false,
+        width: 100,
+        maxWidth: 100,
+        minWidth: 100
+      },
+      {
+        Header: "Update Records",
+        Cell: props => {
+          return (
+            <button data-_id={this.state.programs[props.index]._id} name="test" className="delete-button" onClick={
+              this.openUpdateModal
+            } > Update Record</button>
           )
         },
         sortable: false,
@@ -193,6 +338,15 @@ export default class VsacLp extends React.Component {
             >
 
             </ReactTable>
+            <UpdateRecordVsac
+              openUpdateModal={this.openUpdateModal}
+              updateModal={this.state.updateModal}
+              closeUpdateModal={this.closeUpdateModal}
+              updatedProgram={this.state.updatedProgram}
+              updateInfo={this.updateInfo}
+              handleChange={this.handleUpdateChange}
+            >
+            </UpdateRecordVsac>
           </div>
         </div>
         :
