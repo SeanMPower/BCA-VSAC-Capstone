@@ -304,7 +304,7 @@ class App extends React.Component {
           <Route path="/program/:_id" render={() => <ProgramPage />} />
           <Route component={ErrorPage} />
         </Switch>
-        {this.state.modalDisplay && <Modal vsacModal={this.state.vsacModal} providerModal={this.state.providerModal}/>}
+        {/* {this.state.modalDisplay && <Modal vsacModal={this.state.vsacModal} providerModal={this.state.providerModal}/>} */}
         <div id="page"></div>
         <Footer />
       </div>
