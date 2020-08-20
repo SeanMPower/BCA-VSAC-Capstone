@@ -2,9 +2,9 @@ import React from 'react';
 //sign in/sign up forms
 function UpdateRecordVsac(props) {
     return (
-            <div className='update-form-container' style={{display: props.updateModal}} >
+            <div className='update-form-container modal' style={{display: props.updateModal}} >
             <form id="update-records" onSubmit={props.updateInfo}>
-                <label className='instutionName'> Institution Name:
+                <label className='instutionName'> Institution Name:{" "}
                     <input
                         type='text'
                         name='providerName'
@@ -14,7 +14,7 @@ function UpdateRecordVsac(props) {
                         
                         />
                 </label>
-                <label className='programName'> Program:
+                <label className='programName'> Program:{" "}
                     <input
                         type='text'
                         name='program'
@@ -24,7 +24,7 @@ function UpdateRecordVsac(props) {
                         
                         />
                 </label>
-                <label className='InstitutionLink'> Institution Link:
+                <label className='InstitutionLink'> Institution Link:{" "}
                     <input
                         type='text'
                         name='updatedInstitutionLink'
@@ -34,7 +34,7 @@ function UpdateRecordVsac(props) {
                          
                         />
                 </label>
-                <label className='programModality'> Modality:
+                <label className='programModality'> Modality:{" "}
                     <input
                         type='text'
                         name='updatedModality'
@@ -44,7 +44,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programPrice'> Price:
+                <label className='programPrice'> Price:{" "}
                     <input
                         type='text'
                         name='updatedPrice'
@@ -54,7 +54,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programState'> State:
+                <label className='programState'> State:{" "}
                     <input
                         type='text'
                         name='updatedState'
@@ -64,7 +64,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programRegion'> Region:
+                <label className='programRegion'> Region:{" "}
                     <input
                         type='text'
                         name='updatedRegion'
@@ -74,7 +74,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programStartDate'> Start Data:
+                <label className='programStartDate'> Start Data:{" "}
                     <input
                         type='text'
                         name='updatedStartdate'
@@ -84,7 +84,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programEndDate'> End Date:
+                <label className='programEndDate'> End Date:{" "}
                     <input
                         type='text'
                         name='updatedEnddate'
@@ -94,7 +94,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programCertification'> Certification:
+                <label className='programCertification'> Certification:{" "}
                     <input
                         type='text'
                         name='updatedCertification'
@@ -104,7 +104,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programVtgrant'> VT Grant:
+                <label className='programVtgrant'> VT Grant:{" "}
                     <input
                         type='text'
                         name='updatedVtgrant'
@@ -114,7 +114,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='programPellgrant'> Pell Grant:
+                <label className='programPellgrant'> Pell Grant:{" "}
                     <input
                         type='text'
                         name='updatedPellgrant'
@@ -124,7 +124,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='createdBy'> Record Created By:
+                <label className='createdBy'> Record Created By:{" "}
                     <input
                         type='text'
                         name='updatedRecordCreatedby'
@@ -134,7 +134,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='lastUpdated'> Record Last Updated:
+                <label className='lastUpdated'> Record Last Updated:{" "}
                     <input
                         type='text'
                         name='updatedRecordLastUpdated'
@@ -144,7 +144,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='contactEmail'> Contact Email:
+                <label className='contactEmail'> Contact Email:{" "}
                     <input
                         type='text'
                         name='updatedContactEmail'
@@ -154,7 +154,7 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <label className='viewable'> Viewable:
+                <label className='viewable'> Viewable:{" "}
                     <input
                         type='text'
                         name='updatedviewable'
@@ -164,8 +164,8 @@ function UpdateRecordVsac(props) {
                         
                     />
                 </label>
-                <input type='submit' value='Update Records' className='submit' />
-                <button onClick={props.closeUpdateModal}>Close
+                <input type='submit' value='Update Record' className='submit' />
+                <button onClick={props.closeUpdateModal} className='button'>Close
             </button>
             </form>
             

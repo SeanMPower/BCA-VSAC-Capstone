@@ -299,7 +299,7 @@ export default class VsacLp extends React.Component {
         Header: "Update Records",
         Cell: props => {
           return (
-            <button data-_id={this.state.programs[props.index]._id} name="test" className="delete-button" onClick={
+            <button data-_id={this.state.programs[props.index]._id} name="test" className="update-button" onClick={
               this.openUpdateModal
             } > Update Record</button>
           )
@@ -321,7 +321,7 @@ export default class VsacLp extends React.Component {
             <div>
               <CSVLink data={this.state.programs}
                 columns={columns}
-                filename="training-data.csv">
+                filename="training-data.csv" className='button' id='export'>
                 Export Data
               </CSVLink>
             </div>
