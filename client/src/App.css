@@ -441,6 +441,17 @@ h4 {
   background: red;
 }
 
+#export-btn{
+  border: 1px solid red;
+  background: #ccdb28;
+  color: #676767;
+  text-transform: uppercase;
+  margin-top: -5rem;
+  min-width: 100vw;
+  min-height: 20vh;
+  padding: 5px 5px;
+}
+
 /* Section: Modal */
 
 .institutionName{
@@ -768,11 +779,15 @@ a:visited {
   font-weight: 700;
 }
 
-#footer #footer-links {
+#footer-links {
+  border: 1px solid red;
   display: flex;
+  margin-left: 35vw;
+  margin-right: 5vw;
+  position: absolute;
   justify-content: space-between;
   align-items: flex-end;
-  width: 60vw;
+  width: 55vw;
   color: #ffffff;
   font-weight: 400;
   padding-right: 3rem;

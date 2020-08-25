@@ -36,9 +36,6 @@ class App extends React.Component {
       programs: [] || "There is no data to display yet",
       updateModal: "none",
       updatedProgram: {},
-      signupModal: false,
-      vsacModal: false,
-      providerModal: false
     };
   }
 
@@ -161,7 +158,8 @@ class App extends React.Component {
               signedIn: true,
               email: newFormEmail,
               uid: res.user.uid,
-              user: res.user
+              user: res.user,
+              modalDisplay: false,
             });
           })
           .catch((error) => {
@@ -231,9 +229,6 @@ class App extends React.Component {
           signedIn: false,
           error: "",
           shouldUpdate: true,
-          signupModal: false,
-          vsacModal: false,
-          providerModal: false
         });
 
         console.log(res);
@@ -310,8 +305,6 @@ class App extends React.Component {
           <Route path="/program/:_id" render={() => <ProgramPage />} />
           <Route component={ErrorPage} />
         </Switch>
-        {this.state.modalDisplay && <Modal vsacModal={this.state.vsacModal} providerModal={this.state.providerModal}/>}
-        <div id="page"></div>
         <Footer />
       </div>
     );
