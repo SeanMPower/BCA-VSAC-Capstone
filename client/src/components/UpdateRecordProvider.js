@@ -1,5 +1,6 @@
 import React from 'react';
 
+// This is the update record form for the Provider landing page
 function UpdateRecordProvider(props) {
     return (
             <div className='update-form-container modal' style={{display: props.updateModal}} >
@@ -27,7 +28,7 @@ function UpdateRecordProvider(props) {
                 <label className='institutionLink'> Institution Link:{" "}
                     <input
                         type='text'
-                        name='updatedInstitutionLink'
+                        name='providerLink'
                         id='updated-institutionlink'
                         value={props.updatedProgram.providerLink}
                         onChange={props.handleChange}
@@ -37,7 +38,7 @@ function UpdateRecordProvider(props) {
                 <label className='programModality'> Modality:{" "}
                     <input
                         type='text'
-                        name='updatedModality'
+                        name='modality'
                         id='updated-Modality'
                         value={props.updatedProgram.modality}
                         onChange={props.handleChange}
@@ -47,7 +48,7 @@ function UpdateRecordProvider(props) {
                 <label className='programPrice'> Price:{" "}
                     <input
                         type='text'
-                        name='updatedPrice'
+                        name='price'
                         id='updated-price'
                         value={props.updatedProgram.price}
                         onChange={props.handleChange}
@@ -57,7 +58,7 @@ function UpdateRecordProvider(props) {
                 <label className='programState'> State:{" "}
                     <input
                         type='text'
-                        name='updatedState'
+                        name='state'
                         id='updated-state'
                         value={props.updatedProgram.state}
                         onChange={props.handleChange}
@@ -67,7 +68,7 @@ function UpdateRecordProvider(props) {
                 <label className='programRegion'> Region:{" "}
                     <input
                         type='text'
-                        name='updatedRegion'
+                        name='region'
                         id='updated-region'
                         value={props.updatedProgram.region}
                         onChange={props.handleChange}
@@ -77,7 +78,7 @@ function UpdateRecordProvider(props) {
                 <label className='programStartDate'> Start Date:{" "}
                     <input
                         type='text'
-                        name='updatedStartdate'
+                        name='startDate'
                         id='updated-startdate'
                         value={props.updatedProgram.startDate}
                         onChange={props.handleChange}
@@ -87,7 +88,7 @@ function UpdateRecordProvider(props) {
                 <label className='programEndDate'> End Date:{" "}
                     <input
                         type='text'
-                        name='updatedEnddate'
+                        name='endDate'
                         id='updated-enddate'
                         value={props.updatedProgram.endDate}
                         onChange={props.handleChange}
@@ -97,7 +98,7 @@ function UpdateRecordProvider(props) {
                 <label className='programCertification'> Certification:{" "}
                     <input
                         type='text'
-                        name='updatedCertification'
+                        name='certification'
                         id='updated-certification'
                         value={props.updatedProgram.certification}
                         onChange={props.handleChange}
@@ -107,7 +108,7 @@ function UpdateRecordProvider(props) {
                 <label className='programVtgrant'> VT Grant:{" "}
                     <input
                         type='text'
-                        name='updatedVtgrant'
+                        name='VTGrant'
                         id='updated-vtgrant'
                         value={props.updatedProgram.VTGrant}
                         onChange={props.handleChange}
@@ -117,7 +118,7 @@ function UpdateRecordProvider(props) {
                 <label className='programPellgrant'> Pell Grant:{" "}
                     <input
                         type='text'
-                        name='updatedPellgrant'
+                        name='pellgrant'
                         id='updated-pellgrant'
                         value={props.updatedProgram.pell}
                         onChange={props.handleChange}
@@ -127,7 +128,7 @@ function UpdateRecordProvider(props) {
                 <label className='createdBy'> Record Created By:{" "}
                     <input
                         type='text'
-                        name='updatedRecordCreatedby'
+                        name='recordCreatedby'
                         id='updated-recordcreatedby'
                         value={props.updatedProgram.recordCreatedBy}
                         onChange={props.handleChange}
@@ -137,7 +138,7 @@ function UpdateRecordProvider(props) {
                 <label className='lastUpdated'> Record Last Updated:{" "}
                     <input
                         type='text'
-                        name='updatedRecordLastUpdated'
+                        name='lastUpdate'
                         id='updated-recordlastupdated'
                         value={props.updatedProgram.lastUpdate}
                         onChange={props.handleChange}
@@ -147,23 +148,14 @@ function UpdateRecordProvider(props) {
                 <label className='contactEmail'> Contact Email:{" "}
                     <input
                         type='text'
-                        name='updatedContactEmail'
+                        name='contactEmail'
                         id='updated-contactemail'
                         value={props.updatedProgram.contactEmail}
                         onChange={props.handleChange}
                         
                     />
                 </label>
-                {/* <label className='viewable'> Viewable:
-                    <input
-                        type='text'
-                        name='updatedviewable'
-                        id='updated-viewable'
-                        value={props.updatedProgram.viewable}
-                        onChange={props.handleChange}
-                        
-                    />
-                </label> */}
+                
                 <input type='submit' value='Update Record' className='submit' />
                 <button onClick={props.closeUpdateModal} className='button'>Close
             </button>

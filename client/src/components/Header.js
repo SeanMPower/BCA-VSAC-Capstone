@@ -21,13 +21,13 @@ function Header(props) {
         </Link>
         <div id='space'>
         </div>
-        <div className={`menu-btn ${props.menuDisplay ? 'open' : ''}`} onClick={props.openMenu}>
+        <div className={`menu-btn ${props.menuDisplay ? 'open' : ''}`} onClick={props.openMenu}>  {/* Mobile responsive menu */}
           <div className='menu-btn__burger'></div>
-        </div>
-        {props.signedIn ?
+        </div>  {/* Below is a ternary that will display the log-in of current user if applicable */}
+        {props.signedIn ?    
         <>
         <div className='msg'>
-          Signed in as: {props.user.displayName || props.user.email}
+          Signed in as: {props.user.displayName || props.user.email}   
         </div><div className='signout-container'><button className='signout-button' type="button" onClick={props.signOut}>Sign Out</button></div></> : <div />}
         </div>
     </div>

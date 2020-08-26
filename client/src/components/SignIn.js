@@ -1,5 +1,6 @@
 import React from 'react';
-//sign in/sign up forms
+
+// This component creates the sign-in elements on the page
 function SignIn(props) {
     return (
         <div className='container'>

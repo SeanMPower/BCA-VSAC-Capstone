@@ -18,7 +18,7 @@ class ProviderLp extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount() {  // This will load all programs from the database into state that match the logged in user's firebase UID
     axios.get(`/user/provider/${this.props.uid}`).then((res) => {
       console.log(res);
       this.setState({
@@ -27,28 +27,18 @@ class ProviderLp extends React.Component {
     });
   }
 
-  updateTable(data) {
-    this.setState({
-      programs: data,
-    });
-  }
-
-  deleteRow = (index) => {
+  deleteRow = (index) => {  // This method removed a row from the React table
     let copyPrograms = [...this.state.programs];
     copyPrograms.splice(index, 1);
     this.setState({ programs: copyPrograms });
   };
 
-  openUpdateModal = (evt) => {
-    console.log(this.state.programs);
-    console.log(evt.target.dataset._id);
+  openUpdateModal = (evt) => { // Opens up the Update program modal form
 
     let _id = evt.target.dataset._id;
     let programToUpdate = this.state.programs.filter((program) => {
       return program._id === _id;
     });
-
-    console.log(programToUpdate);
 
     this.setState({
       updateModal: "inline",
@@ -56,14 +46,14 @@ class ProviderLp extends React.Component {
     });
   };
 
-  closeUpdateModal = (evt) => {
+  closeUpdateModal = (evt) => {  // Closes the update modal from above if no changes are needed
     evt.preventDefault();
     this.setState({
       updateModal: "none",
     });
   };
 
-  updateInfo = (evt) => {
+  updateInfo = (evt) => {  // This method sends changes to the database to update a program's info
     evt.preventDefault();
     let payLoad = this.state.updatedProgram;
     let idVariable = this.state.updatedProgram._id;
@@ -74,7 +64,7 @@ class ProviderLp extends React.Component {
     });
   };
 
-  handleUpdateChange = (evt) => {
+  handleUpdateChange = (evt) => {  // Fills out Update modal with existing data and tracks changes to the data for possible updating
     evt.persist();
     this.setState((prevState) => ({
       updatedProgram: {
@@ -86,7 +76,7 @@ class ProviderLp extends React.Component {
   };
 
   render() {
-    const columns = [
+    const columns = [   // This is setting up the structure of the display table
       {
         Header: (
           <div id="table-div">
@@ -316,11 +306,12 @@ class ProviderLp extends React.Component {
         Header: "Delete Records",
         Cell: (props) => {
           return (
+            // This attaches a method to the table that allows the user to delete one of their records from the database/table
             <button
               className="delete-button"
               onClick={() => {
                 axios.get(
-                  `/user/delete/${this.state.programs[props.index]._id}`
+                  `/user/delete/${this.state.programs[props.index]._id}`  
                 );
                 this.deleteRow(props.index);
               }}
@@ -339,6 +330,7 @@ class ProviderLp extends React.Component {
         Header: "Update Records",
         Cell: (props) => {
           return (
+            // This attaches a button to the table that opens up the update modal
             <button
               data-_id={this.state.programs[props.index]._id}
               name="test"
@@ -359,7 +351,7 @@ class ProviderLp extends React.Component {
     ];
 
     return (
-      <div>
+      <div> {/* If a user is logged in and they have the firebase 'role' of "user" their name will display*/}
         {this.props.userData && this.props.userData.role === "user" ? (
           <div>
             {this.props.firstName === undefined ||
@@ -372,17 +364,19 @@ class ProviderLp extends React.Component {
                   this.props.user.email}
               </h1>
             )}
+            {/* The CSVReader component will open up the Flatfile importer */}
             <CSVReader
               uid={this.props.uid}
               id="csv-button"
-              update={this.updateTable}
             />
+            {/* Below is the link to the CSV template download */}
             <div className="button-container">
-              <a id="download-template" href="./provider_template.csv" download>
+              <a id="download-template" href="./provider_template.csv" download> 
                 <button className="download-button">
                   Click here to Download Template
                 </button>
               </a>
+              {/* This button is to sign the current user out */}
               <button
                 className="signout-button"
                 type="button"
@@ -391,7 +385,7 @@ class ProviderLp extends React.Component {
                 Sign Out
               </button>
             </div>
-            <div id="db-info-container">
+            <div id="db-info-container"> {/* This is the display table for program data attached to user's firebase UID */}
               <ReactTable
                 className="-striped -highlight"
                 columns={columns}
@@ -404,6 +398,7 @@ class ProviderLp extends React.Component {
                 noDataText={"No Data To Display Yet"}
                 defaultPageSize={10}
               ></ReactTable>
+              {/* UpdateRecordProvider calls the program update modal */}
               <UpdateRecordProvider
                 openUpdateModal={this.openUpdateModal}
                 updateModal={this.state.updateModal}
@@ -414,7 +409,7 @@ class ProviderLp extends React.Component {
               ></UpdateRecordProvider>
             </div>
           </div>
-        ) : (
+        ) : (  // If the current user is an 'admin' it will prompt them to log in on the VSAC portal
           <div className="vsac-lp">
             <p>
               Looks like you have a VSAC account...<br></br>Please go to the

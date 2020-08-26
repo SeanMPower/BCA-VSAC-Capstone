@@ -11,6 +11,7 @@ function Vsac(props) {
         <h2>VSAC <span>user</span></h2>
         <div className="line"></div>
       </div>
+      {/* If there is no admin user logged in, it will display login screen. Otherwise the Vsac landing page will be displayed */}
         {props.user ? (
           <VsacLp
             user={props.user}
