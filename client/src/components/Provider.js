@@ -13,6 +13,7 @@ function Provider (props) {
         <div className='line'></div>
         </div>
         <h3 id='provider-message'>This page is for short-term training providers.</h3>
+        {/* If there is not a user logged in, this will show the login screen. If there is a user logged in, it will display the Provider landing page (ProviderLp) */}
           {props.user
             ? <ProviderLp user={props.user}
               signOut={props.signOut}
@@ -34,6 +35,6 @@ function Provider (props) {
     )
   }
 
-
+ 
 
 export default Provider;

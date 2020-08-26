@@ -4,7 +4,7 @@ import SignUp from "./SignUp.js";
 function Modal (props) {
 
 
-  
+  // This component is for the Sign-up component on the Institution Login page
     return (
       <>
         <div className="modal-container">

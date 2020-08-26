@@ -109,7 +109,7 @@ function ProgramPage() {
               </div>
               <div className="right-side">
                 <h3>
-                  <a href={data.providerLink} target="_blank">{data.providerLink}</a>
+                  <a href={data.providerLink} target="_blank" rel="noopener noreferrer">{data.providerLink}</a>
                 </h3>
               </div>
               <div className="left-side">

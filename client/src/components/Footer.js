@@ -18,12 +18,12 @@ import {
 
 let imgArray = [Img1, Img2, Img3, Img4, Img5, Img6, Img7]
 
-function getRandomInt(max) {
+function getRandomInt(max) {     // Selects a random number, used below to select footer image
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-const myStyle = {
-    background: `no-repeat center center/cover`,
+const myStyle = {   // Uses random number generator to select footer image from imgArray
+    background: `no-repeat center center/cover`,  
     'backgroundImage': `url('${imgArray[getRandomInt(7)]}')`
 }
 
@@ -40,7 +40,7 @@ function Footer(props) {
           title="VSAC logo white"
           alt="VSAC logo white"
         />
-        <div id="contact">
+        <div id="contact">    {/* Contact icons */}
           <div className="contact" id="phone">
             <FontAwesomeIcon icon={faPhone} className="icon" /><div className='info'>(800) 642-3177</div>
           </div>
@@ -50,7 +50,7 @@ function Footer(props) {
         </div>
       </div>
       <div id="social-container">
-        <div id="social-media">
+        <div id="social-media">   {/* Social media icons */}
           <a href="https://www.facebook.com/VermontStudentAssistanceCorporation/">
             <FontAwesomeIcon icon={faFacebookF} className="icon" />
           </a>

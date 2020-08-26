@@ -11,7 +11,7 @@ import ErrorPage from "./components/ErrorPage.js";
 import Footer from "./components/Footer.js";
 import { fireApp } from "./assets/firebaseConfig";
 import { fireData } from "./assets/firebaseConfig";
-import Modal from "./components/Modal";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -47,27 +47,11 @@ class App extends React.Component {
           modalDisplay: !prevState.modalDisplay,
           error: "",
         };
-      },
-      () => {
-        // if (this.state.modalDisplay === true) {
-        //   this.windowOffset = window.scrollY;
-        //   document.body.setAttribute(
-        //     "style",
-        //     `position: fixed; top: -${this.windowOffset}px; left: 0; right: 0`
-        //   );
-        // } else {
-        //   document.body.setAttribute("style", "");
-        //   window.scrollTo(0, this.windowOffset);
-        //   document.body.removeAttribute(
-        //     "style",
-        //     `position: fixed; top: -${this.windowOffset}px; left: 0; right: 0`
-        //   );
-        // }
       }
     );
   };
 
-  toggleMenu = () => {
+  toggleMenu = () => {  // This toggles the hamburger menu drop-down when in mobile view
     this.setState((prevState) => ({
       menuDisplay: !prevState.menuDisplay,
     }));
@@ -105,7 +89,7 @@ class App extends React.Component {
     }
   }
 
-  handleChange = (evt) => {
+  handleChange = (evt) => { // This tracks changes to the various input fields and sets them in state
     this.setState({ [evt.target.name]: evt.target.value });
   };
 
@@ -145,23 +129,23 @@ class App extends React.Component {
     let newFormPassword = this.state.newPassword;
     let confirmFormPassword = this.state.confirmPassword;
 
-    console.log(newFormEmail);
-    console.log(newFormPassword);
+   
 
     newFormPassword === confirmFormPassword
       ? await fireApp
           .auth()
           .createUserWithEmailAndPassword(newFormEmail, newFormPassword)
           .then((res) => {
-            this.setState({
-              user: res.user,
-              signedIn: true,
-              email: newFormEmail,
-              uid: res.user.uid,
-              user: res.user,
-              modalDisplay: false,
-            });
+            this.setState({ user: res.user, signedIn: true, email: newFormEmail, uid: res.user.uid });
           })
+          // this.setState({
+          //   user: res.user,
+          //   signedIn: true,
+          //   email: newFormEmail,
+          //   uid: res.user.uid,
+          //   user: res.user,
+          //   modalDisplay: false,
+          // });
           .catch((error) => {
             console.log(error.message);
             console.log(typeof error.message)
@@ -194,17 +178,17 @@ class App extends React.Component {
           })
       : alert("Passwords must match!");
 
+    // Assigning Name and role to new Institution user on Firebase  
     fireData
       .ref("/users/" + this.state.user.uid)
       .set({ role: "user", firstName: newFormName, lastName: newFormLastName })
       .then((res) => {
         this.setState({ userData: { role: "user" } });
-        // user: res.user, uid: res.user.uid, signedIn: true, firstName: res.firstName, lastName: res.lastName, email: res.email} );
         
       });
   };
 
-  signOut = (evt) => {
+  signOut = (evt) => {  // Signs current user out and resets state
     evt.preventDefault();
 
     fireApp
@@ -242,7 +226,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <div
-          id="main-menu"
+          id="main-menu"  // If window width is less than 769 pixels it will hide menu and display mobile version
           style={{ display: (window.innerWidth > '769px') ? 'none' : (this.state.menuDisplay ? "flex" : "none" )}}
         >
           <div id='link-container'>
@@ -257,6 +241,7 @@ class App extends React.Component {
           </Link>
           </div>
         </div>
+        {/* This calls the Header component which will always display */}
         <Header
           signedIn={this.state.signedIn}
           email={this.state.email}
@@ -266,6 +251,7 @@ class App extends React.Component {
           menuDisplay={this.state.menuDisplay}
         />
         <div className="homepage"></div>
+        {/* This Switch sets the paths for the variable display components */}
         <Switch>
           <Route exact path="/" component={Home} />
           <Route
@@ -302,8 +288,8 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path="/program/:_id" render={() => <ProgramPage />} />
-          <Route component={ErrorPage} />
+          <Route path="/program/:_id" render={() => <ProgramPage />} />  {/* Path for individual program page */}
+          <Route component={ErrorPage} /> 
         </Switch>
         <Footer />
       </div>

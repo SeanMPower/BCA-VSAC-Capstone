@@ -2,11 +2,12 @@ import React from 'react';
 import FlatfileImporter from "flatfile-csv-importer"
 import axios from 'axios'
 
+
 FlatfileImporter.setVersion(2)
 
 const license = '1280cf65-f3a7-4b26-ae74-90288f0c5e85'
 
-const flatfileConfig = {
+const flatfileConfig = {               // This config file sets up the schema for the CSV import, including validators on certain fields
     type: "vsacDb-import",
     fields: [
         {
@@ -110,9 +111,9 @@ const flatfileConfig = {
     ]
 }
 
-const importer = new FlatfileImporter(license, flatfileConfig)
+const importer = new FlatfileImporter(license, flatfileConfig)  // This initializes a new instance of Flatfile
 
-importer.setCustomer ({
+importer.setCustomer ({  // This merely attaches a reference to the Flatfile account being used to imports
      userId: "VSAC"
 })
 
@@ -129,10 +130,8 @@ const launchFlatfile = (uid) => {
                 data: dataSet
             }
             
-            axios.post('/user', 
-              payload).then((res) => {
-                console.log(res)
-              })
+            axios.post('/user', // Post request to send converted CSV file to backend for insertion to database
+              payload)
 
         },  1500)
     })
