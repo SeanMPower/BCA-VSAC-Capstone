@@ -116,7 +116,7 @@ importer.setCustomer ({
      userId: "VSAC"
 })
 
-const launchFlatfile = (uid, update) => {
+const launchFlatfile = (uid) => {
     importer.requestDataFromUser().then(results => {
         importer.displayLoader();
         setTimeout( () => {
@@ -133,9 +133,7 @@ const launchFlatfile = (uid, update) => {
               payload).then((res) => {
                 console.log(res)
               })
-            //   .then((res) => {
-            //       update(res)
-            //     })
+            
 
 
         },  1500)
