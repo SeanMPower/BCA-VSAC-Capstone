@@ -15,7 +15,6 @@ class Home extends React.Component {
 
   componentDidMount() {    // This loads all program data with the "viewable" property set to 'true' into state
     axios.get("/user").then((res) => {
-      console.log(res.data)
       this.setState({
         programs: res.data,
       });

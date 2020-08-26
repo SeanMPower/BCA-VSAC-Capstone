@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+
+// This sets up the Mongoose schema for MongoDB
 const userSchema = new mongoose.Schema({
     uid: {
         type: String, required: true
@@ -50,7 +52,7 @@ const userSchema = new mongoose.Schema({
         type: String, required: true
     },
     lastUpdate: {
-       type: Date, default: Date.now, expires: 365*24*60*60 // "expires sets a Time-To-Live index on a date field in seconds"
+       type: Date, default: Date.now, expires: 365*24*60*60 // "expires sets a Time-To-Live index on a date field in seconds, currently data is set to expire after one year."
     }
 })
 
