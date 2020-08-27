@@ -64,6 +64,17 @@ class ProviderLp extends React.Component {
     });
   };
 
+  triggerRender = () => { // This triggers a re-render of the ProviderLP component so that the table will display newly uploaded programs without having to navigate away from the page and then back.
+    
+    axios.get(`/user/provider/${this.props.uid}`).then((res) => {
+      this.setState({
+        programs: res.data
+      })
+    })
+  }
+  
+
+
   handleUpdateChange = (evt) => {  // Fills out Update modal with existing data and tracks changes to the data for possible updating
     evt.persist();
     this.setState((prevState) => ({
@@ -368,6 +379,7 @@ class ProviderLp extends React.Component {
             <CSVReader
               uid={this.props.uid}
               id="csv-button"
+              triggerRender={this.triggerRender}
             />
             {/* Below is the link to the CSV template download */}
             <div className="button-container">
