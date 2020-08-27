@@ -12,7 +12,6 @@ import Footer from "./components/Footer.js";
 import { fireApp } from "./assets/firebaseConfig";
 import { fireData } from "./assets/firebaseConfig";
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,22 +35,24 @@ class App extends React.Component {
       programs: [] || "There is no data to display yet",
       updateModal: "none",
       updatedProgram: {},
+      signupModal: false,
+      vsacModal: false,
+      providerModal: false,
     };
   }
 
   //Sets modal display to opposite of its prevstate, sets error to none. disables scrolling when modal is opened.
   toggleModal = () => {
-    this.setState(
-      (prevState) => {
-        return {
-          modalDisplay: !prevState.modalDisplay,
-          error: "",
-        };
-      }
-    );
+    this.setState((prevState) => {
+      return {
+        modalDisplay: !prevState.modalDisplay,
+        error: "",
+      };
+    });
   };
 
-  toggleMenu = () => {  // This toggles the hamburger menu drop-down when in mobile view
+  toggleMenu = () => {
+    // This toggles the hamburger menu drop-down when in mobile view
     this.setState((prevState) => ({
       menuDisplay: !prevState.menuDisplay,
     }));
@@ -89,7 +90,8 @@ class App extends React.Component {
     }
   }
 
-  handleChange = (evt) => { // This tracks changes to the various input fields and sets them in state
+  handleChange = (evt) => {
+    // This tracks changes to the various input fields and sets them in state
     this.setState({ [evt.target.name]: evt.target.value });
   };
 
@@ -112,7 +114,6 @@ class App extends React.Component {
           lastName: res.lastName,
           email: res.user.email,
         });
-        console.log(res.user.email);
       })
       .catch((error) => {
         this.setState({ error: error.message });
@@ -129,14 +130,17 @@ class App extends React.Component {
     let newFormPassword = this.state.newPassword;
     let confirmFormPassword = this.state.confirmPassword;
 
-   
-
     newFormPassword === confirmFormPassword
       ? await fireApp
           .auth()
           .createUserWithEmailAndPassword(newFormEmail, newFormPassword)
           .then((res) => {
-            this.setState({ user: res.user, signedIn: true, email: newFormEmail, uid: res.user.uid });
+            this.setState({
+              user: res.user,
+              signedIn: true,
+              email: newFormEmail,
+              uid: res.user.uid,
+            });
           })
           // this.setState({
           //   user: res.user,
@@ -147,48 +151,30 @@ class App extends React.Component {
           //   modalDisplay: false,
           // });
           .catch((error) => {
-            console.log(error.message);
-            console.log(typeof error.message)
-            if (
-              error.message ===
-              "The password is invalid or the user does not have a password."
-            ) {
-              this.setState({
-                error:
-                  "That doesn't seem to be the right password... Please try again or sign up for an account.",
-              });
-            } else if (
-              error.message ===
-              "There is no user record corresponding to this identifier. The user may have been deleted."
-            ) {
-              this.setState({
-                error:
-                  "The email you entered doesn't appear to be in our database... Please try a different email address or Sign up for an account.",
-              });
-            } else if (
-              error.message === "The email address is badly formatted."
-            ) {
-              this.setState({
-                error:
-                  "Please enter a valid email, or Sign up for a new account.",
-              });
-            } else {
-              this.setState({ error: error.message });
-            }
+            this.setState({ error: error.message });
           })
-      : alert("Passwords must match!");
+      : this.setState({ error: "Passwords must match!" });
 
-    // Assigning Name and role to new Institution user on Firebase  
-    fireData
-      .ref("/users/" + this.state.user.uid)
-      .set({ role: "user", firstName: newFormName, lastName: newFormLastName })
-      .then((res) => {
-        this.setState({ userData: { role: "user" } });
-        
-      });
+    // Assigning Name and role to new Institution user on Firebase
+    newFormPassword === confirmFormPassword
+      ? await fireData
+          .ref("/users/" + this.state.user.uid)
+          .set({
+            role: "user",
+            firstName: newFormName,
+            lastName: newFormLastName,
+          })
+          .then((res) => {
+            this.setState({ userData: { role: "user" } })
+          .catch((error) => {
+              this.setState({ error: error.message });
+            });
+          })
+      : this.setState({ error: "Passwords must match!" });
   };
 
-  signOut = (evt) => {  // Signs current user out and resets state
+  signOut = (evt) => {
+    // Signs current user out and resets state
     evt.preventDefault();
 
     fireApp
@@ -213,9 +199,11 @@ class App extends React.Component {
           signedIn: false,
           error: "",
           shouldUpdate: true,
+          signupModal: false,
+          vsacModal: false,
+          providerModal: false,
         });
 
-        console.log(res);
       })
       .catch((error) => {
         this.setState({ error: error.message });
@@ -226,19 +214,35 @@ class App extends React.Component {
     return (
       <div className="App">
         <div
-          id="main-menu"  // If window width is less than 769 pixels it will hide menu and display mobile version
-          style={{ display: (window.innerWidth > '769px') ? 'none' : (this.state.menuDisplay ? "flex" : "none" )}}
+          id="main-menu" // If window width is less than 769 pixels it will hide menu and display mobile version
+          style={{
+            display:
+              window.innerWidth > "769px"
+                ? "none"
+                : this.state.menuDisplay
+                ? "flex"
+                : "none",
+          }}
         >
-          <div id='link-container'>
-          <Link to="/" id="home" className='link' onClick={this.toggleMenu}>
-            Home
-          </Link>
-          <Link to="/vsac-user" id="vsac" className='link' onClick={this.toggleMenu}>
-            VSAC Portal
-          </Link>
-          <Link to="/provider-user" className='link' onClick={this.toggleMenu}>
-            Institution Portal
-          </Link>
+          <div id="link-container">
+            <Link to="/" id="home" className="link" onClick={this.toggleMenu}>
+              Home
+            </Link>
+            <Link
+              to="/vsac-user"
+              id="vsac"
+              className="link"
+              onClick={this.toggleMenu}
+            >
+              VSAC Portal
+            </Link>
+            <Link
+              to="/provider-user"
+              className="link"
+              onClick={this.toggleMenu}
+            >
+              Institution Portal
+            </Link>
           </div>
         </div>
         {/* This calls the Header component which will always display */}
@@ -288,8 +292,9 @@ class App extends React.Component {
               />
             )}
           />
-          <Route path="/program/:_id" render={() => <ProgramPage />} />  {/* Path for individual program page */}
-          <Route component={ErrorPage} /> 
+          <Route path="/program/:_id" render={() => <ProgramPage />} />{" "}
+          {/* Path for individual program page */}
+          <Route component={ErrorPage} />
         </Switch>
         <Footer />
       </div>

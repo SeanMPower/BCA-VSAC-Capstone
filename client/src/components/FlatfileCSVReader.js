@@ -117,7 +117,7 @@ importer.setCustomer ({  // This merely attaches a reference to the Flatfile acc
      userId: "VSAC"
 })
 
-const launchFlatfile = (uid) => {
+const launchFlatfile = (uid, triggerRender) => {
     importer.requestDataFromUser().then(results => {
         importer.displayLoader();
         setTimeout( () => {
@@ -133,14 +133,16 @@ const launchFlatfile = (uid) => {
             axios.post('/user', // Post request to send converted CSV file to backend for insertion to database
               payload)
 
-        },  1500)
+        },  500)
+        
+        setTimeout(triggerRender, 1500)
     })
 }
 
 function CSVReader(props) {
     return (
         <div className="csv-reader">
-            <button id="csv-button" uid={props.uid} onClick={() => {launchFlatfile(props.uid)}}>
+            <button id="csv-button" uid={props.uid} onClick={() => {launchFlatfile(props.uid, props.triggerRender)}}>
                 Click here to Upload CSV File or Manually Input Program Data
             </button>
         </div>
