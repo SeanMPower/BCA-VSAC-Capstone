@@ -1,5 +1,6 @@
 import React from 'react';
-//sign in/sign up forms
+
+// This component sets up the form for the firebase account sign-up
 function SignUp(props) {
     return (
         <div className='container'>

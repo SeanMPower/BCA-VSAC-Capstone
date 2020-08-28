@@ -4,13 +4,14 @@ import VsacLp from "./VsacLp";
 
 function Vsac(props) {
   return (
-    <div className="main-container">
+    <div className="main-container signin-page">
       <div className="content">
       <div className="title" id='vsac'>
         <div className="line"></div>
         <h2>VSAC <span>user</span></h2>
         <div className="line"></div>
       </div>
+      {/* If there is no admin user logged in, it will display login screen. Otherwise the Vsac landing page will be displayed */}
         {props.user ? (
           <VsacLp
             user={props.user}

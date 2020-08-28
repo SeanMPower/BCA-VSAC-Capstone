@@ -13,21 +13,20 @@ class Home extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount() {    // This loads all program data with the "viewable" property set to 'true' into state
     axios.get("/user").then((res) => {
-      console.log(res.data)
       this.setState({
         programs: res.data,
       });
     });
   }
 
-  loadProgramPage = (progId) => {
+  loadProgramPage = (progId) => {  // This will forward the user to the individual program page based on the program's unique ID in the database
     window.location.href = `/program/${progId}`;
   };
 
   render() {
-    const columns = [
+    const columns = [  // This sets up the structure of the display table
       {
         Header: <div id="table-div"><p id="table-header">Institution <img
         src={Arrows}

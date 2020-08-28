@@ -1,11 +1,12 @@
 import React from 'react';
-//sign in/sign up forms
+
+// This component creates the sign-in elements on the page
 function SignIn(props) {
     return (
         <div className='container'>
             <div className='form-container'>
             <form id="signin-form" onSubmit={props.emailSignin}>
-                <label> Email:
+                <label id='form-email'> Email:{' '}
                     <input 
                     type='text'
                     name='email' 
@@ -15,7 +16,7 @@ function SignIn(props) {
                     autoComplete={'email'}
                      />
                 </label>
-                <label className='password'> Password:
+                <label className='password'> Password:{' '}
                     <input 
                     type='password'
                     name='password' 

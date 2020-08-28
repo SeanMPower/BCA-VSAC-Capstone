@@ -109,7 +109,7 @@ function ProgramPage() {
               </div>
               <div className="right-side">
                 <h3>
-                  <a href={data.providerLink} target="_blank">{data.providerLink}</a>
+                  <a href={data.providerLink} target="_blank" rel="noopener noreferrer">{data.providerLink}</a>
                 </h3>
               </div>
               <div className="left-side">
@@ -119,7 +119,7 @@ function ProgramPage() {
                 <h3>{dateConvert(data.lastUpdate)}</h3>
               </div>
             </div>
-            <button className='button'><a href='/'>Back to home</a></button>
+            <button className='button' id='home-btn'><a href='/'>Back to home</a></button>
           </div>
         </div>
       ) : null}
