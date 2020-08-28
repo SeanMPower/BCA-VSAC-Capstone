@@ -143,7 +143,6 @@ class App extends React.Component {
             });
           })
           .catch((error) => {
-
             this.setState({ error: error.message });
           })
       : this.setState({ error: "Passwords must match!" });
