@@ -142,21 +142,14 @@ class App extends React.Component {
               uid: res.user.uid,
             });
           })
-          // this.setState({
-          //   user: res.user,
-          //   signedIn: true,
-          //   email: newFormEmail,
-          //   uid: res.user.uid,
-          //   user: res.user,
-          //   modalDisplay: false,
-          // });
           .catch((error) => {
+
             this.setState({ error: error.message });
           })
       : this.setState({ error: "Passwords must match!" });
 
     // Assigning Name and role to new Institution user on Firebase
-    newFormPassword === confirmFormPassword
+    (newFormPassword === confirmFormPassword && this.state.user.uid)
       ? await fireData
           .ref("/users/" + this.state.user.uid)
           .set({
@@ -170,7 +163,7 @@ class App extends React.Component {
               this.setState({ error: error.message });
             });
           })
-      : this.setState({ error: "Passwords must match!" });
+      : this.setState({ error: "This user already exists." });
   };
 
   signOut = (evt) => {
