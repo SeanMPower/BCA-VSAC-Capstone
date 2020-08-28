@@ -14,9 +14,3 @@ For the Firebase authentication we can turn over the ownership of the authentica
 without you having to create one from scratch.
 
 The ownership of this repository will be transferred to VSAC's github account.
-
-
-
-Known and unresolved issue: Currently if a new user tries to sign up for an account with an email that 
-already exists in the Firebase auth server, you will get a brief error message on screen and then the App will
-crash. We've been unable to resolve this error.
