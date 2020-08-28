@@ -312,10 +312,10 @@ export default class VsacLp extends React.Component {
         ? <div>
           <h1 id='welcome-msg'>Hello, {this.props.user.displayName || this.props.user.email}</h1>
           <div id='db-info-container'>
-            <div>  {/* The CSVLink component gathers all data from the database and puts it in a CSV file for download */}
+            <div id='csvlink-container'>  {/* The CSVLink component gathers all data from the database and puts it in a CSV file for download */}
               <CSVLink data={this.state.programs}
                 columns={columns}
-                filename="training-data.csv" className='button' id='export'>
+                filename="training-data.csv" className='button' id='export-btn'>
                 Export Data
               </CSVLink>
             </div>  {/* ReactTable is the program display table */}
