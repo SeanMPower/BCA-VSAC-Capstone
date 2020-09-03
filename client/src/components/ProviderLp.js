@@ -20,7 +20,6 @@ class ProviderLp extends React.Component {
 
   componentDidMount() {  // This will load all programs from the database into state that match the logged in user's firebase UID
     axios.get(`/user/provider/${this.props.uid}`).then((res) => {
-      console.log(res);
       this.setState({
         programs: res.data,
       });

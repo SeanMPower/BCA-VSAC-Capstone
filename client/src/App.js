@@ -73,7 +73,6 @@ class App extends React.Component {
   //gets data for users when they sign in
   async componentDidUpdate() {
     if (this.state.shouldUpdate && this.state.user) {
-      console.log(this.state.user.uid);
       let data = await fireData
         .ref("/users/" + this.state.user.uid)
         .once("value")
@@ -83,7 +82,6 @@ class App extends React.Component {
         lastName: data.lastName,
         shouldUpdate: false,
       });
-      console.log(data);
       if (this.state.userData.role !== data.role) {
         this.setState({ userData: data });
       }
