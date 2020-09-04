@@ -5,7 +5,7 @@ import axios from 'axios'
 
 FlatfileImporter.setVersion(2)
 
-const license = '1280cf65-f3a7-4b26-ae74-90288f0c5e85'
+const license = 'API_KEY_GOES_HERE'
 
 const flatfileConfig = {               // This config file sets up the schema for the CSV import, including validators on certain fields
     type: "vsacDb-import",
