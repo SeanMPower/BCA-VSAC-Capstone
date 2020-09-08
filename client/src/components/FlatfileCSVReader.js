@@ -1,11 +1,12 @@
 import React from 'react';
 import FlatfileImporter from "flatfile-csv-importer"
 import axios from 'axios'
+const flatfile_key = process.env.REACT_APP_FLATFILE_KEY
 
 
 FlatfileImporter.setVersion(2)
 
-const license = 'API_KEY_GOES_HERE'
+const license = flatfile_key
 
 const flatfileConfig = {               // This config file sets up the schema for the CSV import, including validators on certain fields
     type: "vsacDb-import",

@@ -11,6 +11,8 @@ import ErrorPage from "./components/ErrorPage.js";
 import Footer from "./components/Footer.js";
 import { fireApp } from "./assets/firebaseConfig";
 import { fireData } from "./assets/firebaseConfig";
+require('dotenv').config()
+
 
 class App extends React.Component {
   constructor(props) {
